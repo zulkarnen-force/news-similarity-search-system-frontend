@@ -14,8 +14,6 @@ class UserController extends Controller
         $users = User::get();
         $no = 1;
         return view('contents.user', ['users' => $users], compact('no'));
-
-        return view('contents.user',compact('no'));
         
     }
     public function create()
