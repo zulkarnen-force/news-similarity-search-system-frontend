@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,5 +16,23 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// dashboard
 Route::get('/', [FrontendController::class, 'index'])->name('index');
+
+// login & logout
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login-auth');
+Route::post('/logout',[LoginController::class, 'logout']);
+
+// register
+Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store'])->name('register');
+
+// page user
+Route::get('/user', [UserController::class,'index'])->name('user-index');
+Route::delete('/user/{id}',[UserController::class,'destroy'])->name('destroy');
+
+
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

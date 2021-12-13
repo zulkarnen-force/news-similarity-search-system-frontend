@@ -9,6 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+
     <title>@yield('title')</title>
 
     <!-- Custom fonts for this template-->
@@ -19,6 +20,8 @@
 
     <!-- Custom styles for this template-->
     <link href="{{url('/issets/css/sb-admin-2.min.css')}}" rel="stylesheet">
+
+    <link rel="icon" href="{{url('/issets/img/undraw_rocket.svg')}}">
 
 </head>
 
@@ -67,8 +70,11 @@
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <button class="btn btn-secondary"  type="button" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-primary" type="submit">Logout</button>
+                    </form>
                 </div>
             </div>
         </div>

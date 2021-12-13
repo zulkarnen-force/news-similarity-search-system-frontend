@@ -4,27 +4,35 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('index')}}">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                    <i class="fas fa-book"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Binocular</div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item {{ request()->is('/') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('index')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
+            <!-- Nav Item - User -->
+            <li class="nav-item nav-item {{ request()->is('user') ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('user-index')}}">
+                <i class="far fa-user"></i>
+                <span>Users</span></a>
+            </li>
+            
 
             <!-- Divider -->
             <hr class="sidebar-divider">
+            
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Users
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -36,7 +44,7 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
+                        <h6 class="collapse-header">Custom Component:</h6>
                         <a class="collapse-item" href="buttons.html">Buttons</a>
                         <a class="collapse-item" href="cards.html">Cards</a>
                     </div>
