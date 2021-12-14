@@ -56,24 +56,6 @@ class FilesController extends Controller
         }
         return redirect()->route('file-index')->with('success','Data Berhasil Diupload');
 
-        // $request->validate([
-        //     'file' => 'required|mimes:csv,xlx,xlsx,xls|max:2048'
-        // ]);
-
-        // if($request->file()){
-        //     $fileName = time().'_'.$request->file->getClientoriginalName();
-        //     $filePath = $request->file('file')->store('public/excel-data');
-
-        //         Files::create([
-        //             'filename' => $fileName,
-        //             'created_by' => Auth::user()->id,
-        //             'path' => $filePath
-        //         ]);
-
-        //     return redirect()->route('file-index')->with('success','Data Berhasil Diupload');
-
-        // }
-
 
     }
 
