@@ -42,13 +42,13 @@
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
                                     @if (session()->has('success'))
-                                        <div class="alert alert-success" role="alert">
+                                        <div class="alert alert-success" role="alert" id="success">
                                             Registration Successfull, Please Login.
                                         </div>
                                     @endif
                                     @if (session()->has('loginerror'))
-                                        <div class="alert alert-danger" role="alert">
-                                            Pass Salah
+                                        <div class="alert alert-danger" role="alert" id="loginerror">
+                                            Username / Password Salah
                                         </div>
                                     @endif
                                     <form class="user" action="{{route('login')}}" method="POST">
@@ -106,6 +106,13 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{url('/issets/js/sb-admin-2.min.js')}}"></script>
+
+    <script>
+        setTimeout(() => {
+            $('#success').slideUp('fast');
+            $('#loginerror').slideUp('fast');
+        }, 1500);
+    </script>
 
 </body>
 

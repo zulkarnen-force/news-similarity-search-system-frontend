@@ -16,7 +16,9 @@ class FilesController extends Controller
      */
     public function index()
     {
-        return view('contents.files');
+        $no=1;
+        $files = Files::with(['report'])->orderBy('id', 'DESC')->paginate(5);
+        return view('contents.files',compact('files','no'));
     }
 
     /**
@@ -46,7 +48,7 @@ class FilesController extends Controller
                 $path = $file->store('public/excel-data');
 
                 Files::create([
-                    'filename' => $file,
+                    'filename' => time().'_'.$file->getClientoriginalName(),
                     'created_by' => Auth::user()->id,
                     'path' => $path
                 ]);
@@ -54,25 +56,24 @@ class FilesController extends Controller
         }
         return redirect()->route('file-index')->with('success','Data Berhasil Diupload');
 
-        // if($request->hasFile('file')){
+        // $request->validate([
+        //     'file' => 'required|mimes:csv,xlx,xlsx,xls|max:2048'
+        // ]);
 
-        //     // upload path
-        //     $path = 'file/';
+        // if($request->file()){
+        //     $fileName = time().'_'.$request->file->getClientoriginalName();
+        //     $filePath = $request->file('file')->store('public/excel-data');
 
-        //     // get extension
-        //     $extension = $request->file('file')->getClientOriginalExtension();
+        //         Files::create([
+        //             'filename' => $fileName,
+        //             'created_by' => Auth::user()->id,
+        //             'path' => $filePath
+        //         ]);
 
-        //     // valid Extension
-        //     $validextensions = array("xlsx","csv","xls","xlsm");
+        //     return redirect()->route('file-index')->with('success','Data Berhasil Diupload');
 
-        //     // check 
-        //     if(in_array(strtolower($extension),$validextensions)){
-
-        //         // rename file
-        //         $fileName = $request->file('file')->getClientOriginalName().time().'.'.$extension;
-        //         $request->file('file')->move($path,$fileName);
-        //     }
         // }
+
 
     }
 

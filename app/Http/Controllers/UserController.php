@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::get();
+        $users = User::paginate(5);
         $no = 1;
         return view('contents.user', ['users' => $users], compact('no'));
         
@@ -77,6 +77,6 @@ class UserController extends Controller
 
         $user->delete();
 
-        return redirect()->route('user-index');
+        return redirect()->route('user-index')->with('deleted','User Berhasil Dihapus');
     }
 }

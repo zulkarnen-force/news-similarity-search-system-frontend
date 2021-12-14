@@ -16,4 +16,5 @@ class User extends Authenticatable
         'name',
         'password'
     ];
+
 }

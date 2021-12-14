@@ -14,4 +14,9 @@ class Files extends Model
         'path',
         'created_by'
     ];
+
+    public function report()
+    {
+        return $this->hasOne(User::class,'id','created_by');
+    }
 }

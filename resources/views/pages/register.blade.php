@@ -37,7 +37,7 @@
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
                             @if (session()->has('failed'))
-                                <div class="alert alert-danger" role="alert">
+                                <div class="alert alert-danger" role="alert" id="failed">
                                     Sorry Your Username Has been Already
                                 </div>
                             @endif
@@ -96,6 +96,12 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{url('/issets/js/sb-admin-2.min.js')}}"></script>
+
+    <script>
+        setTimeout(() => {
+            $('#failed').slideUp('fast');
+        }, 1500);
+    </script>
 
 </body>
 
