@@ -21,13 +21,16 @@
                       </div>
                       <div class="card-body">
                           <div class="table-responsive">
-                            <p>Result {{ $users->total()}}</p>
+                          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                              <p>Result {{ $users->total()}}  </p>
+                              <input type="text" class="rounded border-white" placeholder="Search...">
+                          </div>
                               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                   <tr>
                                     <th>No</th>
-                                    <th>Username</th>
-                                    <th>Join_at</th>
+                                    <th>@sortablelink('name','Username')</th>
+                                    <th>@sortablelink('created_at','Join At')</th>
                                     <th>Action</th>
                                   </tr>
                                 </thead>

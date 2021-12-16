@@ -25,13 +25,16 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <p>Result {{ $files->total()}}</p>
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <p>Result {{ $files->total()}}  </p>
+                        <input type="text" class="rounded border-white" placeholder="Search...">
+                    </div>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                         <tr>
                           <th>No</th>
-                          <th>Reporter</th>
-                          <th>Report Date</th>
+                          <th>@sortablelink('created_by','Reporter')</th>
+                          <th>@sortablelink('created_at','Report Date')</th>
                           <th>Action</th>
                         </tr>
                       </thead>
@@ -43,6 +46,7 @@
                           <td>{{ $file->created_at->diffForHumans()}}</td>
                           <td>
                               <a  class="btn btn-warning" href="{{Storage::url($file->path)}}" target="blank">Check</a>  
+                              <a  class="btn btn-primary" href="{{route('path',$file->id)}}" target="blank">Report</a>  
                           </td>
                         </tr>
                         @endforeach

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\PathJob;
 use App\Models\Files;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FilesController extends Controller
 {
@@ -17,7 +19,7 @@ class FilesController extends Controller
     public function index()
     {
         $no=1;
-        $files = Files::with(['report'])->orderBy('id', 'DESC')->paginate(5);
+        $files = Files::sortable()->with(['report'])->orderBy('id', 'DESC')->paginate(5);
         return view('contents.files',compact('files','no'));
     }
 
@@ -45,6 +47,7 @@ class FilesController extends Controller
         {
             foreach($files as $file)
             {
+                $filename = $file;
                 $path = $file->store('public/excel-data');
 
                 Files::create([
@@ -102,5 +105,12 @@ class FilesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function path($id)
+    {
+        $path = Files::findOrFail($id);
+        print_r($path->toJson());
+        PathJob::dispatch($path->pluck('filename','path'));
     }
 }
