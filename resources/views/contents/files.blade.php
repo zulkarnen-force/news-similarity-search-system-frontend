@@ -33,8 +33,8 @@
                       <thead>
                         <tr>
                           <th>No</th>
-                          <th>@sortablelink('created_by','Reporter')</th>
-                          <th>@sortablelink('created_at','Report Date')</th>
+                          <th>Reporter</th>
+                          <th>Report Date</th>
                           <th>Action</th>
                         </tr>
                       </thead>

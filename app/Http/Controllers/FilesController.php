@@ -19,7 +19,7 @@ class FilesController extends Controller
     public function index()
     {
         $no=1;
-        $files = Files::sortable()->with(['report'])->orderBy('id', 'DESC')->paginate(5);
+        $files = Files::with(['report'])->orderBy('id', 'DESC')->paginate(5);
         return view('contents.files',compact('files','no'));
     }
 

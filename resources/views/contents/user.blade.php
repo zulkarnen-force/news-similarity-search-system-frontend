@@ -29,8 +29,8 @@
                                 <thead>
                                   <tr>
                                     <th>No</th>
-                                    <th>@sortablelink('name','Username')</th>
-                                    <th>@sortablelink('created_at','Join At')</th>
+                                    <th>Username</th>
+                                    <th>Join At</th>
                                     <th>Action</th>
                                   </tr>
                                 </thead>

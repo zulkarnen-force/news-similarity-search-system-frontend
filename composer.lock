@@ -5,8 +5,7 @@
         "This file is @generated automatically"
     ],
     "content-hash": "ca211935cfb34516e5dbd6cd0ae7bbe1",
-    "packages": [
-        {
+    "packages": [{
             "name": "asm89/stack-cors",
             "version": "v2.0.3",
             "source": {
@@ -44,12 +43,10 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Alexander",
-                    "email": "iam.asm89@gmail.com"
-                }
-            ],
+            "authors": [{
+                "name": "Alexander",
+                "email": "iam.asm89@gmail.com"
+            }],
             "description": "Cross-origin resource sharing library and stack middleware",
             "homepage": "https://github.com/asm89/stack-cors",
             "keywords": [
@@ -110,8 +107,7 @@
                 "issues": "https://github.com/brick/math/issues",
                 "source": "https://github.com/brick/math/tree/0.9.3"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://github.com/BenMorel",
                     "type": "github"
                 },
@@ -161,8 +157,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Dragonfly Development Inc.",
                     "email": "info@dflydev.com",
                     "homepage": "http://dflydev.com"
@@ -232,8 +227,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Guilherme Blanco",
                     "email": "guilhermeblanco@gmail.com"
                 },
@@ -272,8 +266,7 @@
                 "issues": "https://github.com/doctrine/inflector/issues",
                 "source": "https://github.com/doctrine/inflector/tree/2.0.4"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://www.doctrine-project.org/sponsorship.html",
                     "type": "custom"
                 },
@@ -325,8 +318,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Guilherme Blanco",
                     "email": "guilhermeblanco@gmail.com"
                 },
@@ -352,8 +344,7 @@
                 "issues": "https://github.com/doctrine/lexer/issues",
                 "source": "https://github.com/doctrine/lexer/tree/1.2.1"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://www.doctrine-project.org/sponsorship.html",
                     "type": "custom"
                 },
@@ -405,13 +396,11 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Chris Tankersley",
-                    "email": "chris@ctankersley.com",
-                    "homepage": "https://github.com/dragonmantank"
-                }
-            ],
+            "authors": [{
+                "name": "Chris Tankersley",
+                "email": "chris@ctankersley.com",
+                "homepage": "https://github.com/dragonmantank"
+            }],
             "description": "CRON for PHP: Calculate the next or previous run date and determine if a CRON expression is due",
             "keywords": [
                 "cron",
@@ -421,12 +410,10 @@
                 "issues": "https://github.com/dragonmantank/cron-expression/issues",
                 "source": "https://github.com/dragonmantank/cron-expression/tree/v3.1.0"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/dragonmantank",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/dragonmantank",
+                "type": "github"
+            }],
             "time": "2020-11-24T19:55:57+00:00"
         },
         {
@@ -471,11 +458,9 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Eduardo Gulias Davis"
-                }
-            ],
+            "authors": [{
+                "name": "Eduardo Gulias Davis"
+            }],
             "description": "A library for validating emails against several RFCs",
             "homepage": "https://github.com/egulias/EmailValidator",
             "keywords": [
@@ -489,12 +474,10 @@
                 "issues": "https://github.com/egulias/EmailValidator/issues",
                 "source": "https://github.com/egulias/EmailValidator/tree/2.1.25"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/egulias",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/egulias",
+                "type": "github"
+            }],
             "time": "2020-12-29T14:50:06+00:00"
         },
         {
@@ -545,8 +528,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Fruitcake",
                     "homepage": "https://fruitcake.nl"
                 },
@@ -566,12 +548,10 @@
                 "issues": "https://github.com/fruitcake/laravel-cors/issues",
                 "source": "https://github.com/fruitcake/laravel-cors/tree/v2.0.4"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/barryvdh",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/barryvdh",
+                "type": "github"
+            }],
             "time": "2021-04-26T11:24:25+00:00"
         },
         {
@@ -605,13 +585,11 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Graham Campbell",
-                    "email": "hello@gjcampbell.co.uk",
-                    "homepage": "https://github.com/GrahamCampbell"
-                }
-            ],
+            "authors": [{
+                "name": "Graham Campbell",
+                "email": "hello@gjcampbell.co.uk",
+                "homepage": "https://github.com/GrahamCampbell"
+            }],
             "description": "An Implementation Of The Result Type",
             "keywords": [
                 "Graham Campbell",
@@ -624,8 +602,7 @@
                 "issues": "https://github.com/GrahamCampbell/Result-Type/issues",
                 "source": "https://github.com/GrahamCampbell/Result-Type/tree/v1.0.4"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://github.com/GrahamCampbell",
                     "type": "github"
                 },
@@ -691,8 +668,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Graham Campbell",
                     "email": "hello@gjcampbell.co.uk",
                     "homepage": "https://github.com/GrahamCampbell"
@@ -744,8 +720,7 @@
                 "issues": "https://github.com/guzzle/guzzle/issues",
                 "source": "https://github.com/guzzle/guzzle/tree/7.4.1"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://github.com/GrahamCampbell",
                     "type": "github"
                 },
@@ -798,8 +773,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Graham Campbell",
                     "email": "hello@gjcampbell.co.uk",
                     "homepage": "https://github.com/GrahamCampbell"
@@ -828,8 +802,7 @@
                 "issues": "https://github.com/guzzle/promises/issues",
                 "source": "https://github.com/guzzle/promises/tree/1.5.1"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://github.com/GrahamCampbell",
                     "type": "github"
                 },
@@ -891,8 +864,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Graham Campbell",
                     "email": "hello@gjcampbell.co.uk",
                     "homepage": "https://github.com/GrahamCampbell"
@@ -943,8 +915,7 @@
                 "issues": "https://github.com/guzzle/psr7/issues",
                 "source": "https://github.com/guzzle/psr7/tree/2.1.0"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://github.com/GrahamCampbell",
                     "type": "github"
                 },
@@ -986,26 +957,24 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "Kyslik\\ColumnSortable\\ColumnSortableServiceProvider"
+
                     ]
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Kyslik\\ColumnSortable\\": "src/ColumnSortable/"
+
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Martin Kiesel",
-                    "email": "martin.kiesel@gmail.com",
-                    "role": "Developer and maintainer"
-                }
-            ],
+            "authors": [{
+                "name": "Martin Kiesel",
+                "email": "martin.kiesel@gmail.com",
+                "role": "Developer and maintainer"
+            }],
             "description": "Package for handling column sorting in Laravel 6.x",
             "keywords": [
                 "column",
@@ -1174,12 +1143,10 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
+            "authors": [{
+                "name": "Taylor Otwell",
+                "email": "taylor@laravel.com"
+            }],
             "description": "The Laravel Framework.",
             "homepage": "https://laravel.com",
             "keywords": [
@@ -1238,12 +1205,10 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
+            "authors": [{
+                "name": "Taylor Otwell",
+                "email": "taylor@laravel.com"
+            }],
             "description": "Laravel Sanctum provides a featherweight authentication system for SPAs and simple APIs.",
             "keywords": [
                 "auth",
@@ -1293,8 +1258,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Taylor Otwell",
                     "email": "taylor@laravel.com"
                 },
@@ -1364,12 +1328,10 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
+            "authors": [{
+                "name": "Taylor Otwell",
+                "email": "taylor@laravel.com"
+            }],
             "description": "Powerful REPL for the Laravel framework.",
             "keywords": [
                 "REPL",
@@ -1439,14 +1401,12 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Colin O'Dell",
-                    "email": "colinodell@gmail.com",
-                    "homepage": "https://www.colinodell.com",
-                    "role": "Lead Developer"
-                }
-            ],
+            "authors": [{
+                "name": "Colin O'Dell",
+                "email": "colinodell@gmail.com",
+                "homepage": "https://www.colinodell.com",
+                "role": "Lead Developer"
+            }],
             "description": "Highly-extensible PHP Markdown parser which fully supports the CommonMark spec and GitHub-Flavored Markdown (GFM)",
             "homepage": "https://commonmark.thephpleague.com",
             "keywords": [
@@ -1466,8 +1426,7 @@
                 "rss": "https://github.com/thephpleague/commonmark/releases.atom",
                 "source": "https://github.com/thephpleague/commonmark"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://www.colinodell.com/sponsor",
                     "type": "custom"
                 },
@@ -1527,14 +1486,12 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Colin O'Dell",
-                    "email": "colinodell@gmail.com",
-                    "homepage": "https://www.colinodell.com",
-                    "role": "Lead Developer"
-                }
-            ],
+            "authors": [{
+                "name": "Colin O'Dell",
+                "email": "colinodell@gmail.com",
+                "homepage": "https://www.colinodell.com",
+                "role": "Lead Developer"
+            }],
             "description": "Define configuration arrays with strict schemas and access values with dot notation",
             "homepage": "https://config.thephpleague.com",
             "keywords": [
@@ -1552,8 +1509,7 @@
                 "rss": "https://github.com/thephpleague/config/releases.atom",
                 "source": "https://github.com/thephpleague/config"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://www.colinodell.com/sponsor",
                     "type": "custom"
                 },
@@ -1624,12 +1580,10 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Frank de Jonge",
-                    "email": "info@frenky.net"
-                }
-            ],
+            "authors": [{
+                "name": "Frank de Jonge",
+                "email": "info@frenky.net"
+            }],
             "description": "Filesystem abstraction: Many filesystems, one API.",
             "keywords": [
                 "Cloud Files",
@@ -1654,12 +1608,10 @@
                 "issues": "https://github.com/thephpleague/flysystem/issues",
                 "source": "https://github.com/thephpleague/flysystem/tree/1.1.9"
             },
-            "funding": [
-                {
-                    "url": "https://offset.earth/frankdejonge",
-                    "type": "other"
-                }
-            ],
+            "funding": [{
+                "url": "https://offset.earth/frankdejonge",
+                "type": "other"
+            }],
             "time": "2021-12-09T09:40:50+00:00"
         },
         {
@@ -1695,19 +1647,16 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Frank de Jonge",
-                    "email": "info@frankdejonge.nl"
-                }
-            ],
+            "authors": [{
+                "name": "Frank de Jonge",
+                "email": "info@frankdejonge.nl"
+            }],
             "description": "Mime-type detection for Flysystem",
             "support": {
                 "issues": "https://github.com/thephpleague/mime-type-detection/issues",
                 "source": "https://github.com/thephpleague/mime-type-detection/tree/1.9.0"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://github.com/frankdejonge",
                     "type": "github"
                 },
@@ -1787,13 +1736,11 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Jordi Boggiano",
-                    "email": "j.boggiano@seld.be",
-                    "homepage": "https://seld.be"
-                }
-            ],
+            "authors": [{
+                "name": "Jordi Boggiano",
+                "email": "j.boggiano@seld.be",
+                "homepage": "https://seld.be"
+            }],
             "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
             "homepage": "https://github.com/Seldaek/monolog",
             "keywords": [
@@ -1805,8 +1752,7 @@
                 "issues": "https://github.com/Seldaek/monolog/issues",
                 "source": "https://github.com/Seldaek/monolog/tree/2.3.5"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://github.com/Seldaek",
                     "type": "github"
                 },
@@ -1878,8 +1824,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Brian Nesbitt",
                     "email": "brian@nesbot.com",
                     "homepage": "https://markido.com"
@@ -1901,8 +1846,7 @@
                 "issues": "https://github.com/briannesbitt/Carbon/issues",
                 "source": "https://github.com/briannesbitt/Carbon"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://opencollective.com/Carbon",
                     "type": "open_collective"
                 },
@@ -1953,8 +1897,7 @@
                 "GPL-2.0-only",
                 "GPL-3.0-only"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "David Grudl",
                     "homepage": "https://davidgrudl.com"
                 },
@@ -2026,8 +1969,7 @@
                 "GPL-2.0-only",
                 "GPL-3.0-only"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "David Grudl",
                     "homepage": "https://davidgrudl.com"
                 },
@@ -2100,11 +2042,9 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Nikita Popov"
-                }
-            ],
+            "authors": [{
+                "name": "Nikita Popov"
+            }],
             "description": "A PHP parser written in PHP",
             "keywords": [
                 "parser",
@@ -2155,8 +2095,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Marius Sarca",
                     "email": "marius.sarca@gmail.com"
                 },
@@ -2212,8 +2151,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Paragon Initiative Enterprises",
                     "email": "security@paragonie.com",
                     "homepage": "https://paragonie.com",
@@ -2277,13 +2215,11 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Paragon Initiative Enterprises",
-                    "email": "security@paragonie.com",
-                    "homepage": "https://paragonie.com"
-                }
-            ],
+            "authors": [{
+                "name": "Paragon Initiative Enterprises",
+                "email": "security@paragonie.com",
+                "homepage": "https://paragonie.com"
+            }],
             "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
             "keywords": [
                 "csprng",
@@ -2345,8 +2281,7 @@
             "license": [
                 "LGPL-2.1-or-later"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Alvaro Videla",
                     "role": "Original Maintainer"
                 },
@@ -2415,8 +2350,7 @@
             "license": [
                 "Apache-2.0"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
                     "homepage": "https://github.com/schmittjoh"
@@ -2438,8 +2372,7 @@
                 "issues": "https://github.com/schmittjoh/php-option/issues",
                 "source": "https://github.com/schmittjoh/php-option/tree/1.8.1"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://github.com/GrahamCampbell",
                     "type": "github"
                 },
@@ -2493,8 +2426,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Jim Wigginton",
                     "email": "terrafrost@php.net",
                     "role": "Lead Developer"
@@ -2545,8 +2477,7 @@
                 "issues": "https://github.com/phpseclib/phpseclib/issues",
                 "source": "https://github.com/phpseclib/phpseclib/tree/3.0.12"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://github.com/terrafrost",
                     "type": "github"
                 },
@@ -2588,12 +2519,10 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "https://www.php-fig.org/"
-                }
-            ],
+            "authors": [{
+                "name": "PHP-FIG",
+                "homepage": "https://www.php-fig.org/"
+            }],
             "description": "Common Container Interface (PHP FIG PSR-11)",
             "homepage": "https://github.com/php-fig/container",
             "keywords": [
@@ -2641,12 +2570,10 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
+            "authors": [{
+                "name": "PHP-FIG",
+                "homepage": "http://www.php-fig.org/"
+            }],
             "description": "Standard interfaces for event handling.",
             "keywords": [
                 "events",
@@ -2692,12 +2619,10 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
+            "authors": [{
+                "name": "PHP-FIG",
+                "homepage": "http://www.php-fig.org/"
+            }],
             "description": "Common interface for HTTP clients",
             "homepage": "https://github.com/php-fig/http-client",
             "keywords": [
@@ -2744,12 +2669,10 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
+            "authors": [{
+                "name": "PHP-FIG",
+                "homepage": "http://www.php-fig.org/"
+            }],
             "description": "Common interfaces for PSR-7 HTTP message factories",
             "keywords": [
                 "factory",
@@ -2798,12 +2721,10 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
+            "authors": [{
+                "name": "PHP-FIG",
+                "homepage": "http://www.php-fig.org/"
+            }],
             "description": "Common interface for HTTP messages",
             "homepage": "https://github.com/php-fig/http-message",
             "keywords": [
@@ -2851,12 +2772,10 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "https://www.php-fig.org/"
-                }
-            ],
+            "authors": [{
+                "name": "PHP-FIG",
+                "homepage": "https://www.php-fig.org/"
+            }],
             "description": "Common interface for logging libraries",
             "homepage": "https://github.com/php-fig/log",
             "keywords": [
@@ -2901,12 +2820,10 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
+            "authors": [{
+                "name": "PHP-FIG",
+                "homepage": "http://www.php-fig.org/"
+            }],
             "description": "Common interfaces for simple caching",
             "keywords": [
                 "cache",
@@ -2974,13 +2891,11 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Justin Hileman",
-                    "email": "justin@justinhileman.info",
-                    "homepage": "http://justinhileman.com"
-                }
-            ],
+            "authors": [{
+                "name": "Justin Hileman",
+                "email": "justin@justinhileman.info",
+                "homepage": "http://justinhileman.com"
+            }],
             "description": "An interactive shell for modern PHP.",
             "homepage": "http://psysh.org",
             "keywords": [
@@ -3026,12 +2941,10 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Ralph Khattar",
-                    "email": "ralph.khattar@gmail.com"
-                }
-            ],
+            "authors": [{
+                "name": "Ralph Khattar",
+                "email": "ralph.khattar@gmail.com"
+            }],
             "description": "A polyfill for getallheaders.",
             "support": {
                 "issues": "https://github.com/ralouphie/getallheaders/issues",
@@ -3086,13 +2999,11 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Ben Ramsey",
-                    "email": "ben@benramsey.com",
-                    "homepage": "https://benramsey.com"
-                }
-            ],
+            "authors": [{
+                "name": "Ben Ramsey",
+                "email": "ben@benramsey.com",
+                "homepage": "https://benramsey.com"
+            }],
             "description": "A PHP library for representing and manipulating collections.",
             "keywords": [
                 "array",
@@ -3106,8 +3017,7 @@
                 "issues": "https://github.com/ramsey/collection/issues",
                 "source": "https://github.com/ramsey/collection/tree/1.2.2"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://github.com/ramsey",
                     "type": "github"
                 },
@@ -3204,8 +3114,7 @@
                 "issues": "https://github.com/ramsey/uuid/issues",
                 "source": "https://github.com/ramsey/uuid/tree/4.2.3"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://github.com/ramsey",
                     "type": "github"
                 },
@@ -3259,8 +3168,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Chris Corbyn"
                 },
                 {
@@ -3279,8 +3187,7 @@
                 "issues": "https://github.com/swiftmailer/swiftmailer/issues",
                 "source": "https://github.com/swiftmailer/swiftmailer/tree/v6.3.0"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://github.com/fabpot",
                     "type": "github"
                 },
@@ -3354,8 +3261,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
                 },
@@ -3375,8 +3281,7 @@
             "support": {
                 "source": "https://github.com/symfony/console/tree/v5.4.1"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -3421,8 +3326,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
                 },
@@ -3440,8 +3344,7 @@
             "support": {
                 "source": "https://github.com/symfony/css-selector/tree/v6.0.1"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -3492,8 +3395,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Nicolas Grekas",
                     "email": "p@tchwork.com"
                 },
@@ -3507,8 +3409,7 @@
             "support": {
                 "source": "https://github.com/symfony/deprecation-contracts/tree/v3.0.0"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -3563,8 +3464,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
                 },
@@ -3578,8 +3478,7 @@
             "support": {
                 "source": "https://github.com/symfony/error-handler/tree/v5.4.1"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -3646,8 +3545,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
                 },
@@ -3661,8 +3559,7 @@
             "support": {
                 "source": "https://github.com/symfony/event-dispatcher/tree/v6.0.1"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -3717,8 +3614,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Nicolas Grekas",
                     "email": "p@tchwork.com"
                 },
@@ -3740,8 +3636,7 @@
             "support": {
                 "source": "https://github.com/symfony/event-dispatcher-contracts/tree/v3.0.0"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -3788,8 +3683,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
                 },
@@ -3803,8 +3697,7 @@
             "support": {
                 "source": "https://github.com/symfony/finder/tree/v5.4.0"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -3861,8 +3754,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
                 },
@@ -3876,8 +3768,7 @@
             "support": {
                 "source": "https://github.com/symfony/http-foundation/tree/v5.4.1"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -3973,8 +3864,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
                 },
@@ -3988,8 +3878,7 @@
             "support": {
                 "source": "https://github.com/symfony/http-kernel/tree/v5.4.1"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -4052,8 +3941,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
                 },
@@ -4071,8 +3959,7 @@
             "support": {
                 "source": "https://github.com/symfony/mime/tree/v5.4.0"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -4129,8 +4016,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Gert de Pagter",
                     "email": "BackEndTea@gmail.com"
                 },
@@ -4150,8 +4036,7 @@
             "support": {
                 "source": "https://github.com/symfony/polyfill-ctype/tree/v1.23.0"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -4208,8 +4093,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Nicolas Grekas",
                     "email": "p@tchwork.com"
                 },
@@ -4230,8 +4114,7 @@
             "support": {
                 "source": "https://github.com/symfony/polyfill-iconv/tree/v1.23.0"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -4288,8 +4171,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Nicolas Grekas",
                     "email": "p@tchwork.com"
                 },
@@ -4311,8 +4193,7 @@
             "support": {
                 "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.23.1"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -4371,8 +4252,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Laurent Bassin",
                     "email": "laurent@bassin.info"
                 },
@@ -4398,8 +4278,7 @@
             "support": {
                 "source": "https://github.com/symfony/polyfill-intl-idn/tree/v1.23.0"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -4459,8 +4338,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Nicolas Grekas",
                     "email": "p@tchwork.com"
                 },
@@ -4482,8 +4360,7 @@
             "support": {
                 "source": "https://github.com/symfony/polyfill-intl-normalizer/tree/v1.23.0"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -4540,8 +4417,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Nicolas Grekas",
                     "email": "p@tchwork.com"
                 },
@@ -4562,8 +4438,7 @@
             "support": {
                 "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.23.1"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -4617,8 +4492,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Nicolas Grekas",
                     "email": "p@tchwork.com"
                 },
@@ -4638,8 +4512,7 @@
             "support": {
                 "source": "https://github.com/symfony/polyfill-php72/tree/v1.23.0"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -4696,8 +4569,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Nicolas Grekas",
                     "email": "p@tchwork.com"
                 },
@@ -4717,8 +4589,7 @@
             "support": {
                 "source": "https://github.com/symfony/polyfill-php73/tree/v1.23.0"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -4775,8 +4646,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Ion Bazan",
                     "email": "ion.bazan@gmail.com"
                 },
@@ -4800,8 +4670,7 @@
             "support": {
                 "source": "https://github.com/symfony/polyfill-php80/tree/v1.23.1"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -4858,8 +4727,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Nicolas Grekas",
                     "email": "p@tchwork.com"
                 },
@@ -4879,8 +4747,7 @@
             "support": {
                 "source": "https://github.com/symfony/polyfill-php81/tree/v1.23.0"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -4926,8 +4793,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
                 },
@@ -4941,8 +4807,7 @@
             "support": {
                 "source": "https://github.com/symfony/process/tree/v5.4.0"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -5010,8 +4875,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
                 },
@@ -5031,8 +4895,7 @@
             "support": {
                 "source": "https://github.com/symfony/routing/tree/v5.4.0"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -5090,8 +4953,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Nicolas Grekas",
                     "email": "p@tchwork.com"
                 },
@@ -5113,8 +4975,7 @@
             "support": {
                 "source": "https://github.com/symfony/service-contracts/tree/v2.4.1"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -5175,8 +5036,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Nicolas Grekas",
                     "email": "p@tchwork.com"
                 },
@@ -5198,8 +5058,7 @@
             "support": {
                 "source": "https://github.com/symfony/string/tree/v6.0.1"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -5278,8 +5137,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
                 },
@@ -5293,8 +5151,7 @@
             "support": {
                 "source": "https://github.com/symfony/translation/tree/v6.0.1"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -5348,8 +5205,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Nicolas Grekas",
                     "email": "p@tchwork.com"
                 },
@@ -5371,8 +5227,7 @@
             "support": {
                 "source": "https://github.com/symfony/translation-contracts/tree/v3.0.0"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -5441,8 +5296,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Nicolas Grekas",
                     "email": "p@tchwork.com"
                 },
@@ -5460,8 +5314,7 @@
             "support": {
                 "source": "https://github.com/symfony/var-dumper/tree/v5.4.1"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://symfony.com/sponsor",
                     "type": "custom"
                 },
@@ -5514,13 +5367,11 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Tijs Verkoyen",
-                    "email": "css_to_inline_styles@verkoyen.eu",
-                    "role": "Developer"
-                }
-            ],
+            "authors": [{
+                "name": "Tijs Verkoyen",
+                "email": "css_to_inline_styles@verkoyen.eu",
+                "role": "Developer"
+            }],
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
             "support": {
@@ -5579,12 +5430,10 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Vladimir Yuldashev",
-                    "email": "misterio92@gmail.com"
-                }
-            ],
+            "authors": [{
+                "name": "Vladimir Yuldashev",
+                "email": "misterio92@gmail.com"
+            }],
             "description": "RabbitMQ driver for Laravel Queue. Supports Laravel Horizon.",
             "support": {
                 "issues": "https://github.com/vyuldashev/laravel-queue-rabbitmq/issues",
@@ -5638,8 +5487,7 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Graham Campbell",
                     "email": "hello@gjcampbell.co.uk",
                     "homepage": "https://github.com/GrahamCampbell"
@@ -5660,8 +5508,7 @@
                 "issues": "https://github.com/vlucas/phpdotenv/issues",
                 "source": "https://github.com/vlucas/phpdotenv/tree/v5.4.1"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://github.com/GrahamCampbell",
                     "type": "github"
                 },
@@ -5705,12 +5552,10 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Lars Moelleken",
-                    "homepage": "http://www.moelleken.org/"
-                }
-            ],
+            "authors": [{
+                "name": "Lars Moelleken",
+                "homepage": "http://www.moelleken.org/"
+            }],
             "description": "Portable ASCII library - performance optimized (ascii) string functions for php.",
             "homepage": "https://github.com/voku/portable-ascii",
             "keywords": [
@@ -5722,8 +5567,7 @@
                 "issues": "https://github.com/voku/portable-ascii/issues",
                 "source": "https://github.com/voku/portable-ascii/tree/1.5.6"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://www.paypal.me/moelleken",
                     "type": "custom"
                 },
@@ -5786,12 +5630,10 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Bernhard Schussek",
-                    "email": "bschussek@gmail.com"
-                }
-            ],
+            "authors": [{
+                "name": "Bernhard Schussek",
+                "email": "bschussek@gmail.com"
+            }],
             "description": "Assertions to validate method input/output with nice error messages.",
             "keywords": [
                 "assert",
@@ -5861,12 +5703,10 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Arjay Angeles",
-                    "email": "aqangeles@gmail.com"
-                }
-            ],
+            "authors": [{
+                "name": "Arjay Angeles",
+                "email": "aqangeles@gmail.com"
+            }],
             "description": "jQuery DataTables API for Laravel 4|5|6|7",
             "keywords": [
                 "datatables",
@@ -5877,8 +5717,7 @@
                 "issues": "https://github.com/yajra/laravel-datatables/issues",
                 "source": "https://github.com/yajra/laravel-datatables/tree/v9.18.2"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://www.paypal.me/yajra",
                     "type": "custom"
                 },
@@ -5890,8 +5729,7 @@
             "time": "2021-10-27T12:38:21+00:00"
         }
     ],
-    "packages-dev": [
-        {
+    "packages-dev": [{
             "name": "doctrine/instantiator",
             "version": "1.4.0",
             "source": {
@@ -5927,13 +5765,11 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Marco Pivetta",
-                    "email": "ocramius@gmail.com",
-                    "homepage": "https://ocramius.github.io/"
-                }
-            ],
+            "authors": [{
+                "name": "Marco Pivetta",
+                "email": "ocramius@gmail.com",
+                "homepage": "https://ocramius.github.io/"
+            }],
             "description": "A small, lightweight utility to instantiate objects in PHP without invoking their constructors",
             "homepage": "https://www.doctrine-project.org/projects/instantiator.html",
             "keywords": [
@@ -5944,8 +5780,7 @@
                 "issues": "https://github.com/doctrine/instantiator/issues",
                 "source": "https://github.com/doctrine/instantiator/tree/1.4.0"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://www.doctrine-project.org/sponsorship.html",
                     "type": "custom"
                 },
@@ -6017,12 +5852,10 @@
                 "issues": "https://github.com/facade/flare-client-php/issues",
                 "source": "https://github.com/facade/flare-client-php/tree/1.9.1"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/spatie",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/spatie",
+                "type": "github"
+            }],
             "time": "2021-09-13T12:16:46+00:00"
         },
         {
@@ -6135,14 +5968,12 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "homepage": "https://flareapp.io",
-                    "role": "Developer"
-                }
-            ],
+            "authors": [{
+                "name": "Freek Van der Herten",
+                "email": "freek@spatie.be",
+                "homepage": "https://flareapp.io",
+                "role": "Developer"
+            }],
             "description": "Solution contracts for Ignition",
             "homepage": "https://github.com/facade/ignition-contracts",
             "keywords": [
@@ -6204,11 +6035,9 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "François Zaninotto"
-                }
-            ],
+            "authors": [{
+                "name": "François Zaninotto"
+            }],
             "description": "Faker is a PHP library that generates fake data for you.",
             "keywords": [
                 "data",
@@ -6263,13 +6092,11 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Filipe Dobreira",
-                    "homepage": "https://github.com/filp",
-                    "role": "Developer"
-                }
-            ],
+            "authors": [{
+                "name": "Filipe Dobreira",
+                "homepage": "https://github.com/filp",
+                "role": "Developer"
+            }],
             "description": "php error handling for cool kids",
             "homepage": "https://filp.github.io/whoops/",
             "keywords": [
@@ -6284,12 +6111,10 @@
                 "issues": "https://github.com/filp/whoops/issues",
                 "source": "https://github.com/filp/whoops/tree/2.14.4"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/denis-sokolov",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/denis-sokolov",
+                "type": "github"
+            }],
             "time": "2021-10-03T12:00:00+00:00"
         },
         {
@@ -6386,12 +6211,10 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
+            "authors": [{
+                "name": "Taylor Otwell",
+                "email": "taylor@laravel.com"
+            }],
             "description": "Docker files for running a basic Laravel application.",
             "keywords": [
                 "docker",
@@ -6448,12 +6271,10 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
+            "authors": [{
+                "name": "Taylor Otwell",
+                "email": "taylor@laravel.com"
+            }],
             "description": "Laravel UI utilities and presets.",
             "keywords": [
                 "laravel",
@@ -6504,8 +6325,7 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Pádraic Brady",
                     "email": "padraic.brady@gmail.com",
                     "homepage": "http://blog.astrumfutura.com"
@@ -6586,12 +6406,10 @@
                 "issues": "https://github.com/myclabs/DeepCopy/issues",
                 "source": "https://github.com/myclabs/DeepCopy/tree/1.10.2"
             },
-            "funding": [
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/myclabs/deep-copy",
-                    "type": "tidelift"
-                }
-            ],
+            "funding": [{
+                "url": "https://tidelift.com/funding/github/packagist/myclabs/deep-copy",
+                "type": "tidelift"
+            }],
             "time": "2020-11-13T09:40:50+00:00"
         },
         {
@@ -6642,12 +6460,10 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Nuno Maduro",
-                    "email": "enunomaduro@gmail.com"
-                }
-            ],
+            "authors": [{
+                "name": "Nuno Maduro",
+                "email": "enunomaduro@gmail.com"
+            }],
             "description": "Cli error handling for console/command-line PHP applications.",
             "keywords": [
                 "artisan",
@@ -6665,8 +6481,7 @@
                 "issues": "https://github.com/nunomaduro/collision/issues",
                 "source": "https://github.com/nunomaduro/collision"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L",
                     "type": "custom"
                 },
@@ -6717,8 +6532,7 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Arne Blankerts",
                     "email": "arne@blankerts.de",
                     "role": "Developer"
@@ -6768,8 +6582,7 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Arne Blankerts",
                     "email": "arne@blankerts.de",
                     "role": "Developer"
@@ -6824,12 +6637,10 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Jaap van Otterdijk",
-                    "email": "opensource@ijaap.nl"
-                }
-            ],
+            "authors": [{
+                "name": "Jaap van Otterdijk",
+                "email": "opensource@ijaap.nl"
+            }],
             "description": "Common reflection classes used by phpdocumentor to reflect the code structure",
             "homepage": "http://www.phpdoc.org",
             "keywords": [
@@ -6885,8 +6696,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Mike van Riel",
                     "email": "me@mikevanriel.com"
                 },
@@ -6939,12 +6749,10 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Mike van Riel",
-                    "email": "me@mikevanriel.com"
-                }
-            ],
+            "authors": [{
+                "name": "Mike van Riel",
+                "email": "me@mikevanriel.com"
+            }],
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
             "support": {
                 "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
@@ -6992,8 +6800,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Konstantin Kudryashov",
                     "email": "ever.zet@gmail.com",
                     "homepage": "http://everzet.com"
@@ -7070,13 +6877,11 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
-                }
-            ],
+            "authors": [{
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de",
+                "role": "lead"
+            }],
             "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
             "homepage": "https://github.com/sebastianbergmann/php-code-coverage",
             "keywords": [
@@ -7088,12 +6893,10 @@
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
                 "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.10"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/sebastianbergmann",
+                "type": "github"
+            }],
             "time": "2021-12-05T09:12:13+00:00"
         },
         {
@@ -7131,13 +6934,11 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
-                }
-            ],
+            "authors": [{
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de",
+                "role": "lead"
+            }],
             "description": "FilterIterator implementation that filters files based on a list of suffixes.",
             "homepage": "https://github.com/sebastianbergmann/php-file-iterator/",
             "keywords": [
@@ -7148,12 +6949,10 @@
                 "issues": "https://github.com/sebastianbergmann/php-file-iterator/issues",
                 "source": "https://github.com/sebastianbergmann/php-file-iterator/tree/3.0.6"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/sebastianbergmann",
+                "type": "github"
+            }],
             "time": "2021-12-02T12:48:52+00:00"
         },
         {
@@ -7195,13 +6994,11 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
-                }
-            ],
+            "authors": [{
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de",
+                "role": "lead"
+            }],
             "description": "Invoke callables with a timeout",
             "homepage": "https://github.com/sebastianbergmann/php-invoker/",
             "keywords": [
@@ -7211,12 +7008,10 @@
                 "issues": "https://github.com/sebastianbergmann/php-invoker/issues",
                 "source": "https://github.com/sebastianbergmann/php-invoker/tree/3.1.1"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/sebastianbergmann",
+                "type": "github"
+            }],
             "time": "2020-09-28T05:58:55+00:00"
         },
         {
@@ -7254,13 +7049,11 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
-                }
-            ],
+            "authors": [{
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de",
+                "role": "lead"
+            }],
             "description": "Simple template engine.",
             "homepage": "https://github.com/sebastianbergmann/php-text-template/",
             "keywords": [
@@ -7270,12 +7063,10 @@
                 "issues": "https://github.com/sebastianbergmann/php-text-template/issues",
                 "source": "https://github.com/sebastianbergmann/php-text-template/tree/2.0.4"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/sebastianbergmann",
+                "type": "github"
+            }],
             "time": "2020-10-26T05:33:50+00:00"
         },
         {
@@ -7313,13 +7104,11 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
-                }
-            ],
+            "authors": [{
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de",
+                "role": "lead"
+            }],
             "description": "Utility class for timing",
             "homepage": "https://github.com/sebastianbergmann/php-timer/",
             "keywords": [
@@ -7329,12 +7118,10 @@
                 "issues": "https://github.com/sebastianbergmann/php-timer/issues",
                 "source": "https://github.com/sebastianbergmann/php-timer/tree/5.0.3"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/sebastianbergmann",
+                "type": "github"
+            }],
             "time": "2020-10-26T13:16:10+00:00"
         },
         {
@@ -7410,13 +7197,11 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
-                }
-            ],
+            "authors": [{
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de",
+                "role": "lead"
+            }],
             "description": "The PHP Unit Testing framework.",
             "homepage": "https://phpunit.de/",
             "keywords": [
@@ -7428,8 +7213,7 @@
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.10"
             },
-            "funding": [
-                {
+            "funding": [{
                     "url": "https://phpunit.de/donate.html",
                     "type": "custom"
                 },
@@ -7475,25 +7259,21 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
-                }
-            ],
+            "authors": [{
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de",
+                "role": "lead"
+            }],
             "description": "Library for parsing CLI options",
             "homepage": "https://github.com/sebastianbergmann/cli-parser",
             "support": {
                 "issues": "https://github.com/sebastianbergmann/cli-parser/issues",
                 "source": "https://github.com/sebastianbergmann/cli-parser/tree/1.0.1"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/sebastianbergmann",
+                "type": "github"
+            }],
             "time": "2020-09-28T06:08:49+00:00"
         },
         {
@@ -7531,25 +7311,21 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
-                }
-            ],
+            "authors": [{
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de",
+                "role": "lead"
+            }],
             "description": "Collection of value objects that represent the PHP code units",
             "homepage": "https://github.com/sebastianbergmann/code-unit",
             "support": {
                 "issues": "https://github.com/sebastianbergmann/code-unit/issues",
                 "source": "https://github.com/sebastianbergmann/code-unit/tree/1.0.8"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/sebastianbergmann",
+                "type": "github"
+            }],
             "time": "2020-10-26T13:08:54+00:00"
         },
         {
@@ -7587,24 +7363,20 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
-                }
-            ],
+            "authors": [{
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de"
+            }],
             "description": "Looks up which function or method a line of code belongs to",
             "homepage": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/",
             "support": {
                 "issues": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/issues",
                 "source": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/tree/2.0.3"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/sebastianbergmann",
+                "type": "github"
+            }],
             "time": "2020-09-28T05:30:19+00:00"
         },
         {
@@ -7644,8 +7416,7 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Sebastian Bergmann",
                     "email": "sebastian@phpunit.de"
                 },
@@ -7673,12 +7444,10 @@
                 "issues": "https://github.com/sebastianbergmann/comparator/issues",
                 "source": "https://github.com/sebastianbergmann/comparator/tree/4.0.6"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/sebastianbergmann",
+                "type": "github"
+            }],
             "time": "2020-10-26T15:49:45+00:00"
         },
         {
@@ -7717,25 +7486,21 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
-                }
-            ],
+            "authors": [{
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de",
+                "role": "lead"
+            }],
             "description": "Library for calculating the complexity of PHP code units",
             "homepage": "https://github.com/sebastianbergmann/complexity",
             "support": {
                 "issues": "https://github.com/sebastianbergmann/complexity/issues",
                 "source": "https://github.com/sebastianbergmann/complexity/tree/2.0.2"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/sebastianbergmann",
+                "type": "github"
+            }],
             "time": "2020-10-26T15:52:27+00:00"
         },
         {
@@ -7774,8 +7539,7 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Sebastian Bergmann",
                     "email": "sebastian@phpunit.de"
                 },
@@ -7796,12 +7560,10 @@
                 "issues": "https://github.com/sebastianbergmann/diff/issues",
                 "source": "https://github.com/sebastianbergmann/diff/tree/4.0.4"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/sebastianbergmann",
+                "type": "github"
+            }],
             "time": "2020-10-26T13:10:38+00:00"
         },
         {
@@ -7842,12 +7604,10 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
-                }
-            ],
+            "authors": [{
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de"
+            }],
             "description": "Provides functionality to handle HHVM/PHP environments",
             "homepage": "http://www.github.com/sebastianbergmann/environment",
             "keywords": [
@@ -7859,12 +7619,10 @@
                 "issues": "https://github.com/sebastianbergmann/environment/issues",
                 "source": "https://github.com/sebastianbergmann/environment/tree/5.1.3"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/sebastianbergmann",
+                "type": "github"
+            }],
             "time": "2020-09-28T05:52:38+00:00"
         },
         {
@@ -7904,8 +7662,7 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Sebastian Bergmann",
                     "email": "sebastian@phpunit.de"
                 },
@@ -7936,12 +7693,10 @@
                 "issues": "https://github.com/sebastianbergmann/exporter/issues",
                 "source": "https://github.com/sebastianbergmann/exporter/tree/4.0.4"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/sebastianbergmann",
+                "type": "github"
+            }],
             "time": "2021-11-11T14:18:36+00:00"
         },
         {
@@ -7985,12 +7740,10 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
-                }
-            ],
+            "authors": [{
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de"
+            }],
             "description": "Snapshotting of global state",
             "homepage": "http://www.github.com/sebastianbergmann/global-state",
             "keywords": [
@@ -8000,12 +7753,10 @@
                 "issues": "https://github.com/sebastianbergmann/global-state/issues",
                 "source": "https://github.com/sebastianbergmann/global-state/tree/5.0.3"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/sebastianbergmann",
+                "type": "github"
+            }],
             "time": "2021-06-11T13:31:12+00:00"
         },
         {
@@ -8044,25 +7795,21 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
-                }
-            ],
+            "authors": [{
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de",
+                "role": "lead"
+            }],
             "description": "Library for counting the lines of code in PHP source code",
             "homepage": "https://github.com/sebastianbergmann/lines-of-code",
             "support": {
                 "issues": "https://github.com/sebastianbergmann/lines-of-code/issues",
                 "source": "https://github.com/sebastianbergmann/lines-of-code/tree/1.0.3"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/sebastianbergmann",
+                "type": "github"
+            }],
             "time": "2020-11-28T06:42:11+00:00"
         },
         {
@@ -8102,24 +7849,20 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
-                }
-            ],
+            "authors": [{
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de"
+            }],
             "description": "Traverses array structures and object graphs to enumerate all referenced objects",
             "homepage": "https://github.com/sebastianbergmann/object-enumerator/",
             "support": {
                 "issues": "https://github.com/sebastianbergmann/object-enumerator/issues",
                 "source": "https://github.com/sebastianbergmann/object-enumerator/tree/4.0.4"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/sebastianbergmann",
+                "type": "github"
+            }],
             "time": "2020-10-26T13:12:34+00:00"
         },
         {
@@ -8157,24 +7900,20 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
-                }
-            ],
+            "authors": [{
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de"
+            }],
             "description": "Allows reflection of object attributes, including inherited and non-public ones",
             "homepage": "https://github.com/sebastianbergmann/object-reflector/",
             "support": {
                 "issues": "https://github.com/sebastianbergmann/object-reflector/issues",
                 "source": "https://github.com/sebastianbergmann/object-reflector/tree/2.0.4"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/sebastianbergmann",
+                "type": "github"
+            }],
             "time": "2020-10-26T13:14:26+00:00"
         },
         {
@@ -8212,8 +7951,7 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Sebastian Bergmann",
                     "email": "sebastian@phpunit.de"
                 },
@@ -8232,12 +7970,10 @@
                 "issues": "https://github.com/sebastianbergmann/recursion-context/issues",
                 "source": "https://github.com/sebastianbergmann/recursion-context/tree/4.0.4"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/sebastianbergmann",
+                "type": "github"
+            }],
             "time": "2020-10-26T13:17:30+00:00"
         },
         {
@@ -8275,24 +8011,20 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
-                }
-            ],
+            "authors": [{
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de"
+            }],
             "description": "Provides a list of PHP built-in functions that operate on resources",
             "homepage": "https://www.github.com/sebastianbergmann/resource-operations",
             "support": {
                 "issues": "https://github.com/sebastianbergmann/resource-operations/issues",
                 "source": "https://github.com/sebastianbergmann/resource-operations/tree/3.0.3"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/sebastianbergmann",
+                "type": "github"
+            }],
             "time": "2020-09-28T06:45:17+00:00"
         },
         {
@@ -8330,25 +8062,21 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
-                }
-            ],
+            "authors": [{
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de",
+                "role": "lead"
+            }],
             "description": "Collection of value objects that represent the types of the PHP type system",
             "homepage": "https://github.com/sebastianbergmann/type",
             "support": {
                 "issues": "https://github.com/sebastianbergmann/type/issues",
                 "source": "https://github.com/sebastianbergmann/type/tree/2.3.4"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/sebastianbergmann",
+                "type": "github"
+            }],
             "time": "2021-06-15T12:49:02+00:00"
         },
         {
@@ -8383,25 +8111,21 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
-                }
-            ],
+            "authors": [{
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de",
+                "role": "lead"
+            }],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
             "support": {
                 "issues": "https://github.com/sebastianbergmann/version/issues",
                 "source": "https://github.com/sebastianbergmann/version/tree/3.0.2"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/sebastianbergmann",
+                "type": "github"
+            }],
             "time": "2020-09-28T06:39:44+00:00"
         },
         {
@@ -8434,24 +8158,20 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
-                }
-            ],
+            "authors": [{
+                "name": "Arne Blankerts",
+                "email": "arne@blankerts.de",
+                "role": "Developer"
+            }],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
             "support": {
                 "issues": "https://github.com/theseer/tokenizer/issues",
                 "source": "https://github.com/theseer/tokenizer/tree/1.2.1"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/theseer",
-                    "type": "github"
-                }
-            ],
+            "funding": [{
+                "url": "https://github.com/theseer",
+                "type": "github"
+            }],
             "time": "2021-07-28T10:34:58+00:00"
         }
     ],
