@@ -47,11 +47,11 @@ class FilesController extends Controller
         {
             foreach($files as $file)
             {
-                $filename = $file;
+                $filename = time().'_'.$file->getClientoriginalName();
                 $path = $file->store('public/excel-data');
 
                 Files::create([
-                    'filename' => time().'_'.$file->getClientoriginalName(),
+                    'filename' => $filename,    
                     'created_by' => Auth::user()->id,
                     'path' => $path
                 ]);
@@ -109,8 +109,8 @@ class FilesController extends Controller
 
     public function path($id)
     {
-        $path = Files::findOrFail($id);
+        $path = Files::find($id,['id','filename','path']);
         print_r($path->toJson());
-        PathJob::dispatch($path->pluck('filename','path'));
+        PathJob::dispatch($path->toArray());
     }
 }

@@ -45,8 +45,12 @@
                           <td>{{ $file->report->name}}</td>
                           <td>{{ $file->created_at->diffForHumans()}}</td>
                           <td>
-                              <a  class="btn btn-warning" href="{{Storage::url($file->path)}}" target="blank">Check</a>  
-                              <a  class="btn btn-primary" href="{{route('path',$file->id)}}" target="blank">Report</a>  
+                            <a  class="btn btn-warning btn-circle" href="{{Storage::url($file->path)}}" target="blank">
+                                <i class="fas fa-file-word"></i>
+                            </a>  
+                            <a  class="btn btn-primary btn-circle" href="{{route('path',$file->id)}}" target="blank">
+                                <i class="far fa-share-square"></i>
+                            </a>  
                           </td>
                         </tr>
                         @endforeach
@@ -61,6 +65,7 @@
         </div>
     {{-- end table --}}
     </div>
+
     <!--Modal-->
     <div class="modal fade" id="upload" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">

@@ -44,7 +44,10 @@
                                         <form action="{{route('destroy', $user->id)}}" method="POST">
                                           {{ csrf_field() }}
                                           {{ method_field('DELETE') }}
-                                          <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Are you Sure ?')">Hapus</button>
+                                          <button href="#" type="submit" class="btn btn-danger btn-circle" onclick="return confirm('Are you Sure ?')">
+                                            <i class="fas fa-trash"></i>
+                                          </button>
+                                          {{-- <button type="submit" class="btn btn-outline-danger" >Hapus</button> --}}
                                         </form>
                                       </td>
                                     </tr>
