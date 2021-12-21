@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Jobs\PathJob;
 use App\Models\Files;
 use App\Models\User;
+use Facade\FlareClient\Stacktrace\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +20,7 @@ class FilesController extends Controller
     public function index()
     {
         $no=1;
-        $files = Files::with(['report'])->orderBy('id', 'DESC')->paginate(5);
+        $files = Files::with(['report'])->orderBy('id', 'DESC')->paginate(5)->onEachSide(1);
         return view('contents.files',compact('files','no'));
     }
 
@@ -41,25 +42,32 @@ class FilesController extends Controller
      */
     public function store(Request $request)
     {
-        $files = $request->file('files');
+        $request->validate([
+            'files' => 'required|mimes:csv,xlx,xls,xlsx|max:2048'
+        ]);
 
-        if($request->hasFile('files'))
+        // $fileModel = new Files;
+
+        if($request->file()) 
         {
-            foreach($files as $file)
-            {
-                $filename = time().'_'.$file->getClientoriginalName();
-                $path = $file->store('public/excel-data');
+            $fileName = 'Bino_'.time().'.'.$request->file('files')->getClientOriginalExtension();
+            $filePath =  $request->file('files')->storeAs('public/excel-data', $fileName);
 
-                Files::create([
-                    'filename' => $filename,    
+            // $fileModel->filename = time().'_'.$request->file->getClientOriginalName();
+            // $fileModel->file_path = ' /storage/' . $filePath;
+            // $fileModel->save();
+            $fileModel = Files::create([
+                    'filename' => $fileName,    
                     'created_by' => Auth::user()->id,
-                    'path' => $path
+                    'path' => $filePath
                 ]);
-            }
-        }
-        return redirect()->route('file-index')->with('success','Data Berhasil Diupload');
-
-
+            $fileModel->save();
+            // PathJob::dispatch($fileModel->toJson());
+            $queueManager = app('queue');
+            $queue = $queueManager->connection('rabbitmq');
+            $queue->pushRaw($fileModel, 'default');
+            return redirect()->route('file-index')->with('success','Data Berhasil Diupload');
+        } 
     }
 
     /**
@@ -111,6 +119,8 @@ class FilesController extends Controller
     {
         $path = Files::find($id,['id','filename','path']);
         print_r($path->toJson());
-        PathJob::dispatch($path->toArray());
+        $queueManager = app('queue');
+        $queue = $queueManager->connection('rabbitmq');
+        $queue->pushRaw($path, 'default');
     }
 }

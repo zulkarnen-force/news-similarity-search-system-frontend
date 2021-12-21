@@ -56,7 +56,7 @@
                               </table>
                             </div>
                             <p>Halaman {{$users->currentPage()}}</p>
-                            <div class="nav justify-content-center">
+                            <div class="d-flex justify-content-center">
                               {{ $users->links() }}
                             </div>
                       </div>

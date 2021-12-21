@@ -39,9 +39,9 @@ Route::delete('/user/{id}',[UserController::class,'destroy'])->name('destroy');
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/file',[FilesController::class, 'index'])->name('file-index');
     Route::post('/file',[FilesController::class, 'store'])->name('file-upload');
+    Route::get('/path/{id}',[FilesController::class,'path'])->name('path');
 });
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/path/{id}',[FilesController::class,'path'])->name('path');

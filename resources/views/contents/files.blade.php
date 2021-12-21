@@ -18,6 +18,13 @@
             Data Telah Berhasil ditambahkan
         </div>
         @endif
+
+        {{-- alert errors --}}
+        @if ($errors->any())
+        <div class="alert alert-danger" role="alert" id="error">
+            Maaf File Harus csv,xlx,xls,xlsx <i class="fas fa-file-csv"></i> <i class="far fa-file-excel"></i>
+        </div>
+        @endif
         <!-- Start Table -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -58,7 +65,7 @@
                     </table>
                   </div> 
                   <p>Halaman {{$files->currentPage()}}</p>
-                  <div class="nav justify-content-center">
+                  <div class="d-flex justify-content-center">
                     {{ $files->links() }}
                   </div>   
             </div>
@@ -87,12 +94,8 @@
                 <form action="{{ route('file-upload') }}" class="w-full" method="post" enctype="multipart/form-data">
                     @csrf
                         <div class="mb-3">
-                            <label for="file" class="nav justify-content-center mb-4">
-                                <i class="fas fa-file-upload" style="border: 1px solid black;padding: 26px; cursor:pointer;border-radius:5px;box-shadow: 2px 3px #888888;" onmouseover="this.style.color='#0F0'" onMouseOut="this.style.color='#00F'" >
-                                </i>
-                            </label>
-                            <input class="form-control" type="file" id="file" type="file" multiple name="files[]" accept="data/*">
-                          </div>
+                            <input class="btn btn-light btn-icon-split" type="file" id="file" type="file" name="files" accept="data/*" enctype="multipart/form-data">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-primary" type="submit">Upload</button>
@@ -107,5 +110,8 @@
     setTimeout(() => {
         $('#success').slideUp('fast');
     }, 1500);
+    setTimeout(() => {
+        $('#error').slideUp('fast');
+    }, 4000);
     </script>
 @endsection

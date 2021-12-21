@@ -18,16 +18,16 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
-            @auth           
+            @auth               
             <!-- Nav Item - User -->
-            <li class="nav-item nav-item {{ request()->is('user') ? 'active' : ''}}">
+            <li class="nav-item {{ request()->is('user') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('user-index')}}">
                 <i class="far fa-user"></i>
                 <span>Users</span></a>
             </li>
 
             <!-- Nav Item - User -->
-            <li class="nav-item nav-item {{ request()->is('file') ? 'active' : ''}}">
+            <li class="nav-item {{ request()->is('file') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('file-index')}}">
                 <i class="far fa-file-excel"></i>
                 <span>Upload File</span></a>

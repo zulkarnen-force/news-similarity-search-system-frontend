@@ -41,7 +41,7 @@
                                     Sorry Your Username Has been Already
                                 </div>
                             @endif
-                            <form class="user" accept="{{route('register')}}" method="post">
+                            <form class="user" action="{{route('register')}}" method="post">
                                 @csrf
                                 {{-- start name --}}
                                 <div class="form-group">
