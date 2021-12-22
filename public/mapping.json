@@ -1,0 +1,25 @@
+{
+    "mapping": {
+        "report_id": "string",
+        "published_date": "date",
+        "newstrend": "string",
+        "title": "text",
+        "summary": "text",
+        "content": "text",
+        "service_type": "string",
+        "sentiment": "string",
+        "url_news_page": "string",
+        "category": "string",
+        "media_name": "string",
+        "media_type": "string",
+        "reporter_name": "string",
+        "pr_value": "number",
+        "company_name": "string",
+        "ad_value": "number",
+        "flag_color": "string",
+        "size_print": "string",
+        "article_type": "string",
+        "location_name": "string",
+        "flag_headline": "string"
+    }
+}
