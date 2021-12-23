@@ -29,7 +29,7 @@
             <!-- Nav Item - User -->
             <li class="nav-item {{ request()->is('file') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('file-index')}}">
-                <i class="far fa-file-excel"></i>
+                <i class="fas fa-upload"></i>
                 <span>Upload File</span></a>
             </li>
             @endauth

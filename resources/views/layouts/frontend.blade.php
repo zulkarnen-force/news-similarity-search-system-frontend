@@ -20,8 +20,21 @@
 
     <!-- Custom styles for this template-->
     <link href="{{url('/issets/css/sb-admin-2.min.css')}}" rel="stylesheet">
-
     <link rel="icon" href="{{url('/issets/img/undraw_rocket.svg')}}">
+
+    {{-- jspreadsheet --}}
+    <script src="https://bossanova.uk/jspreadsheet/v4/jexcel.js"></script>
+    <script src="https://jsuites.net/v4/jsuites.js"></script>
+    <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
+    <link rel="stylesheet" href="https://bossanova.uk/jspreadsheet/v4/jexcel.css" type="text/css" />
+
+    {{-- jspreadsheet --}}
+    <script src="https://jspreadsheet.com/v8/jspreadsheet.js"></script>
+    <script src="https://jsuites.net/v4/jsuites.js"></script>
+    <link rel="stylesheet" href="https://jspreadsheet.com/v8/jspreadsheet.css" type="text/css" />
+    <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
+    <script src="https://jspreadsheet.com/v8/plugins/parser.js"></script>
+
 
 </head>
 
@@ -96,7 +109,6 @@
     <!-- Page level custom scripts -->
     <script src="{{url('/issets/js/demo/chart-area-demo.js')}}"></script>
     <script src="{{url('/issets/js/demo/chart-pie-demo.js')}}"></script>
-
 </body>
 
 </html>

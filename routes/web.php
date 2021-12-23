@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\FilesController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\LoginController;
@@ -31,8 +32,8 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register')
 
 // page user
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
-Route::get('/user', [UserController::class,'index'])->name('user-index');
-Route::delete('/user/{id}',[UserController::class,'destroy'])->name('destroy');
+    Route::get('/user', [UserController::class,'index'])->name('user-index');
+    Route::delete('/user/{id}',[UserController::class,'destroy'])->name('destroy');
 });
 
 // upload file excel
@@ -40,6 +41,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/file',[FilesController::class, 'index'])->name('file-index');
     Route::post('/file',[FilesController::class, 'store'])->name('file-upload');
     Route::get('/path/{id}',[FilesController::class,'path'])->name('path');
+    Route::post('/file-details/{id}',[FilesController::class, 'show'])->name('file-details');
 });
 
 

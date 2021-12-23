@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Files;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Maatwebsite\Excel\Excel as ExcelExcel;
-use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\HeadingRowImport;
 
 class FilesController extends Controller
@@ -20,7 +18,7 @@ class FilesController extends Controller
     {
         $no=1;
         $files = Files::with(['report'])->orderBy('id', 'DESC')->paginate(5)->onEachSide(1);
-        return view('contents.files',compact('files','no'));
+        return view('contents.files.index',compact('files','no'));
     }
 
     /**
@@ -41,8 +39,9 @@ class FilesController extends Controller
      */
     public function store(Request $request)
     {
+        // check extensi file
         $request->validate([
-            'files' => 'required|mimes:csv,xlx,xls,xlsx|max:2048'
+            'files' => 'required|mimes:csv,xlx,xls,xlsx|max:1024'
         ]);
         if($request->file()) 
         {
@@ -51,20 +50,21 @@ class FilesController extends Controller
             $filePath =  $request->file('files')->storeAs('public/excel-data', $fileName);
 
             // mapping
-            $headings = (new HeadingRowImport)->toCollection(storage_path().('/app/'.$filePath));
+            $mapping = (new HeadingRowImport)->toCollection(storage_path().('/app/'.$filePath));
+
             // insert data to database
             $fileModel = Files::create([
                 'filename' => $fileName,    
                 'created_by' => Auth::user()->id,
                 'path' => $filePath,
-                'mapping' => $headings
+                'mapping' => $mapping
             ]);
             $fileModel->save();
 
             // send to RabbitMq
             $queueManager = app('queue');
             $queue = $queueManager->connection('rabbitmq');
-            $queue->pushRaw($fileModel, 'default');
+            $queue->pushRaw($fileModel, 'files');
 
             // kembalikan ke halaman 'file-index'
             return redirect()->route('file-index')->with('success','Data Berhasil Diupload');
@@ -79,7 +79,8 @@ class FilesController extends Controller
      */
     public function show($id)
     {
-        //
+        $files = Files::find($id);
+        return view('contents.files.details',compact('files'));
     }
 
     /**
@@ -120,8 +121,10 @@ class FilesController extends Controller
     {
         $path = Files::find($id,['id','filename','path','mapping']);
         print_r($path->toJson());
+
+        // send to Rabbitmq
         $queueManager = app('queue');
         $queue = $queueManager->connection('rabbitmq');
-        $queue->pushRaw($path, 'default');
+        $queue->pushRaw($path, 'files');
     }
 }

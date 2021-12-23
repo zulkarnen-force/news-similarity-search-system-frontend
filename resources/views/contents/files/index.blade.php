@@ -22,7 +22,8 @@
         {{-- alert errors --}}
         @if ($errors->any())
         <div class="alert alert-danger" role="alert" id="error">
-            Maaf File Harus csv,xlx,xls,xlsx <i class="fas fa-file-csv"></i> <i class="far fa-file-excel"></i>
+            Maaf File Harus csv,xlx,xls,xlsx <i class="fas fa-file-csv"></i> <i class="far fa-file-excel"></i> 
+            <br> Maksimal Ukuran File 1 Mb
         </div>
         @endif
         <!-- Start Table -->
@@ -52,12 +53,16 @@
                           <td>{{ $file->report->name}}</td>
                           <td>{{ $file->created_at->diffForHumans()}}</td>
                           <td>
-                            <a  class="btn btn-warning btn-circle" href="{{Storage::url($file->path)}}" target="blank">
-                                <i class="fas fa-file-word"></i>
-                            </a>  
-                            <a  class="btn btn-primary btn-circle" href="{{route('path',$file->id)}}" target="blank">
-                                <i class="far fa-share-square"></i>
-                            </a>  
+                            {{-- {{Storage::url($file->path)}} --}}
+                            <form action="{{route('file-details', $file->id)}}" method="POST">
+                                @csrf
+                                <button type="submit"  class="btn btn-warning btn-circle">
+                                    <i class="fas fa-file-word"></i>
+                                </button>  
+                                <a  class="btn btn-primary btn-circle" href="{{route('path',$file->id)}}" target="blank">
+                                    <i class="far fa-share-square"></i>
+                                </a>  
+                            </form>
                           </td>
                         </tr>
                         @endforeach
@@ -70,7 +75,7 @@
                   </div>   
             </div>
         </div>
-    {{-- end table --}}
+        {{-- end table --}}
     </div>
 
     <!--Modal-->
@@ -92,7 +97,7 @@
                         </div>
                       </div>
                 <form action="{{ route('file-upload') }}" class="w-full" method="post" enctype="multipart/form-data">
-                    @csrf
+                @csrf
                         <div class="mb-3">
                             <input class="btn btn-light btn-icon-split" type="file" id="file" type="file" name="files" accept="data/*" enctype="multipart/form-data">
                         </div>

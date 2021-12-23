@@ -10,7 +10,7 @@
                 <h1 class="h3 mb-0 text-gray-800">User</h1>
             </div>
             @if (session()->has('deleted'))
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-success" role="alert" id="deleted">
                 User Berhasil dihapus
             </div>
             @endif
@@ -64,4 +64,9 @@
 
             {{-- end table --}}
     </div>
+    <script>
+      setTimeout(() => {
+          $('#deleted').slideUp('fast');
+      }, 1500);
+      </script>
 @endsection

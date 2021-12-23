@@ -13,7 +13,7 @@ class UserController extends Controller
     {
         $users = User::paginate(5)->onEachSide(1);
         $no = 1;
-        return view('contents.user', ['users' => $users], compact('no'));
+        return view('contents.user.index', ['users' => $users], compact('no'));
         
     }
     public function create()
