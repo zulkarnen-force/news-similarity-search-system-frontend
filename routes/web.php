@@ -44,6 +44,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::post('/file-details/{id}',[FilesController::class, 'show'])->name('file-details');
 });
 
+// Page Not Found 404
+Route::fallback(function(){
+    return view('404');
+});
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

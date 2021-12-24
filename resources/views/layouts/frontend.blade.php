@@ -17,7 +17,7 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-
+    
     <!-- Custom styles for this template-->
     <link href="{{url('/issets/css/sb-admin-2.min.css')}}" rel="stylesheet">
     <link rel="icon" href="{{url('/issets/img/undraw_rocket.svg')}}">
@@ -34,6 +34,9 @@
     <link rel="stylesheet" href="https://jspreadsheet.com/v8/jspreadsheet.css" type="text/css" />
     <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
     <script src="https://jspreadsheet.com/v8/plugins/parser.js"></script>
+
+    {{-- highcharts --}}
+    <script src="https://code.highcharts.com/highcharts.js"></script>
 
 
 </head>

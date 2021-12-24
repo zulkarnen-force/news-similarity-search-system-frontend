@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\HeadingRowImport;
 
+use function GuzzleHttp\json_decode;
+
 class FilesController extends Controller
 {
     /**
@@ -50,8 +52,10 @@ class FilesController extends Controller
             $filePath =  $request->file('files')->storeAs('public/excel-data', $fileName);
 
             // mapping
-            $mapping = (new HeadingRowImport)->toCollection(storage_path().('/app/'.$filePath));
-
+            $headers = (new HeadingRowImport)->toCollection(storage_path().('/app/'.$filePath));
+            $mapping = $headers[0][0];
+            // $mapping = json_encode($mapping, JSON_FORCE_OBJECT);
+            
             // insert data to database
             $fileModel = Files::create([
                 'filename' => $fileName,    
