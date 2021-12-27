@@ -54,7 +54,7 @@ class FilesController extends Controller
             // mapping
             $headers = (new HeadingRowImport)->toCollection(storage_path().('/app/'.$filePath));
             $mapping = $headers[0][0];
-            // $mapping = json_encode($mapping, JSON_FORCE_OBJECT);
+            $mapping = json_encode($mapping, JSON_FORCE_OBJECT);
             
             // insert data to database
             $fileModel = Files::create([

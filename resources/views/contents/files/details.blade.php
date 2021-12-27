@@ -25,7 +25,7 @@
                 {{-- table spreadsheet dari jspreadsheet Ce --}}
                 <div id="spreadsheet"></div>
 
-                <div class="d-flex justify-content-end">
+                <div class="d-flex justify-content-right">
                     <form action="">
                         <button type="submit" class="btn btn-success btn-icon-split m-2">
                             <span class="icon text-white-50">
@@ -38,22 +38,36 @@
             </div> 
         </div>
     </div>
+    <div id="container"></div>
     {{-- end table --}}
 </div>
 
 <script>
 var name = document.getElementById("name").value;
+var url = window.location.origin + '/storage/excel-data/' + name;
+// var endcol = 'H187'; //masih static -> gmn cara untuk mengetahui jumlah row yang berada pada file telah diupload 
 jspreadsheet(document.getElementById('spreadsheet'), {
     worksheets: [{
-        csv: window.location.origin + '/storage/excel-data/' + name,
+        csv: url,
+        search: true,
         csvHeaders: true,
         tableOverflow:true,
         tableHeight:'450px',
         columns: [
             { width:300 },
             { width:80 },
-            { width:100 }
-        ]
+            { width:100 },
+        ],
+        // footers:[
+        //     [
+        //         'Total Positif',
+        //         '=COUNTIFS(H2:'+endcol+',"positive")',
+        //     ],
+        //     [
+        //         'Total Negatif',
+        //         '=COUNTIFS(H2:'+endcol+',"negative")',
+        //     ]
+        // ],
     }]
 });
 </script>
