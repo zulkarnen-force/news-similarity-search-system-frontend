@@ -35,8 +35,16 @@
                 <div class="table-responsive">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <p>Result {{ $files->total()}}  </p>
-                        <input type="text" class="rounded border-white" placeholder="Search...">
+                        <form action="{{route('file-index')}}">
+                            <div class="input-group mb-3">
+                                <input type="date" class="form-control" value="{{$date}}" name="search" id="search">
+                                <button class="btn btn-outline-primary" id="btn-search" type="submit" id="button-addon2">
+                                    <i class="fas fa-filter"></i>
+                              </button>
+                            </div>                                
+                        </form>
                     </div>
+                    <div id="search-result"></div>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                         <tr>
@@ -53,7 +61,6 @@
                           <td>{{ $file->report->name}}</td>
                           <td>{{ $file->created_at->diffForHumans()}}</td>
                           <td>
-                            {{-- {{Storage::url($file->path)}} --}}
                             <form action="{{route('file-details', $file->id)}}" method="POST">
                                 @csrf
                                 <button type="submit"  class="btn btn-warning btn-circle">
@@ -93,13 +100,14 @@
                     <div class="mb-3 row mt-3">
                         <label for="staticEmail" class="col-sm-2 col-form-label">Reporter</label>
                         <div class="col-sm-10">
-                          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{Auth::user()->name}}">
+                          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{Auth::user()->name}}" disabled>
                         </div>
                       </div>
                 <form action="{{ route('file-upload') }}" class="w-full" method="post" enctype="multipart/form-data">
                 @csrf
-                        <div class="mb-3">
-                            <input class="btn btn-light btn-icon-split" type="file" id="file" type="file" name="files" accept="data/*" enctype="multipart/form-data">
+                        <div class="form-group files">
+                            <label>Upload File </label>
+                            <input type="file" class="form-control" name="files" multiple="" enctype="multipart/form-data">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -112,6 +120,19 @@
 
 
     <script>
+    $(document).ready(function(){
+        $('#search').on('keyup',function(){ 
+            var query = $(this).val();
+            $.ajax({
+                url:"search",
+                type:"GET",
+                data{'search':query},
+                success:function(data){
+                    $('#search-result').html(data);
+                }
+            });
+        }); 
+    });
     setTimeout(() => {
         $('#success').slideUp('fast');
     }, 1500);

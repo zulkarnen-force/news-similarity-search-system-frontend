@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CobaController;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\FilesController;
 use App\Http\Controllers\FrontendController;
@@ -34,6 +35,7 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register')
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/user', [UserController::class,'index'])->name('user-index');
     Route::delete('/user/{id}',[UserController::class,'destroy'])->name('destroy');
+    Route::get('search',[UserController::class, 'search'])->name('search');
 });
 
 // upload file excel
@@ -48,7 +50,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 Route::fallback(function(){
     return view('404');
 });
-
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

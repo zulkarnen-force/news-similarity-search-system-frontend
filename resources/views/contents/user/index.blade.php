@@ -23,7 +23,14 @@
                           <div class="table-responsive">
                           <div class="d-sm-flex align-items-center justify-content-between mb-4">
                               <p>Result {{ $users->total()}}  </p>
-                              <input type="text" class="rounded border-white" placeholder="Search...">
+                              <form action="{{route('user-index')}}">
+                                <div class="input-group mb-3">
+                                  <input type="text" class="form-control" name="search" id="search"  placeholder="Search..." value="{{ request('search')}}">
+                                  <button class="btn btn-outline-primary" type="submit" id="btn-search" >
+                                    <i class="fas fa-search"></i>
+                                  </button>
+                                </div>                                
+                              </form>
                           </div>
                               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
@@ -47,7 +54,6 @@
                                           <button href="#" type="submit" class="btn btn-danger btn-circle" onclick="return confirm('Are you Sure ?')">
                                             <i class="fas fa-trash"></i>
                                           </button>
-                                          {{-- <button type="submit" class="btn btn-outline-danger" >Hapus</button> --}}
                                         </form>
                                       </td>
                                     </tr>
@@ -68,5 +74,5 @@
       setTimeout(() => {
           $('#deleted').slideUp('fast');
       }, 1500);
-      </script>
+    </script>
 @endsection

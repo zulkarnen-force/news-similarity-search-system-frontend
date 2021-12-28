@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Files;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\HeadingRowImport;
-
+use Yajra\DataTables\Facades\DataTables;
 use function GuzzleHttp\json_decode;
 
 class FilesController extends Controller
@@ -19,8 +20,14 @@ class FilesController extends Controller
     public function index()
     {
         $no=1;
-        $files = Files::with(['report'])->orderBy('id', 'DESC')->paginate(5)->onEachSide(1);
-        return view('contents.files.index',compact('files','no'));
+        $date = date('Y-m-d');
+        $files = Files::with(['report']);
+        if(request('search')){
+            $files->where('created_at','LIKE','%'.request('search').'%');
+        }
+
+        return view('contents.files.index',['files' => $files->orderBy('id', 'DESC')->paginate(5)->onEachSide(1)],compact('no','date'));
+
     }
 
     /**

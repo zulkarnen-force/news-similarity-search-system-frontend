@@ -20,6 +20,7 @@
     
     <!-- Custom styles for this template-->
     <link href="{{url('/issets/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="{{url('/issets/css/style.css')}}" rel="stylesheet">
     <link rel="icon" href="{{url('/issets/img/undraw_rocket.svg')}}">
 
     {{-- jspreadsheet --}}
@@ -37,8 +38,6 @@
 
     {{-- highcharts --}}
     <script src="https://code.highcharts.com/highcharts.js"></script>
-
-
 </head>
 
 <body id="page-top">
@@ -84,7 +83,9 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">
+                    <p class="logout-text"><i class="fas fa-exclamation-triangle"></i> If you log out, your session will be expire which requires you to login again</p>
+                </div>
                 <div class="modal-footer">
                     <form action="/logout" method="POST">
                         @csrf
