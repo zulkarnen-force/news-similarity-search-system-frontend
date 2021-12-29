@@ -42,9 +42,9 @@
                                   </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $user)
+                                    @foreach ($users as $no => $user)
                                     <tr>
-                                      <td>{{ $no++ }}</td>
+                                      <td>{{  ++$no + ($users->currentPage()-1) * $users->perPage() }}</td>
                                       <td>{{ $user->name}}</td>
                                       <td>{{ $user->created_at->diffForHumans()}}</td>
                                       <td>

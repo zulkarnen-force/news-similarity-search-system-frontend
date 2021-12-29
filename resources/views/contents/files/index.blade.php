@@ -55,9 +55,9 @@
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach ($files as $file)
+                        @foreach ($files as $no => $file)
                         <tr>
-                          <td>{{ $no++}}</td>
+                          <td>{{  ++$no + ($files->currentPage()-1) * $files->perPage() }}</td>
                           <td>{{ $file->report->name}}</td>
                           <td>{{ $file->created_at->diffForHumans()}}</td>
                           <td>
