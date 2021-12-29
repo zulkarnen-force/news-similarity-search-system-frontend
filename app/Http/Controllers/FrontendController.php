@@ -22,5 +22,4 @@ class FrontendController extends Controller
             ->pluck('count');
         return view('contents.dashboard.index',compact('users','files'));
     }
-    
 }

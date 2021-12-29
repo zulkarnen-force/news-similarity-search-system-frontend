@@ -20,13 +20,12 @@ class FilesController extends Controller
     public function index()
     {
         $no=1;
-        $date = date('Y-m-d');
         $files = Files::with(['report']);
         if(request('search')){
             $files->where('created_at','LIKE','%'.request('search').'%');
         }
 
-        return view('contents.files.index',['files' => $files->orderBy('id', 'DESC')->paginate(5)->onEachSide(1)],compact('no','date'));
+        return view('contents.files.index',['files' => $files->orderBy('id', 'DESC')->paginate(5)->onEachSide(1)],compact('no'));
 
     }
 
@@ -61,7 +60,7 @@ class FilesController extends Controller
             // mapping
             $headers = (new HeadingRowImport)->toCollection(storage_path().('/app/'.$filePath));
             $mapping = $headers[0][0];
-            $mapping = json_encode($mapping, JSON_FORCE_OBJECT);
+            // $mapping = json_encode($mapping, JSON_FORCE_OBJECT);
             
             // insert data to database
             $fileModel = Files::create([
@@ -78,7 +77,7 @@ class FilesController extends Controller
             $queue->pushRaw($fileModel, 'files');
 
             // kembalikan ke halaman 'file-index'
-            return redirect()->route('file-index')->with('success','Data Berhasil Diupload');
+            return redirect()->route('file-index')->with('success','Data Berhasil disimpan');
         } 
     }
 
@@ -131,11 +130,13 @@ class FilesController extends Controller
     public function path($id)
     {
         $path = Files::find($id,['id','filename','path','mapping']);
-        print_r($path->toJson());
+        // print_r($path->toJson());
 
         // send to Rabbitmq
         $queueManager = app('queue');
         $queue = $queueManager->connection('rabbitmq');
         $queue->pushRaw($path, 'files');
+
+        return back()->with('success','Data Telah Terkirim Ke Message Broker');
     }
 }
