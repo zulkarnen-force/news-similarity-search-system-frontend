@@ -80,6 +80,6 @@ class UserController extends Controller
 
         $user->delete();
 
-        return redirect()->route('user-index')->with('deleted','User Berhasil Dihapus');
+        return back()->with('deleted','User Berhasil Dihapus');
     }
 }

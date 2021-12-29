@@ -12,20 +12,21 @@
                     <i class="fas fa-download fa-sm text-white-50"></i> Upload File
                 </a>
             </div>
-        {{-- alert-succes --}}
+        {{-- alert-flash-succes --}}
         @if (session()->has('success'))
         <div class="alert alert-success" role="alert" id="success">
-            Data Telah Berhasil ditambahkan
+            {{ session('success') }}
         </div>
         @endif
 
-        {{-- alert errors --}}
+        {{-- alert-errors-validation --}}
         @if ($errors->any())
         <div class="alert alert-danger" role="alert" id="error">
             Maaf File Harus csv,xlx,xls,xlsx <i class="fas fa-file-csv"></i> <i class="far fa-file-excel"></i> 
             <br> Maksimal Ukuran File 1 Mb
         </div>
         @endif
+
         <!-- Start Table -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -37,7 +38,7 @@
                         <p>Result {{ $files->total()}}  </p>
                         <form action="{{route('file-index')}}">
                             <div class="input-group mb-3">
-                                <input type="date" class="form-control" value="{{$date}}" name="search" id="search">
+                                <input type="date" class="form-control" value="{{ request('search')}}" name="search" id="search">
                                 <button class="btn btn-outline-primary" id="btn-search" type="submit" id="button-addon2">
                                     <i class="fas fa-filter"></i>
                               </button>
@@ -59,14 +60,14 @@
                         <tr>
                           <td>{{ $no++}}</td>
                           <td>{{ $file->report->name}}</td>
-                          <td>{{ $file->created_at->diffForHumans()}}</td>
+                        <td>{{ $file->created_at->diffForHumans()}}</td>
                           <td>
                             <form action="{{route('file-details', $file->id)}}" method="POST">
                                 @csrf
                                 <button type="submit"  class="btn btn-warning btn-circle">
                                     <i class="fas fa-file-excel"></i>
                                 </button>  
-                                <a  class="btn btn-primary btn-circle" href="{{route('path',$file->id)}}" target="blank" alt="Send To Rabbitmq">
+                                <a  class="btn btn-primary btn-circle" href="{{route('path',$file->id)}}">
                                     <i class="far fa-share-square"></i>
                                 </a>  
                             </form>
@@ -120,19 +121,6 @@
 
 
     <script>
-    $(document).ready(function(){
-        $('#search').on('keyup',function(){ 
-            var query = $(this).val();
-            $.ajax({
-                url:"search",
-                type:"GET",
-                data{'search':query},
-                success:function(data){
-                    $('#search-result').html(data);
-                }
-            });
-        }); 
-    });
     setTimeout(() => {
         $('#success').slideUp('fast');
     }, 1500);
