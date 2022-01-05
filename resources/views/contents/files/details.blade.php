@@ -45,7 +45,7 @@
 <script>
 var name = document.getElementById("name").value;
 var url = window.location.origin + '/storage/excel-data/' + name;
-// var endcol = 'H187'; //masih static -> gmn cara untuk mengetahui jumlah row yang berada pada file telah diupload 
+console.log(url)
 jspreadsheet(document.getElementById('spreadsheet'), {
     worksheets: [{
         csv: url,
@@ -58,16 +58,6 @@ jspreadsheet(document.getElementById('spreadsheet'), {
             { width:80 },
             { width:100 },
         ],
-        // footers:[
-        //     [
-        //         'Total Positif',
-        //         '=COUNTIFS(H2:'+endcol+',"positive")',
-        //     ],
-        //     [
-        //         'Total Negatif',
-        //         '=COUNTIFS(H2:'+endcol+',"negative")',
-        //     ]
-        // ],
     }]
 });
 </script>

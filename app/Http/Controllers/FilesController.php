@@ -5,10 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Files;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\HeadingRowImport;
-use Yajra\DataTables\Facades\DataTables;
-use function GuzzleHttp\json_decode;
 
 class FilesController extends Controller
 {
@@ -59,8 +56,10 @@ class FilesController extends Controller
 
             // mapping
             $headers = (new HeadingRowImport)->toCollection(storage_path().('/app/'.$filePath));
-            $mapping = $headers[0][0];
-            // $mapping = json_encode($mapping, JSON_FORCE_OBJECT);
+            $keys = $headers[0][0];
+            $values = collect(["string","date","string","text","text","text","string","string","string","string","string","string","string","number","string","number","string","string","string","string","string","integer"]);
+            $mapping = $keys->combine($values);
+            $mapping = json_encode($mapping, JSON_PRETTY_PRINT);
             
             // insert data to database
             $fileModel = Files::create([
