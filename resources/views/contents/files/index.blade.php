@@ -19,11 +19,14 @@
         </div>
         @endif
 
-        {{-- alert-errors-validation --}}
-        @if ($errors->any())
+        {{-- alert-errors --}}
+        @if ($errors->any() or session()->has('error'))
         <div class="alert alert-danger" role="alert" id="error">
-            Maaf File Harus csv,xlx,xls,xlsx <i class="fas fa-file-csv"></i> <i class="far fa-file-excel"></i> 
-            <br> Maksimal Ukuran File 1 Mb
+            @if (session()->has('error'))    
+                {{ session('error') }}
+            @else
+                Maaf File Harus csv,xlx,xls,xlsx <i class="fas fa-file-csv"></i> <i class="far fa-file-excel"></i><br> Maksimal Ukuran File 1 Mb
+            @endif
         </div>
         @endif
 

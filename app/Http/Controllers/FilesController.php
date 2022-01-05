@@ -57,26 +57,36 @@ class FilesController extends Controller
             // mapping
             $headers = (new HeadingRowImport)->toCollection(storage_path().('/app/'.$filePath));
             $keys = $headers[0][0];
-            $values = collect(["string","date","string","text","text","text","string","string","string","string","string","string","string","number","string","number","string","string","string","string","string","integer"]);
-            $mapping = $keys->combine($values);
-            $mapping = json_encode($mapping, JSON_PRETTY_PRINT);
-            
-            // insert data to database
-            $fileModel = Files::create([
-                'filename' => $fileName,    
-                'created_by' => Auth::user()->id,
-                'path' => $filePath,
-                'mapping' => $mapping
-            ]);
-            $fileModel->save();
+            $values = collect(["string","date","string","text","text","text","string","string","string","string","string","string","string","number","string","number","string","string","string","string","string"]);
 
-            // send to RabbitMq
-            $queueManager = app('queue');
-            $queue = $queueManager->connection('rabbitmq');
-            $queue->pushRaw($fileModel, 'files');
+            // check apakah format upload sesuai
+            if(count($keys) == count($values)){
+                // mapping
+                $mapping = $keys->combine($values);
+                $mapping = json_encode($mapping, JSON_PRETTY_PRINT);
+                
+                // insert data to database
+                $fileModel = Files::create([
+                    'filename' => $fileName,    
+                    'created_by' => Auth::user()->id,
+                    'path' => $filePath,
+                    'mapping' => $mapping
+                ]);
 
-            // kembalikan ke halaman 'file-index'
-            return redirect()->route('file-index')->with('success','Data Berhasil disimpan');
+                // save to db
+                $fileModel->save();
+
+                // send to RabbitMq
+                $queueManager = app('queue');
+                $queue = $queueManager->connection('rabbitmq');
+                $queue->pushRaw($fileModel, 'files');
+
+                // kembalikan ke halaman 'file-index'
+                return redirect()->route('file-index')->with('success','Data Berhasil disimpan');
+            }else{
+                // mengembalikan karena format upload tidak sesuai dengan keys + values
+                return redirect()->route('file-index')->with('error','Data Upload Tidak Sesuai format');
+            }
         } 
     }
 
