@@ -23,9 +23,10 @@
         </div>
     </div>
 <script type="text/javascript">
-        var users = {{ json_encode($users) }};
-        var files = {{ json_encode($files) }};
-        Highcharts.chart('container', {
+    var users = {{ json_encode($users) }};
+    var files = {{ json_encode($files) }};
+
+    Highcharts.chart('container', {
             chart: {
                 type: 'spline',
                 scrollablePlotArea: {
@@ -81,5 +82,6 @@
                 }]
             }
         });
+  
 </script>
 @endsection

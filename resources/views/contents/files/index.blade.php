@@ -25,7 +25,7 @@
             @if (session()->has('error'))    
                 {{ session('error') }}
             @else
-                Maaf File Harus csv,xlx,xls,xlsx <i class="fas fa-file-csv"></i> <i class="far fa-file-excel"></i><br> Maksimal Ukuran File 1 Mb
+                Maaf File Harus csv,xlx,xls,xlsx <i class="fas fa-file-csv"></i><i class="far fa-file-excel"></i><br> Maksimal Ukuran File 1 Mb
             @endif
         </div>
         @endif
@@ -111,7 +111,7 @@
                 @csrf
                         <div class="form-group files">
                             <label>Upload File </label>
-                            <input type="file" class="form-control" name="files" multiple="" enctype="multipart/form-data">
+                            <input type="file" class="form-control" name="files" enctype="multipart/form-data">
                         </div>
                     </div>
                     <div class="modal-footer">

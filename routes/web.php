@@ -1,9 +1,7 @@
 <?php
 
-use App\Http\Controllers\CobaController;
-use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FilesController;
-use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
@@ -20,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // dashboard
-Route::get('/', [FrontendController::class, 'index'])->name('index');
+Route::get('/', [DashboardController::class, 'index'])->name('index');
 
 // login & logout
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');

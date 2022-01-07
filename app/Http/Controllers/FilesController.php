@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Files;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redis;
 use Maatwebsite\Excel\HeadingRowImport;
 
 class FilesController extends Controller
@@ -145,7 +146,7 @@ class FilesController extends Controller
         $queueManager = app('queue');
         $queue = $queueManager->connection('rabbitmq');
         $queue->pushRaw($path, 'files');
-
+        
         return back()->with('success','Data Telah Terkirim Ke Message Broker');
     }
 }
