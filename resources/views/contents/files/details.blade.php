@@ -20,7 +20,7 @@
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 </div>
                 {{-- input untuk mengambil value, guna memberikan value ke javascript --}}
-                <input type="text" id="name" value="{{ $files->filename}}" hidden>
+                <input type="text" id="json" value="{{$response}}" hidden>
 
                 {{-- table spreadsheet dari jspreadsheet Ce --}}
                 <div id="spreadsheet"></div>
@@ -43,22 +43,22 @@
 </div>
 
 <script>
-var name = document.getElementById("name").value;
-var url = window.location.origin + '/storage/excel-data/' + name;
-console.log(url)
-jspreadsheet(document.getElementById('spreadsheet'), {
-    worksheets: [{
-        csv: url,
-        search: true,
-        csvHeaders: true,
-        tableOverflow:true,
-        tableHeight:'450px',
-        columns: [
-            { width:300 },
-            { width:80 },
-            { width:100 },
-        ],
-    }]
-});
+    var json = document.getElementById("json").value;
+    var json = JSON.parse(json);
+    
+    jspreadsheet(document.getElementById('spreadsheet'), {
+        worksheets: [{
+            data: json,
+            search: true,
+            csvHeaders: true,
+            tableOverflow:true,
+            tableHeight:'450px',
+            columns: [
+                { width:300 },
+                { width:80 },
+                { width:100 },
+            ],
+        }]
+    });
 </script>
 @endsection

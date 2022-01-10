@@ -97,10 +97,22 @@ class FilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
-        $files = Files::find($id);
-        return view('contents.files.details',compact('files'));
+        $files = Files::find($id,['filename']);
+
+        // check apakah report telah berada di redis
+        if(Redis::exists($files->filename))
+        {
+            $response = Redis::command('lrange', [$files->filename, 0, -1]);
+            $response = json_decode($response[0]);
+            $response = json_encode($response);
+            return view('contents.files.details',compact('files','response'));
+        }
+        else
+        {
+            return back()->with('error','Data Belum Tersedia');
+        }
     }
 
     /**
@@ -139,8 +151,7 @@ class FilesController extends Controller
 
     public function path($id)
     {
-        $path = Files::find($id,['id','filename','path','mapping']);
-        // print_r($path->toJson());
+        $path = Files::find($id);
 
         // send to Rabbitmq
         $queueManager = app('queue');

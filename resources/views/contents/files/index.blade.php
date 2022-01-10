@@ -67,12 +67,12 @@
                           <td>
                             <form action="{{route('file-details', $file->id)}}" method="POST">
                                 @csrf
-                                <button type="submit"  class="btn btn-warning btn-circle">
+                                <button type="submit" class="btn btn-success btn-circle" name="file-details" value="details">
                                     <i class="fas fa-file-excel"></i>
                                 </button>  
                                 <a  class="btn btn-primary btn-circle" href="{{route('path',$file->id)}}">
                                     <i class="far fa-share-square"></i>
-                                </a>  
+                                </a>
                             </form>
                           </td>
                         </tr>
