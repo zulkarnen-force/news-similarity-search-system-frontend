@@ -25,8 +25,8 @@
 
     {{-- jspreadsheets --}}
     <script src="https://jspreadsheet.com/v8/jspreadsheet.js"></script>
-    <script src="https://jsuites.net/v4/jsuites.js"></script>
     <link rel="stylesheet" href="https://jspreadsheet.com/v8/jspreadsheet.css" type="text/css" />
+    <script src="https://jsuites.net/v4/jsuites.js"></script>
     <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
 
     {{-- highcharts --}}

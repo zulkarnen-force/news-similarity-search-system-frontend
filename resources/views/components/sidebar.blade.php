@@ -18,14 +18,18 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
-            @auth               
+            @auth
+            
+            {{-- check hanya admin yang dapat melihat data User --}}
+            @if (Auth::user()->name == 'admin')
             <!-- Nav Item - User -->
             <li class="nav-item {{ request()->is('user') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('user-index')}}">
                 <i class="far fa-user"></i>
                 <span>Users</span></a>
             </li>
-
+            @endif
+            
             <!-- Nav Item - User -->
             <li class="nav-item {{ request()->is('file') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('file-index')}}">
@@ -33,7 +37,6 @@
                 <span>Upload File</span></a>
             </li>
             @endauth
-
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

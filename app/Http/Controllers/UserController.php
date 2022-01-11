@@ -12,11 +12,12 @@ class UserController extends Controller
     public function index()
     {
         $users = User::latest();
-        $no = 1;
         if(request('search')){
             $users->where('name','LIKE','%'.request('search').'%');
         }
-        return view('contents.user.index', ['users' => $users->paginate(5)->onEachSide(1)], compact('no'));
+        return view('contents.user.index', [
+            'users' => $users->paginate(5)->onEachSide(1)
+        ]);
         
     }
     public function create()

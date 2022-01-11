@@ -17,14 +17,18 @@ class FilesController extends Controller
      */
     public function index()
     {
-        $no=1;
-        $files = Files::with(['report']);
-        if(request('search')){
-            $files->where('created_at','LIKE','%'.request('search').'%');
+        // check rules
+        if(Auth::user()->name == 'admin'){
+            $files = Files::with(['report']);
+        }else{
+            $files = Files::with(['report'])->where('created_by','=',Auth::user()->id);
         }
 
-        return view('contents.files.index',['files' => $files->orderBy('id', 'DESC')->paginate(5)->onEachSide(1)],compact('no'));
-
+        if(request('search')){ $files->where('created_at','LIKE','%'.request('search').'%'); }
+    
+        return view('contents.files.index',[
+            'files' => $files->orderBy('id', 'DESC')->paginate(5)->onEachSide(1)
+        ]);
     }
 
     /**
@@ -99,7 +103,7 @@ class FilesController extends Controller
      */
     public function show(Request $request,$id)
     {
-        $files = Files::find($id,['filename']);
+        $files = Files::find($id);
 
         // check apakah report telah berada di redis
         if(Redis::exists($files->filename))
