@@ -9,9 +9,15 @@
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-0 text-gray-800">User</h1>
             </div>
+            @if (session()->has('success'))
+            <div class="alert alert-success" role="alert" id="deleted">
+                {{ session('success') }}
+            </div>
+            @endif
+            
             @if (session()->has('deleted'))
             <div class="alert alert-success" role="alert" id="deleted">
-                User Berhasil dihapus
+                {{ session('deleted') }}
             </div>
             @endif
                 <!-- Start Table -->
@@ -56,6 +62,9 @@
                                           <button href="#" type="submit" class="btn btn-danger btn-circle" onclick="return confirm('Are you Sure ?')">
                                             <i class="fas fa-trash"></i>
                                           </button>
+                                          <a href="{{route('edit-user', $user->id)}}" class="btn btn-secondary btn-circle">
+                                            <i class="fas fa-user-edit"></i>
+                                          </a>
                                         </form>
                                       </td>
                                     </tr>

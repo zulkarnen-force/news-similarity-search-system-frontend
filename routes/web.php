@@ -35,6 +35,8 @@ Route::middleware(['auth:sanctum', 'verified','admin'])->group(function(){
     Route::get('/user', [UserController::class,'index'])->name('user-index');
     Route::delete('/user/{id}',[UserController::class,'destroy'])->name('destroy');
     Route::get('search',[UserController::class, 'search'])->name('search');
+    Route::get('user/edit/{id}',[UserController::class, 'edit'])->name('edit-user');
+    Route::put('edit/{id}',[UserController::class, 'update'])->name('update-user');
 });
 
 // upload file excel

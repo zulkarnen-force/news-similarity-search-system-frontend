@@ -56,7 +56,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+
+        return view('contents.user.edit',[
+            'user' => $user
+        ]);
     }
 
     /**
@@ -66,9 +70,21 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user,$id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'roles' => 'required'
+        ]);
+        $user = User::find($id);
+
+        $user = User::where('id',$user->id)->update([
+            'name' => $request->name,
+            'roles' => $request->roles
+        ]);
+
+        return redirect()->route('user-index')->with('success','Data Berhasil Diubah');
+
     }
 
     /**
