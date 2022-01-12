@@ -78,7 +78,7 @@
                 {type:'text', width:100, title:'row' }
             ],
             allowComments: true,
-            license:'MTM4MmQ0YWYwMDM5Mjg5ODk3MzBmZTI3Y2MwMjZiMTU4ZmRmNjAwMjdlMjMwMjcwYjkwYmQxZTMwZTI0NGUwMDcwNjI2Zjg4MjQzYjRjMmI0YzM4ZWJlZGI4ZmQzYjljZTI4NjhlYjRjMWIxZTFlMWUzMzljNGE4ODlmMjM4Y2EsZXlKdVlXMWxJam9pU205eVpHRnVJRWx6ZEdseGJHRnNJaXdpWkdGMFpTSTZNVFkwTkRVek56WXdNQ3dpWkc5dFlXbHVJanBiSWpFeU55NHdMakF1TVRvNE1EQXdJaXdpYkc5allXeG9iM04wSWwwc0luQnNZVzRpT2pBc0luTmpiM0JsSWpwYkluWTNJaXdpZGpnaVhYMD0='
+            license:'MTExMSwzMWFhNjU1NzI3NTAwZDU3NzFjZGU0ZDUwNDI3MTc5OTgzOWZiZmFk'
         }]
     });
 </script>

@@ -38,7 +38,7 @@
                             </div>
                             @if (session()->has('failed'))
                                 <div class="alert alert-danger" role="alert" id="failed">
-                                    Sorry Your Username Has been Already
+                                    {{ session('failed') }}
                                 </div>
                             @endif
                             <form class="user" action="{{route('register')}}" method="post">
@@ -56,7 +56,7 @@
 
                                 {{-- start password --}}
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" id="exampleFirstpassword" placeholder="password" name="password" value="{{('password')}}">
+                                    <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" placeholder="password" name="password" value="{{('password')}}">
                                 @error('password')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -64,6 +64,16 @@
                                 @enderror
                                 </div>
                                 {{-- end password --}}
+                                {{-- start repassword --}}
+                                <div class="form-group">
+                                    <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" placeholder="Repeat password" name="password2" value="{{('password')}}">
+                                @error('password')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                                </div>
+                                {{-- end repassword --}}
                                 <button type="submit" class="btn btn-primary btn-user btn-block">
                                     Register Account
                                 </button>
