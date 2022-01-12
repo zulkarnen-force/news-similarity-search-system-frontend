@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Files;
 use App\Models\User;
+use Facade\FlareClient\Stacktrace\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
@@ -16,9 +19,8 @@ class UserController extends Controller
             $users->where('name','LIKE','%'.request('search').'%');
         }
         return view('contents.user.index', [
-            'users' => $users->paginate(5)->onEachSide(1)
+            'users' => $users->paginate(5)->onEachSide(1),
         ]);
-        
     }
     public function create()
     {

@@ -13,8 +13,8 @@ class Files extends Model
     protected $fillable = [
         'filename',
         'path',
+        'mapping',
         'created_by',
-        'mapping'
     ];
 
 

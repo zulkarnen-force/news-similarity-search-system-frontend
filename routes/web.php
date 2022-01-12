@@ -29,8 +29,9 @@ Route::post('/logout',[LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store'])->name('register');
 
+
 // page user
-Route::middleware(['auth:sanctum', 'verified'])->group(function(){
+Route::middleware(['auth:sanctum', 'verified','admin'])->group(function(){
     Route::get('/user', [UserController::class,'index'])->name('user-index');
     Route::delete('/user/{id}',[UserController::class,'destroy'])->name('destroy');
     Route::get('search',[UserController::class, 'search'])->name('search');

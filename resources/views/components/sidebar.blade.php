@@ -21,7 +21,7 @@
             @auth
             
             {{-- check hanya admin yang dapat melihat data User --}}
-            @if (Auth::user()->name == 'admin')
+            @if (Auth::user()->roles == 'ADMIN')
             <!-- Nav Item - User -->
             <li class="nav-item {{ request()->is('user') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('user-index')}}">

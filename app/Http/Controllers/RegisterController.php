@@ -19,7 +19,7 @@ class RegisterController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:100',
-            'password' => 'required|min:3|max:255'
+            'password' => 'required|min:3|max:255',
         ]);
         
         // checking, apakah username telah ada atau belum 
@@ -27,7 +27,11 @@ class RegisterController extends Controller
         if ($users === null) {
             $validatedData['password'] = Hash::make($validatedData['password']);
 
-            User::create($validatedData);
+            User::create([
+                'name' => $validatedData['name'],
+                'password' => $validatedData['password'],
+                'roles' => "USER"
+            ]);
     
             $request->session()->flash('success', 'Registration Successfull');
     

@@ -62,7 +62,7 @@
                         @foreach ($files as $no => $file)
                         <tr>
                           <td>{{  ++$no + ($files->currentPage()-1) * $files->perPage() }}</td>
-                          <td>{{ $file->report->name}}</td>
+                          <td>{{ $file->report->name ?? 'None'}}</td>
                         <td>{{ $file->created_at->diffForHumans()}}</td>
                           <td>
                             <form action="{{route('file-details', $file->id)}}" method="POST">

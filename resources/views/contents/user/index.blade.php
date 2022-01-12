@@ -38,6 +38,7 @@
                                     <th>No</th>
                                     <th>Username</th>
                                     <th>Join At</th>
+                                    <th>Roles</th>
                                     <th>Action</th>
                                   </tr>
                                 </thead>
@@ -45,8 +46,9 @@
                                     @foreach ($users as $no => $user)
                                     <tr>
                                       <td>{{  ++$no + ($users->currentPage()-1) * $users->perPage() }}</td>
-                                      <td>{{ $user->name}}</td>
+                                      <td>{{ $user->name }}</td>
                                       <td>{{ $user->created_at->diffForHumans()}}</td>
+                                      <td>{{ $user->roles}}</td>
                                       <td>
                                         <form action="{{route('destroy', $user->id)}}" method="POST">
                                           {{ csrf_field() }}
