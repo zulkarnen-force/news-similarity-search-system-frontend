@@ -45,7 +45,7 @@
                                 @csrf
                                 {{-- start name --}}
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror" id="exampleFirstName" placeholder="Full Name" name="name" value="{{ old('name')}}">
+                                    <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror" id="name" placeholder="Full Name" name="name">
                                 @error('name')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -56,7 +56,7 @@
 
                                 {{-- start password --}}
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" placeholder="password" name="password" value="{{('password')}}">
+                                    <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" placeholder="password" name="password">
                                 @error('password')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -66,7 +66,7 @@
                                 {{-- end password --}}
                                 {{-- start repassword --}}
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" placeholder="Repeat password" name="password2" value="{{('password')}}">
+                                    <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" placeholder="Repeat password" name="password2">
                                 @error('password')
                                 <div class="invalid-feedback">
                                     {{ $message }}

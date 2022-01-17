@@ -7,6 +7,7 @@ use App\Models\User;
 use Facade\FlareClient\Stacktrace\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
@@ -14,12 +15,12 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::latest();
+        $users = User::query();
         if(request('search')){
-            $users->where('name','LIKE','%'.request('search').'%');
+            $users->where('name','LIKE','%'.request('search').'%')->orwhere('roles','LIKE','%'.request('search').'%');   
         }
         return view('contents.user.index', [
-            'users' => $users->paginate(5)->onEachSide(1),
+            'users' => $users->orderBy('id', 'DESC')->paginate(5)->onEachSide(1)->withQueryString(),
         ]);
     }
     public function create()

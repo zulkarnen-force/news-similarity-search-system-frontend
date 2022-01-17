@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
 use Maatwebsite\Excel\HeadingRowImport;
+use PhpParser\Node\Stmt\Break_;
 
 class FilesController extends Controller
 {
@@ -24,10 +25,11 @@ class FilesController extends Controller
             $files = Files::with(['report'])->where('created_by','=',Auth::user()->id);
         }
 
-        if(request('search')){ $files->where('created_at','LIKE','%'.request('search').'%'); }
+        if(request('search')){ 
+            $files->where('files.created_at','LIKE','%'.request('search').'%'); }
     
         return view('contents.files.index',[
-            'files' => $files->orderBy('id', 'DESC')->paginate(5)->onEachSide(1)
+            'files' => $files->orderBy('id', 'DESC')->paginate(5)->onEachSide(1)->withQueryString()
         ]);
     }
 
@@ -101,21 +103,30 @@ class FilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request,$id)
+    public function ShowAndDestroy(Request $request,$id)
     {
         $files = Files::find($id);
+        switch ($request->input('file-details')) {
+            case 'details':
+                // check apakah report telah berada di redis
+                if(Redis::exists($files->filename))
+                    {
+                        $response = Redis::command('lrange', [$files->filename, -1, -1]);
+                        $response = json_decode($response[0]);
+                        $response = json_encode($response);
+                        return view('contents.files.details',compact('files','response'));
+                    }
+                else
+                    {
+                        return back()->with('error','Data Belum Tersedia');
+                    }
+                break;
 
-        // check apakah report telah berada di redis
-        if(Redis::exists($files->filename))
-        {
-            $response = Redis::command('lrange', [$files->filename, 0, -1]);
-            $response = json_decode($response[0]);
-            $response = json_encode($response);
-            return view('contents.files.details',compact('files','response'));
-        }
-        else
-        {
-            return back()->with('error','Data Belum Tersedia');
+            case 'delete':
+                $files = Files::findOrFail($id);
+                $files->delete();
+                return back()->with('success','Files Berhasil Dihapus');
+                break;
         }
     }
 
@@ -142,17 +153,6 @@ class FilesController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
     public function path($id)
     {
         $path = Files::find($id);
@@ -163,5 +163,10 @@ class FilesController extends Controller
         $queue->pushRaw($path, 'files');
         
         return back()->with('success','Data Telah Terkirim Ke Message Broker');
+    }
+
+    public function data_edit()
+    {
+        
     }
 }

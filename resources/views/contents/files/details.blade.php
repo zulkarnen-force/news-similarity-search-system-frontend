@@ -1,8 +1,7 @@
 @extends('layouts.frontend')
 @section('title','Files Details')
 
-@section('content')
-
+@section('content')`
 <!-- Begin Page Content -->
 <div class="container-fluid">
     
@@ -38,48 +37,44 @@
             </div> 
         </div>
     </div>
-    <div id="container"></div>
     {{-- end table --}}
 </div>
-
 <script>
-    var json = document.getElementById("json").value;
-    var json = JSON.parse(json);
+var json = document.getElementById("json").value;
+var json = JSON.parse(json);
 
-    jspreadsheet(document.getElementById('spreadsheet'), {
-        worksheets: [{
-            data: json,
-            search: true,
-            csvHeaders: true,
-            tableOverflow:true,
-            tableHeight:'450px',
-            columns: [
-                {type:'text', width:100, title:'report_id'},
-                {type:'text', width:100, title:'published_date'},
-                {type:'text', width:100, title:'newstrend'},
-                {type:'text', width:100, title:'title'},
-                {type:'text', width:100, title:'summary'},
-                {type:'text', width:100, title:'content'},
-                {type:'text', width:100, title:'service_type'},
-                {type:'text', width:100, title:'sentiment'},
-                {type:'text', width:100, title:'url_news_page'},
-                {type:'text', width:100, title:'category'},
-                {type:'text', width:100, title:'media_name'},
-                {type:'text', width:100, title:'media_type'},
-                {type:'text', width:100, title:'reporter_name'},
-                {type:'text', width:100, title:'pr_value'},
-                {type:'text', width:100, title:'company_name'},
-                {type:'text', width:100, title:'ad_value'},
-                {type:'text', width:100, title:'flag_color'},
-                {type:'text', width:100, title:'size_print'},
-                {type:'text', width:100, title:'article_type' },
-                {type:'text', width:100, title:'location_name' },
-                {type:'text', width:100, title:'flag_headline' },
-                {type:'text', width:100, title:'row' }
-            ],
-            allowComments: true,
-            license:'MTExMSwzMWFhNjU1NzI3NTAwZDU3NzFjZGU0ZDUwNDI3MTc5OTgzOWZiZmFk'
-        }]
-    });
+jspreadsheet.setLicense('MjFhODdmYTkwNTFjOGQwNDM0ODcxNmUzNzVmZmZkZDc1OGQyZDdhOTkyYWEyMjFmMDQ2NGNiNTljZGFiMGYwMzgxYjE0OWQxODhlMWYwMTI4NTFkOWZiYjE3ZTU5ODE3NTU3MmY4YWIyNTAzMGM2ZWFhMGI0NDEzN2YxY2VhMDgsZXlKdVlXMWxJam9pYW05eVpHRnVJR2x6ZEdseGJHRnNJaXdpWkdGMFpTSTZNVFkwTkRrMk9UWXdNQ3dpWkc5dFlXbHVJanBiSWpFeU55NHdMakF1TVNJc0lteHZZMkZzYUc5emRDSmRMQ0p3YkdGdUlqb3dMQ0p6WTI5d1pTSTZXeUoyTnlJc0luWTRJbDE5');
+jspreadsheet(document.getElementById('spreadsheet'), {
+    worksheets: [{
+        json: json,
+        search: true,
+        tableOverflow:true,
+        tableHeight:'450px',
+        columns: [
+            {type:'text', width:100, title:'report_id'},
+            {type:'text', width:100, title:'published_date'},
+            {type:'text', width:100, title:'newstrend'},
+            {type:'text', width:100, title:'title'},
+            {type:'text', width:100, title:'summary'},
+            {type:'text', width:100, title:'content'},
+            {type:'text', width:100, title:'service_type'},
+            {type:'text', width:100, title:'sentiment'},
+            {type:'text', width:100, title:'url_news_page'},
+            {type:'text', width:100, title:'category'},
+            {type:'text', width:100, title:'media_name'},
+            {type:'text', width:100, title:'media_type'},
+            {type:'text', width:100, title:'reporter_name'},
+            {type:'text', width:100, title:'pr_value'},
+            {type:'text', width:100, title:'company_name'},
+            {type:'text', width:100, title:'ad_value'},
+            {type:'text', width:100, title:'flag_color'},
+            {type:'text', width:100, title:'size_print'},
+            {type:'text', width:100, title:'article_type' },
+            {type:'text', width:100, title:'location_name' },
+            {type:'text', width:100, title:'flag_headline' },
+            {type:'text', width:100, title:'row' }
+            ]
+    }]
+});
 </script>
 @endsection

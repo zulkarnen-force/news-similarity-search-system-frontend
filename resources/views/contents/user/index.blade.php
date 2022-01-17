@@ -46,6 +46,7 @@
                                     <th>Join At</th>
                                     <th>Roles</th>
                                     <th>Action</th>
+                                    <th>Status</th>
                                   </tr>
                                 </thead>
                                 <tbody>
@@ -67,6 +68,14 @@
                                           </a>
                                         </form>
                                       </td>
+                                      <td>
+                                        {{-- check online / offline --}}
+                                        @if(Cache::has('user-is-online-' . $user->id))
+                                          <span class="text-success">Online</span>
+                                        @else
+                                          <span class="text-secondary">Offline</span>
+                                        @endif
+                                      </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -78,8 +87,7 @@
                             </div>
                       </div>
                   </div>
-
-            {{-- end table --}}
+                {{-- end table --}}
     </div>
     <script>
       setTimeout(() => {

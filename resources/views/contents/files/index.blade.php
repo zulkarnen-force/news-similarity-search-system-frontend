@@ -48,14 +48,13 @@
                             </div>                                
                         </form>
                     </div>
-                    <div id="search-result"></div>
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="dataTable" cellspacing="0">
                       <thead>
                         <tr>
-                          <th>No</th>
-                          <th>Reporter</th>
-                          <th>Report Date</th>
-                          <th>Action</th>
+                          <th width="50px">No</th>
+                          <th width="200px">Reporter</th>
+                          <th width="100px">Report Date</th>
+                          <th width="100px">Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -73,6 +72,11 @@
                                 <a  class="btn btn-primary btn-circle" href="{{route('path',$file->id)}}">
                                     <i class="far fa-share-square"></i>
                                 </a>
+                                @if (Auth::user()->roles == 'ADMIN')
+                                <button type="submit" class="btn btn-danger btn-circle" name="file-details" value="delete" onclick="return confirm('Are you Sure ?')">
+                                    <i class="fas fa-trash"></i>
+                                </button>  
+                                @endif
                             </form>
                           </td>
                         </tr>

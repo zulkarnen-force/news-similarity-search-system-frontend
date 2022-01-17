@@ -34,7 +34,6 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register')
 Route::middleware(['auth:sanctum', 'verified','admin'])->group(function(){
     Route::get('/user', [UserController::class,'index'])->name('user-index');
     Route::delete('/user/{id}',[UserController::class,'destroy'])->name('destroy');
-    Route::get('search',[UserController::class, 'search'])->name('search');
     Route::get('user/edit/{id}',[UserController::class, 'edit'])->name('edit-user');
     Route::put('edit/{id}',[UserController::class, 'update'])->name('update-user');
 });
@@ -44,7 +43,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/file',[FilesController::class, 'index'])->name('file-index');
     Route::post('/file',[FilesController::class, 'store'])->name('file-upload');
     Route::get('/path/{id}',[FilesController::class,'path'])->name('path');
-    Route::post('/file-details/{id}',[FilesController::class, 'show'])->name('file-details');
+    Route::post('/file-details/{id}',[FilesController::class, 'ShowAndDestroy'])->name('file-details');
+    Route::delete('/file-details/{id}',[FilesController::class,'ShowAndDestroy']);
 });
 
 // Page Not Found 404

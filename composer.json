@@ -15,7 +15,7 @@
         "maatwebsite/excel": "^3.1",
         "predis/predis": "^1.1",
         "vladimir-yuldashev/laravel-queue-rabbitmq": "^11.3",
-        "yajra/laravel-datatables-oracle": "~9.0"
+        "yajra/laravel-datatables-oracle": "^9.18"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
