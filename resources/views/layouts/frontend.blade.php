@@ -22,6 +22,10 @@
     <link href="{{url('/issets/css/sb-admin-2.min.css')}}" rel="stylesheet">
     <link href="{{url('/issets/css/style.css')}}" rel="stylesheet">
     <link rel="icon" href="{{url('/issets/img/undraw_rocket.svg')}}">
+    
+    {{-- socket.io for javascript --}}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
     <!--- Tambahkan setelah app.css --->
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">

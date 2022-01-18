@@ -1,7 +1,28 @@
 @extends('layouts.frontend')
 @section('title','Files Details')
 
-@section('content')`
+@section('content')
+{{-- send to web socket with js --}}
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var socket = io.connect('http://127.0.0.1:5000');
+
+        socket.on('connect', function () {
+            console.log('User has connected!');
+        });
+
+        socket.on('message', function (msg) {
+            console.log(msg);
+        });
+
+        $('#sendbutton').on('click', function () {
+            socket.send($('#myMessage').val());
+            $('#myMessage').val('');
+        });
+
+    });
+</script>
 <!-- Begin Page Content -->
 <div class="container-fluid">
     
@@ -16,7 +37,14 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <div class="d-sm-flex align-items-center justify-content-between mb-1">
+                    <!-- send to socketio -->
+                    <div class="input-group mb-1 justify-content-end">
+                        <input type="text" name="myMessage" id="myMessage" placeholder="Send Messages" value="">
+                        <button class="btn btn-outline-primary" id="sendbutton" >
+                            <i class="far fa-paper-plane"></i>
+                        </button>
+                    </div>                                
                 </div>
                 {{-- input untuk mengambil value, guna memberikan value ke javascript --}}
                 <input type="text" id="json" value="{{$response}}" hidden>
@@ -25,13 +53,19 @@
                 <div id="spreadsheet"></div>
 
                 <div class="d-flex justify-content-right">
-                    <form action="">
-                        <button type="submit" class="btn btn-success btn-icon-split m-2">
-                            <span class="icon text-white-50">
-                                <i class="fas fa-chart-line"></i>
-                            </span>
-                            <span class="text">Generate</span>
-                        </button>
+                    <form action="{{route('json_edit')}}" method="post">
+                            @csrf
+                            {{-- input untuk mengirim ke controller --}}
+                            <input type="text" value="{{$files->filename}}" name="filename" hidden>
+                            <input type="text" id="json-input" name="data" hidden>
+
+                            {{-- submit --}}
+                            <button type="submit" class="btn btn-success btn-icon-split m-2" onclick="document.getElementById('json-input').value = JSON.stringify(json)">
+                                <span class="icon text-white-50">
+                                    <i class="far fa-edit"></i>
+                                </span>
+                                <span class="text">Update</span>
+                            </button>
                     </form>
                 </div>  
             </div> 
@@ -43,13 +77,12 @@
 var json = document.getElementById("json").value;
 var json = JSON.parse(json);
 
-jspreadsheet.setLicense('MjFhODdmYTkwNTFjOGQwNDM0ODcxNmUzNzVmZmZkZDc1OGQyZDdhOTkyYWEyMjFmMDQ2NGNiNTljZGFiMGYwMzgxYjE0OWQxODhlMWYwMTI4NTFkOWZiYjE3ZTU5ODE3NTU3MmY4YWIyNTAzMGM2ZWFhMGI0NDEzN2YxY2VhMDgsZXlKdVlXMWxJam9pYW05eVpHRnVJR2x6ZEdseGJHRnNJaXdpWkdGMFpTSTZNVFkwTkRrMk9UWXdNQ3dpWkc5dFlXbHVJanBiSWpFeU55NHdMakF1TVNJc0lteHZZMkZzYUc5emRDSmRMQ0p3YkdGdUlqb3dMQ0p6WTI5d1pTSTZXeUoyTnlJc0luWTRJbDE5');
+jspreadsheet.setLicense('OWEwNjgyYTI4OTM0OGYyZDRkYTA2M2EyYzY1ZGI3MjE0ZGNlNjE3YTkxNjM1YjZhMGEwODhmYWYxMzM0MGIzZWU0NmFjMGU5MjRlYmI2MmM5N2JmODljYTc0NjliOGE1NjU4MzIwZmU3MDBlYmFlOTVlMGVlNzNiZTUxNzIxYmQsZXlKdVlXMWxJam9pYW05eVpHRnVJR2x6ZEdseGJHRnNJaXdpWkdGMFpTSTZNVFkwTlRFME1qUXdNQ3dpWkc5dFlXbHVJanBiSWpFeU55NHdMakF1TVNJc0lteHZZMkZzYUc5emRDSmRMQ0p3YkdGdUlqb3dMQ0p6WTI5d1pTSTZXeUoyTnlJc0luWTRJbDE5');
 jspreadsheet(document.getElementById('spreadsheet'), {
     worksheets: [{
         json: json,
-        search: true,
         tableOverflow:true,
-        tableHeight:'450px',
+        tableHeight:'550px',
         columns: [
             {type:'text', width:100, title:'report_id'},
             {type:'text', width:100, title:'published_date'},

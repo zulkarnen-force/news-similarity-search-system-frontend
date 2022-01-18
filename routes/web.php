@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 // dashboard
 Route::get('/', [DashboardController::class, 'index'])->name('index');
 
+
 // login & logout
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login-auth');
@@ -42,6 +43,7 @@ Route::middleware(['auth:sanctum', 'verified','admin'])->group(function(){
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/file',[FilesController::class, 'index'])->name('file-index');
     Route::post('/file',[FilesController::class, 'store'])->name('file-upload');
+    Route::post('/file/edit',[FilesController::class, 'json_edit'])->name('json_edit');
     Route::get('/path/{id}',[FilesController::class,'path'])->name('path');
     Route::post('/file-details/{id}',[FilesController::class, 'ShowAndDestroy'])->name('file-details');
     Route::delete('/file-details/{id}',[FilesController::class,'ShowAndDestroy']);
