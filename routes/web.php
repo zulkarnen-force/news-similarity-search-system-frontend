@@ -47,6 +47,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/path/{id}',[FilesController::class,'path'])->name('path');
     Route::post('/file-details/{id}',[FilesController::class, 'ShowAndDestroy'])->name('file-details');
     Route::delete('/file-details/{id}',[FilesController::class,'ShowAndDestroy']);
+    Route::post('/similarity/{id}',[FilesController::class,'similarity'])->name('similarity');
 });
 
 // Page Not Found 404

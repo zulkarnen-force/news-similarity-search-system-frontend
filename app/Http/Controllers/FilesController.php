@@ -14,12 +14,12 @@ class FilesController extends Controller
     public function index()
     {
         // check rules
+        
         if(Auth::user()->roles == 'ADMIN'){
             $files = Files::with(['report']);
         }else{
             $files = Files::with(['report'])->where('created_by','=',Auth::user()->id);
         }
-
         if(request('search')){ 
             $files->where('files.created_at','LIKE','%'.request('search').'%'); }
     
@@ -121,13 +121,12 @@ class FilesController extends Controller
     public function path($id)
     {
         $path = Files::find($id);
-
         // send to Rabbitmq
         $queueManager = app('queue');
         $queue = $queueManager->connection('rabbitmq');
         $queue->pushRaw($path, 'files');
         
-        return back()->with('success','Data Telah Terkirim Ke Message Broker');
+        return redirect()->route('file-index')->with('success','Data Telah Dikembalikan');
     }
 
     public function json_edit(Request $request)
@@ -137,4 +136,22 @@ class FilesController extends Controller
         Redis::command('rpush',[$filename,$data]);
         return redirect()->route('file-index')->with('success','Data File Berhasil Diubah');
     }
+
+    public function similarity(Request $request,$id)
+    {
+        $files = Files::find($id);
+        if(Redis::exists($files->filename))
+        {
+            sleep(10);
+            $response = Redis::command('lrange', [$files->filename, -1, -1]);
+            $response = json_decode($response[0]);
+            $response = json_encode($response);
+            return view('contents.files.similarity',compact('files','response'));
+        }
+        else
+        {
+            return back()->with('error','Data Belum Tersedia');
+        }
+    }
+
 }

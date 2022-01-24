@@ -67,6 +67,16 @@
 
 #search {
     border-radius: 10px 0px 0px 10px;
+    font-size: medium;
+}
+
+.get-column {
+    border: 0;
+    width: 75px;
+    color: gray;
+    border-radius: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
 }
 
 #btn-search {
@@ -76,6 +86,7 @@
 #myMessage {
     border-radius: 10px 0px 0px 10px;
     border: solid gainsboro 0.5px;
+    font-size: medium;
     padding-left: 15px;
     padding-right: 15px;
 }

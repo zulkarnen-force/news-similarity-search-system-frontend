@@ -41,7 +41,7 @@
                         <p>Result {{ $files->total()}}  </p>
                         <form action="{{route('file-index')}}">
                             <div class="input-group mb-3">
-                                <input type="date" class="form-control" value="{{ request('search')}}" name="search" id="search">
+                                <input type="month" class="form-control" value="{{ request('search')}}" name="search" id="search">
                                 <button class="btn btn-outline-primary" id="btn-search" type="submit" id="button-addon2">
                                     <i class="fas fa-filter"></i>
                               </button>
@@ -68,11 +68,11 @@
                                 @csrf
                                 <button type="submit" class="btn btn-success btn-circle" name="file-details" value="details">
                                     <i class="fas fa-file-excel"></i>
-                                </button>  
-                                <a  class="btn btn-primary btn-circle" href="{{route('path',$file->id)}}">
+                                </button>
+                                @if (Auth::user()->roles == 'ADMIN')
+                                <a class="btn btn-primary btn-circle" href="{{route('path',$file->id)}}">
                                     <i class="far fa-share-square"></i>
                                 </a>
-                                @if (Auth::user()->roles == 'ADMIN')
                                 <button type="submit" class="btn btn-danger btn-circle" name="file-details" value="delete" onclick="return confirm('Are you Sure ?')">
                                     <i class="fas fa-trash"></i>
                                 </button>  
@@ -105,6 +105,7 @@
                     </button>
                 </div>
                 <div class="w-full px-3">
+
                     <div class="mb-3 row mt-3">
                         <label for="staticEmail" class="col-sm-2 col-form-label">Reporter</label>
                         <div class="col-sm-10">

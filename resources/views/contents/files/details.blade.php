@@ -9,7 +9,7 @@
         var socket = io.connect('http://127.0.0.1:5000');
 
         socket.on('connect', function () {
-            console.log('User has connected!');
+            // console.log('User has connected!');
         });
 
         socket.on('message', function (msg) {
@@ -38,14 +38,19 @@
         <div class="card-body">
             <div class="table-responsive">
                 <div class="d-sm-flex align-items-center justify-content-between mb-1">
+                    {{-- Column --}}
+                    <input type="text" class="get-column" id="get-column" value="Column" disabled>
                     <!-- send to socketio -->
-                    <div class="input-group mb-1 justify-content-end">
-                        <input type="text" name="myMessage" id="myMessage" placeholder="Send Messages" value="">
-                        <button class="btn btn-outline-primary" id="sendbutton" >
-                            <i class="far fa-paper-plane"></i>
-                        </button>
-                    </div>                                
-                </div>
+                    <form action="{{route('similarity', $files->id)}}" method="POST">
+                        @csrf
+                        <div class="input-group mb-1 justify-content-end">
+                            <input type="text" id="myMessage" placeholder="Look For Similar Words...">
+                            <button class="btn btn-outline-primary" name="file-details" id="sendbutton" value="details">
+                                <i class="far fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                    </div>
                 {{-- input untuk mengambil value, guna memberikan value ke javascript --}}
                 <input type="text" id="json" value="{{$response}}" hidden>
 
@@ -55,11 +60,11 @@
                 <div class="d-flex justify-content-right">
                     <form action="{{route('json_edit')}}" method="post">
                             @csrf
-                            {{-- input untuk mengirim ke controller --}}
-                            <input type="text" value="{{$files->filename}}" name="filename" hidden>
+                            {{-- input untuk mengirim data json dan filename ke controller, controller ke redis --}}
+                            <input type="text" value="{{$files->filename}}" id="filename" hidden>
                             <input type="text" id="json-input" name="data" hidden>
 
-                            {{-- submit --}}
+                            {{-- Update --}}
                             <button type="submit" class="btn btn-success btn-icon-split m-2" onclick="document.getElementById('json-input').value = JSON.stringify(json)">
                                 <span class="icon text-white-50">
                                     <i class="far fa-edit"></i>
@@ -74,16 +79,34 @@
     {{-- end table --}}
 </div>
 <script>
-var json = document.getElementById("json").value;
-var json = JSON.parse(json);
+    var filename = document.getElementById("filename").value;
+    var json = document.getElementById("json").value;
+    var getcell = document.getElementById('myMessage')
+    var json = JSON.parse(json);
 
-jspreadsheet.setLicense('OWEwNjgyYTI4OTM0OGYyZDRkYTA2M2EyYzY1ZGI3MjE0ZGNlNjE3YTkxNjM1YjZhMGEwODhmYWYxMzM0MGIzZWU0NmFjMGU5MjRlYmI2MmM5N2JmODljYTc0NjliOGE1NjU4MzIwZmU3MDBlYmFlOTVlMGVlNzNiZTUxNzIxYmQsZXlKdVlXMWxJam9pYW05eVpHRnVJR2x6ZEdseGJHRnNJaXdpWkdGMFpTSTZNVFkwTlRFME1qUXdNQ3dpWkc5dFlXbHVJanBiSWpFeU55NHdMakF1TVNJc0lteHZZMkZzYUc5emRDSmRMQ0p3YkdGdUlqb3dMQ0p6WTI5d1pTSTZXeUoyTnlJc0luWTRJbDE5');
-jspreadsheet(document.getElementById('spreadsheet'), {
-    worksheets: [{
-        json: json,
-        tableOverflow:true,
-        tableHeight:'550px',
-        columns: [
+    var selectionActive = function(instance, x1, y1, x2, y2, origin) 
+    {
+        // ketika cell dipilih input dengan id 'get-column' diubah dengan cell yang ditekan
+        var cellName1 = jspreadsheet.helpers.getColumnNameFromCoords(x1,y1);
+        var cellName2 = jspreadsheet.helpers.getColumnNameFromCoords(x2,y2);
+        var result    = cellName1 + ':' + cellName2
+        document.getElementById('get-column').innerHTML = ""
+        document.getElementById('get-column').value = result
+
+        // ketika cell dipilih, value dari cell di ubah ke 'myMessage' untuk dikirim ke flask-socketio
+        var cellvalue = instance.getValueFromCoords([x1],[y1]);
+        var column = instance.getColumn(x1)
+
+        getcell.value = column.name + ' ; ' + cellvalue + ' ; ' + filename
+    };
+
+    // jspreadsheet
+    jspreadsheet(document.getElementById('spreadsheet'), {
+        worksheets: [{
+            json: json,
+            tableOverflow:true,
+            tableHeight:'550px',
+            columns: [
             {type:'text', width:100, title:'report_id'},
             {type:'text', width:100, title:'published_date'},
             {type:'text', width:100, title:'newstrend'},
@@ -107,7 +130,10 @@ jspreadsheet(document.getElementById('spreadsheet'), {
             {type:'text', width:100, title:'flag_headline' },
             {type:'text', width:100, title:'row' }
             ]
-    }]
-});
+            }],
+            license:'OWEwNjgyYTI4OTM0OGYyZDRkYTA2M2EyYzY1ZGI3MjE0ZGNlNjE3YTkxNjM1YjZhMGEwODhmYWYxMzM0MGIzZWU0NmFjMGU5MjRlYmI2MmM5N2JmODljYTc0NjliOGE1NjU4MzIwZmU3MDBlYmFlOTVlMGVlNzNiZTUxNzIxYmQsZXlKdVlXMWxJam9pYW05eVpHRnVJR2x6ZEdseGJHRnNJaXdpWkdGMFpTSTZNVFkwTlRFME1qUXdNQ3dpWkc5dFlXbHVJanBiSWpFeU55NHdMakF1TVNJc0lteHZZMkZzYUc5emRDSmRMQ0p3YkdGdUlqb3dMQ0p6WTI5d1pTSTZXeUoyTnlJc0luWTRJbDE5',
+            onselection: selectionActive,
+    });
+    
 </script>
 @endsection
