@@ -87,17 +87,16 @@ class FilesController extends Controller
         switch ($request->input('file-details')) {
             case 'details':
                 // check apakah report telah berada di redis
-                if(Redis::exists($files->filename))
-                    {
+                if(Redis::exists($files->filename)) {
+                        // langkah sleep karena jika sudah request "Similarity" akan membutuhkan 
+                        sleep(5);
                         $response = Redis::command('lrange', [$files->filename, -1, -1]);
                         $response = json_decode($response[0]);
                         $response = json_encode($response);
                         return view('contents.files.details',compact('files','response'));
-                    }
-                else
-                    {
+                } else {
                         return back()->with('error','Data Belum Tersedia');
-                    }
+                }
                 break;
 
             case 'delete':
@@ -126,7 +125,7 @@ class FilesController extends Controller
         $queue = $queueManager->connection('rabbitmq');
         $queue->pushRaw($path, 'files');
         
-        return redirect()->route('file-index')->with('success','Data Telah Dikembalikan');
+        return redirect()->route('file-index')->with('success','Data Telah dikirim ke Message Broker');
     }
 
     public function json_edit(Request $request)
@@ -136,22 +135,4 @@ class FilesController extends Controller
         Redis::command('rpush',[$filename,$data]);
         return redirect()->route('file-index')->with('success','Data File Berhasil Diubah');
     }
-
-    public function similarity(Request $request,$id)
-    {
-        $files = Files::find($id);
-        if(Redis::exists($files->filename))
-        {
-            sleep(10);
-            $response = Redis::command('lrange', [$files->filename, -1, -1]);
-            $response = json_decode($response[0]);
-            $response = json_encode($response);
-            return view('contents.files.similarity',compact('files','response'));
-        }
-        else
-        {
-            return back()->with('error','Data Belum Tersedia');
-        }
-    }
-
 }

@@ -17,7 +17,7 @@
         });
 
         $('#sendbutton').on('click', function () {
-            socket.send($('#myMessage').val());
+            socket.send($('#cell').val());
             $('#myMessage').val('');
         });
 
@@ -41,14 +41,15 @@
                     {{-- Column --}}
                     <input type="text" class="get-column" id="get-column" value="Column" disabled>
                     <!-- send to socketio -->
-                    <form action="{{route('similarity', $files->id)}}" method="POST">
+                    <form action="{{route('file-details', $files->id)}}" method="POST">
                         @csrf
                         <div class="input-group mb-1 justify-content-end">
-                            <input type="text" id="myMessage" placeholder="Look For Similar Words...">
-                            <button class="btn btn-outline-primary" name="file-details" id="sendbutton" value="details">
+                            <input type="text" id="cell" hidden>
+                            <input type="text" id="myMessage" placeholder="Look For Similar...">
+                            <button class="btn btn-outline-primary" id="sendbutton" name="file-details" value="details">
                                 <i class="far fa-paper-plane"></i>
                             </button>
-                        </div>
+                        </div>  
                     </form>
                     </div>
                 {{-- input untuk mengambil value, guna memberikan value ke javascript --}}
@@ -61,7 +62,7 @@
                     <form action="{{route('json_edit')}}" method="post">
                             @csrf
                             {{-- input untuk mengirim data json dan filename ke controller, controller ke redis --}}
-                            <input type="text" value="{{$files->filename}}" id="filename" hidden>
+                            <input type="text" value="{{$files->filename}}" name="filename" id="filename" hidden>
                             <input type="text" id="json-input" name="data" hidden>
 
                             {{-- Update --}}
@@ -81,7 +82,8 @@
 <script>
     var filename = document.getElementById("filename").value;
     var json = document.getElementById("json").value;
-    var getcell = document.getElementById('myMessage')
+    var getcell = document.getElementById('cell')
+    var showcell = document.getElementById('myMessage')
     var json = JSON.parse(json);
 
     var selectionActive = function(instance, x1, y1, x2, y2, origin) 
@@ -93,11 +95,12 @@
         document.getElementById('get-column').innerHTML = ""
         document.getElementById('get-column').value = result
 
-        // ketika cell dipilih, value dari cell di ubah ke 'myMessage' untuk dikirim ke flask-socketio
+        // ketika cell dipilih, value dari cell di ubah ke 'cell' untuk dikirim ke flask-socketio
         var cellvalue = instance.getValueFromCoords([x1],[y1]);
         var column = instance.getColumn(x1)
 
-        getcell.value = column.name + ' ; ' + cellvalue + ' ; ' + filename
+        showcell.value = cellvalue
+        getcell.value = column.name + ' ; ' + showcell.value + ' ; ' + filename
     };
 
     // jspreadsheet
@@ -106,6 +109,7 @@
             json: json,
             tableOverflow:true,
             tableHeight:'550px',
+            search : true,
             columns: [
             {type:'text', width:100, title:'report_id'},
             {type:'text', width:100, title:'published_date'},
@@ -128,7 +132,7 @@
             {type:'text', width:100, title:'article_type' },
             {type:'text', width:100, title:'location_name' },
             {type:'text', width:100, title:'flag_headline' },
-            {type:'text', width:100, title:'row' }
+            {type:'text', width:100, title:'Similarity' }
             ]
             }],
             license:'OWEwNjgyYTI4OTM0OGYyZDRkYTA2M2EyYzY1ZGI3MjE0ZGNlNjE3YTkxNjM1YjZhMGEwODhmYWYxMzM0MGIzZWU0NmFjMGU5MjRlYmI2MmM5N2JmODljYTc0NjliOGE1NjU4MzIwZmU3MDBlYmFlOTVlMGVlNzNiZTUxNzIxYmQsZXlKdVlXMWxJam9pYW05eVpHRnVJR2x6ZEdseGJHRnNJaXdpWkdGMFpTSTZNVFkwTlRFME1qUXdNQ3dpWkc5dFlXbHVJanBiSWpFeU55NHdMakF1TVNJc0lteHZZMkZzYUc5emRDSmRMQ0p3YkdGdUlqb3dMQ0p6WTI5d1pTSTZXeUoyTnlJc0luWTRJbDE5',
