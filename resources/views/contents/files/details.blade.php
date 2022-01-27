@@ -44,7 +44,10 @@
                     <form action="{{route('file-details', $files->id)}}" method="POST">
                         @csrf
                         <div class="input-group mb-1 justify-content-end">
+                            {{-- input yang akan dikirim ke flask-socketio --}}
                             <input type="text" id="cell" hidden>
+
+                            {{-- input search for similiar sentence "hanya display" yang tidak ada hubungan dengan web socket--}}
                             <input type="text" id="myMessage" placeholder="Look For Similar...">
                             <button class="btn btn-outline-primary" id="sendbutton" name="file-details" value="details">
                                 <i class="far fa-paper-plane"></i>
@@ -72,6 +75,20 @@
                                 </span>
                                 <span class="text">Update</span>
                             </button>
+                            {{-- Resend Data to Backend--}}
+                            <a type="button" class="btn btn-secondary btn-icon-split m-2" href="{{route('path',$files->id)}}">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-sync-alt"></i>
+                                </span>
+                                <span class="text">Send Original Data</span>
+                            </a>
+                            {{-- Save/Export/Download --}}
+                            <button type="button" class="btn btn-primary btn-icon-split m-2" id="save">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-file-download"></i>
+                                </span>
+                                <span class="text">Download</span>
+                            </button>
                     </form>
                 </div>  
             </div> 
@@ -85,6 +102,9 @@
     var getcell = document.getElementById('cell')
     var showcell = document.getElementById('myMessage')
     var json = JSON.parse(json);
+
+    // lisensi JSpreadSheet
+    jspreadsheet.setLicense('OWEwNjgyYTI4OTM0OGYyZDRkYTA2M2EyYzY1ZGI3MjE0ZGNlNjE3YTkxNjM1YjZhMGEwODhmYWYxMzM0MGIzZWU0NmFjMGU5MjRlYmI2MmM5N2JmODljYTc0NjliOGE1NjU4MzIwZmU3MDBlYmFlOTVlMGVlNzNiZTUxNzIxYmQsZXlKdVlXMWxJam9pYW05eVpHRnVJR2x6ZEdseGJHRnNJaXdpWkdGMFpTSTZNVFkwTlRFME1qUXdNQ3dpWkc5dFlXbHVJanBiSWpFeU55NHdMakF1TVNJc0lteHZZMkZzYUc5emRDSmRMQ0p3YkdGdUlqb3dMQ0p6WTI5d1pTSTZXeUoyTnlJc0luWTRJbDE5');
 
     var selectionActive = function(instance, x1, y1, x2, y2, origin) 
     {
@@ -110,34 +130,41 @@
             tableOverflow:true,
             tableHeight:'550px',
             search : true,
+            csvHeaders:true,
+            csvFileName: "Bino",
             columns: [
-            {type:'text', width:100, title:'report_id'},
-            {type:'text', width:100, title:'published_date'},
-            {type:'text', width:100, title:'newstrend'},
-            {type:'text', width:100, title:'title'},
-            {type:'text', width:100, title:'summary'},
-            {type:'text', width:100, title:'content'},
-            {type:'text', width:100, title:'service_type'},
-            {type:'text', width:100, title:'sentiment'},
-            {type:'text', width:100, title:'url_news_page'},
-            {type:'text', width:100, title:'category'},
-            {type:'text', width:100, title:'media_name'},
-            {type:'text', width:100, title:'media_type'},
-            {type:'text', width:100, title:'reporter_name'},
-            {type:'text', width:100, title:'pr_value'},
-            {type:'text', width:100, title:'company_name'},
-            {type:'text', width:100, title:'ad_value'},
-            {type:'text', width:100, title:'flag_color'},
-            {type:'text', width:100, title:'size_print'},
-            {type:'text', width:100, title:'article_type' },
-            {type:'text', width:100, title:'location_name' },
-            {type:'text', width:100, title:'flag_headline' },
-            {type:'text', width:100, title:'Similarity' }
+                {type:'text', width:100, title:'report_id'},
+                {type:'text', width:100, title:'published_date'},
+                {type:'text', width:100, title:'newstrend'},
+                {type:'text', width:100, title:'title'},
+                {type:'text', width:100, title:'summary'},
+                {type:'text', width:100, title:'content'},
+                {type:'text', width:100, title:'service_type'},
+                {type:'text', width:100, title:'sentiment'},
+                {type:'text', width:100, title:'url_news_page'},
+                {type:'text', width:100, title:'category'},
+                {type:'text', width:100, title:'media_name'},
+                {type:'text', width:100, title:'media_type'},
+                {type:'text', width:100, title:'reporter_name'},
+                {type:'text', width:100, title:'pr_value'},
+                {type:'text', width:100, title:'company_name'},
+                {type:'text', width:100, title:'ad_value'},
+                {type:'text', width:100, title:'flag_color'},
+                {type:'text', width:100, title:'size_print'},
+                {type:'text', width:100, title:'article_type' },
+                {type:'text', width:100, title:'location_name' },
+                {type:'text', width:100, title:'flag_headline' },
+                {type:'text', width:100, title:'Similarity' }
             ]
             }],
-            license:'OWEwNjgyYTI4OTM0OGYyZDRkYTA2M2EyYzY1ZGI3MjE0ZGNlNjE3YTkxNjM1YjZhMGEwODhmYWYxMzM0MGIzZWU0NmFjMGU5MjRlYmI2MmM5N2JmODljYTc0NjliOGE1NjU4MzIwZmU3MDBlYmFlOTVlMGVlNzNiZTUxNzIxYmQsZXlKdVlXMWxJam9pYW05eVpHRnVJR2x6ZEdseGJHRnNJaXdpWkdGMFpTSTZNVFkwTlRFME1qUXdNQ3dpWkc5dFlXbHVJanBiSWpFeU55NHdMakF1TVNJc0lteHZZMkZzYUc5emRDSmRMQ0p3YkdGdUlqb3dMQ0p6WTI5d1pTSTZXeUoyTnlJc0luWTRJbDE5',
             onselection: selectionActive,
     });
-    
+
+    $('#save').click(function(){
+        xsl(document.getElementById('spreadsheet'), {
+            filename: 'Bino',
+            author: 'Binocular',
+        });
+    })
 </script>
 @endsection

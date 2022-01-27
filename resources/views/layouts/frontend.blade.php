@@ -91,6 +91,8 @@
     <link rel="stylesheet" href="https://jspreadsheet.com/v8/jspreadsheet.css" type="text/css" />
     <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" /> 
 
+    <script src="https://jspreadsheet.com/plugins/download.js"></script>
+
     {{-- highcharts --}}
     <script src="https://code.highcharts.com/highcharts.js"></script>
     
@@ -171,6 +173,8 @@
 
     <!-- Page level plugins -->
     <script src="{{url('/issets/vendor/chart.js/Chart.min.js')}}"></script>
+
+    {{-- Ajax --}}
     @stack('script')
 </body>
 
