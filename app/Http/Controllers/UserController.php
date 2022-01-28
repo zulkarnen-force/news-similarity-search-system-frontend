@@ -2,14 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Files;
 use App\Models\User;
-use Facade\FlareClient\Stacktrace\File;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
-use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
 {
@@ -101,5 +95,11 @@ class UserController extends Controller
         $user->delete();
 
         return back()->with('deleted','User Berhasil Dihapus');
+    }
+
+    public function profile($id)
+    {
+        $users = User::find($id);
+        return view('contents.user.profile',compact('users'));
     }
 }

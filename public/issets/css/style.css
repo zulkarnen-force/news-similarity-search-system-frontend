@@ -103,6 +103,21 @@
     padding-right: 15px;
 }
 
+th {
+    text-align: center;
+    /* Or right or left */
+}
+
+td {
+    text-align: center;
+}
+
+.mapping {
+    width: 530px;
+    height: 450px;
+    border: 0;
+}
+
 @media screen and (max-width: 500px) {
 
     li.page-item {
@@ -119,13 +134,10 @@
 
         display: block;
     }
-}
 
-th {
-    text-align: center;
-    /* Or right or left */
-}
-
-td {
-    text-align: center;
+    #mapping {
+        width: 100px !important;
+        height: 100px;
+        border: 0;
+    }
 }

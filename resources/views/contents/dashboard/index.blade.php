@@ -8,24 +8,58 @@
     <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                <i class="fas fa-download fa-sm text-white-50"></i> Generate Report
-            </a>
         </div>
+
         <!-- Basic Card Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Basic Card Example</h6>
+                <h6 class="m-0 font-weight-bold text-primary">User and File Data Analysis</h6>
             </div>
             <div class="card-body">
                 <div id="container"></div>
             </div>
         </div>
+
+        <div class="row">
+
+            <div class="col-lg-6">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Binocular Map</h6>
+                    </div>
+                    <div class="card-body">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.1387442699174!2d110.43090571477805!3d-7.775109294396594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5a1925d0165d%3A0x91e9a2049cb1abc8!2sPT%20BINOKULAR%20MEDIA%20UTAMA%20Yogyakarta!5e0!3m2!1sen!2sid!4v1643268133468!5m2!1sen!2sid" class="mapping" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card shadow mb-4">
+                    <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
+                        role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                        <h6 class="m-0 font-weight-bold text-primary">Reporter Records</h6>
+                    </a>
+                    <!-- Card Reporter -->
+                    <div class="collapse show" id="collapseCardExample">
+                        <div class="card-body">
+                            <div id="reported"></div>
+                            <input type="text" value="{{json_encode($reporter)}}" id="data" hidden>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
     </div>
 <script type="text/javascript">
     var users = {{ json_encode($users) }};
     var files = {{ json_encode($files) }};
+    var reporter = document.getElementById('data').value;
+    var reporter = JSON.parse(reporter)
 
+    // Chart jumlah data User & File
     Highcharts.chart('container', {
             chart: {
                 type: 'spline',
@@ -35,10 +69,10 @@
                 }
             },
             title: {
-                text: 'Temporary Display'
+                text: 'Data Display'
             },
             subtitle: {
-                text: 'Kedepannya ini untuk Report Generatornya'
+                text: 'Data Number of Users and Files'
             },
             xAxis: {
                 categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September','October', 'November', 'December'
@@ -81,7 +115,43 @@
                     }
                 }]
             }
-        });
+    });
+
+    // Jumlah laporan setiap Users
+    Highcharts.chart('reported', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Data Reporter at Bino'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.y}</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                }
+            }
+        },
+        series: [{
+            name: 'Contribution',
+            colorByPoint: true,
+            data: reporter
+        }]
+    });
   
 </script>
 @endsection

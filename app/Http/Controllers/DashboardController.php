@@ -15,10 +15,20 @@ class DashboardController extends Controller
             // ->whereYear("created_at", date('2021'))
             ->groupBy(DB::raw("Month(created_at)"))
             ->pluck('count');
+
         $files = Files::select(DB::raw("COUNT(*) as count"))
             // ->whereYear("created_at", date('Y'))
             ->groupBy(DB::raw("Month(created_at)"))
             ->pluck('count');
-        return view('contents.dashboard.index',compact('users','files'));
+
+        $reporter = DB::table('users')
+                ->join('files', 'users.id', '=', 'files.created_by')
+                ->select(
+                    'users.name as name',
+                    DB::raw('COUNT(files.created_by) as y')
+                )
+                ->groupBy('users.name')
+                ->get();
+        return view('contents.dashboard.index',compact('users','files','reporter'));
     }
 }

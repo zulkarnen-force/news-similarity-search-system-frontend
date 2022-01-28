@@ -61,6 +61,11 @@
                 {{-- table spreadsheet dari jspreadsheet Ce --}}
                 <div id="spreadsheet"></div>
 
+                <ul>
+                    <li class="small">The Download Button Will Download In .XLS Format</li>
+                    <li class="small">If You Want To Format CSV Press Table Then Press CTRL + S</li>
+                </ul>
+
                 <div class="d-flex justify-content-right">
                     <form action="{{route('json_edit')}}" method="post">
                             @csrf
@@ -75,13 +80,7 @@
                                 </span>
                                 <span class="text">Update</span>
                             </button>
-                            {{-- Resend Data to Backend--}}
-                            <a type="button" class="btn btn-secondary btn-icon-split m-2" href="{{route('path',$files->id)}}">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-sync-alt"></i>
-                                </span>
-                                <span class="text">Send Original Data</span>
-                            </a>
+
                             {{-- Save/Export/Download --}}
                             <button type="button" class="btn btn-primary btn-icon-split m-2" id="save">
                                 <span class="icon text-white-50">
