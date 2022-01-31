@@ -82,13 +82,21 @@
                             </button>
 
                             {{-- Save/Export/Download --}}
+                            <a type="button" class="btn btn-secondary btn-icon-split m-2" href="{{route('path',$files->id)}}" name="message" value="back-data">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-sync-alt"></i>
+                                </span>
+                                <span class="text">Set Original Data</span>
+                            </a>
+
+                            {{-- Save/Export/Download --}}
                             <button type="button" class="btn btn-primary btn-icon-split m-2" id="save">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-file-download"></i>
                                 </span>
                                 <span class="text">Download</span>
                             </button>
-                    </form>
+                        </form>
                 </div>  
             </div> 
         </div>

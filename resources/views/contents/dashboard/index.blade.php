@@ -21,36 +21,35 @@
         </div>
 
         <div class="row">
-
+            {{-- Card Map --}}
             <div class="col-lg-6">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Binocular Map</h6>
                     </div>
                     <div class="card-body">
+                        {{-- content --}}
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.1387442699174!2d110.43090571477805!3d-7.775109294396594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5a1925d0165d%3A0x91e9a2049cb1abc8!2sPT%20BINOKULAR%20MEDIA%20UTAMA%20Yogyakarta!5e0!3m2!1sen!2sid!4v1643268133468!5m2!1sen!2sid" class="mapping" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
-
             </div>
 
+            <!-- Card Reporter -->
             <div class="col-lg-6">
                 <div class="card shadow mb-4">
                     <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
                         role="button" aria-expanded="true" aria-controls="collapseCardExample">
                         <h6 class="m-0 font-weight-bold text-primary">Reporter Records</h6>
                     </a>
-                    <!-- Card Reporter -->
                     <div class="collapse show" id="collapseCardExample">
                         <div class="card-body">
+                            {{-- content --}}
                             <div id="reported"></div>
                             <input type="text" value="{{json_encode($reporter)}}" id="data" hidden>
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
     </div>
 <script type="text/javascript">

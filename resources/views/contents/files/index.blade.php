@@ -70,7 +70,7 @@
                                     <i class="fas fa-file-excel"></i>
                                 </button>
                                 @if (Auth::user()->roles == 'ADMIN')
-                                <a class="btn btn-primary btn-circle" href="{{route('path',$file->id)}}">
+                                <a class="btn btn-primary btn-circle" href="{{route('path',$file->id)}}" name="message" value="path">
                                     <i class="far fa-share-square"></i>
                                 </a>
                                 <button type="submit" class="btn btn-danger btn-circle" name="file-details" value="delete" onclick="return confirm('Are you Sure ?')">

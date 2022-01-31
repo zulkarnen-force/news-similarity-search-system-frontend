@@ -118,15 +118,16 @@ class FilesController extends Controller
         //
     }
 
-    public function path($id)
+    public function path(Request $request,$id)
     {
         $path = Files::find($id);
         // send to Rabbitmq
+
         $queueManager = app('queue');
         $queue = $queueManager->connection('rabbitmq');
         $queue->pushRaw($path, 'files');
-        
-        return back()->with('success','Data Telah dikirim ke Message Broker');
+        // return back()->with('success','Data Telah dikirim ke Message Broker');
+        return redirect()->route('file-index')->with('success','Data Telah dikirim ke Message Broker');
     }
 
     public function json_edit(Request $request)

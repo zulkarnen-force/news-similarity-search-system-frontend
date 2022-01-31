@@ -25,7 +25,7 @@
                         <td>{{date("F j, Y",strtotime($users->created_at))}}</td>
                     </tr>
                     <tr>
-                        <th>authority</th>
+                        <th>Authority</th>
                         <td>{{$users->roles}}</td>
                     </tr>
                 </table>

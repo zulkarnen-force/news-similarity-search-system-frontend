@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 */
 // dashboard
 Route::get('/', [DashboardController::class, 'index'])->name('index');
+// profile
+Route::get('/profile/{id}',[UserController::class, 'profile'])->name('profile');
 
 
 // login & logout
@@ -37,7 +39,6 @@ Route::middleware(['auth:sanctum', 'verified','admin'])->group(function(){
     Route::delete('/user/{id}',[UserController::class,'destroy'])->name('destroy');
     Route::get('user/edit/{id}',[UserController::class, 'edit'])->name('edit-user');
     Route::put('edit/{id}',[UserController::class, 'update'])->name('update-user');
-    Route::get('/profile/{id}',[UserController::class, 'profile'])->name('profile');
 });
 
 // upload file excel
