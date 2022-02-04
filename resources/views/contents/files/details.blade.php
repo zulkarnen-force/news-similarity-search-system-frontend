@@ -48,7 +48,7 @@
                             <input type="text" id="cell" hidden>
 
                             {{-- input search for similiar sentence "hanya display" yang tidak ada hubungan dengan web socket--}}
-                            <input type="text" id="myMessage" placeholder="Look For Similar...">
+                            <input type="text" id="myMessage" placeholder="Look For Similar..." disabled>
                             <button class="btn btn-outline-primary" id="sendbutton" name="file-details" value="details">
                                 <i class="far fa-paper-plane"></i>
                             </button>
@@ -137,7 +137,6 @@
             tableOverflow:true,
             tableHeight:'550px',
             search : true,
-            csvHeaders:true,
             csvFileName: "Bino",
             columns: [
                 {type:'text', width:100, title:'report_id'},

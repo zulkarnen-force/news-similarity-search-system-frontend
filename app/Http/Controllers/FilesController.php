@@ -14,13 +14,12 @@ class FilesController extends Controller
 {
     public function index()
     {
-        // check rules
-        
         if(Auth::user()->roles == 'ADMIN'){
             $files = Files::with(['report']);
         }else{
             $files = Files::with(['report'])->where('created_by','=',Auth::user()->id);
         }
+        
         if(request('search')){ 
             $files->where('files.created_at','LIKE','%'.request('search').'%'); }
     
