@@ -9,6 +9,8 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
         </div>
+        @auth
+        @if (Auth::user()->roles == "ADMIN")
         <div class="row">
             <!-- Admin Count Card -->
             <div class="col-xl-3 col-md-6 mb-4">
@@ -61,7 +63,8 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  
+        @endif
         <!-- File detail Card -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -103,6 +106,7 @@
                 </div>
             </div>
         </div>
+        @endauth
     </div>
 <script type="text/javascript">
     var users = {{ json_encode($users) }};
