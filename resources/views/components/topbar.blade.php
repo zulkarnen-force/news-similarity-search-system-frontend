@@ -14,7 +14,7 @@
                         <!-- Nav Item - Ket.roles -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="ADMIN">
                                 <i class="fas fa-users-cog"></i>
                             </a>
                         </li>
@@ -22,7 +22,7 @@
                         <!-- Nav Item - Ket.roles -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="USER">
                                 <i class="fas fa-users"></i>
                             </a>
                         </li>

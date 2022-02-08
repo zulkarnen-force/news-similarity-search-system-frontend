@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Files;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
@@ -30,6 +31,27 @@ class DashboardController extends Controller
             )
             ->groupBy('users.name')
             ->get();
-        return view('contents.dashboard.index',compact('countadmin','countuser','countfile','users','files','reported'));
+        if(Auth::check()){
+            $userreport = Files::select(DB::raw("COUNT(*) as count"))
+            ->where('created_by',Auth::user()->id)
+            ->groupBy(DB::raw("Month(created_at)"))
+            ->pluck('count');
+            $lastreportuser = Files::query()->where('created_by','=',Auth::user()->id)->orderBy('id', 'DESC')->paginate(5);
+        } else{
+            $userreport = 0;
+            $lastreportuser = null;
+        }
+        
+        return view('contents.dashboard.index',
+        compact(
+            'countadmin',
+            'countuser',
+            'countfile',
+            'users',
+            'files',
+            'reported',
+            'userreport',
+            'lastreportuser'
+        ));
     }
 }
