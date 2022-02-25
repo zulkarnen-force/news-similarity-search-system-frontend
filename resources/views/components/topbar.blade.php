@@ -15,7 +15,7 @@
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="ADMIN">
-                                <i class="fas fa-users-cog"></i>
+                                ADMIN
                             </a>
                         </li>
                     @else
@@ -23,7 +23,7 @@
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="USER">
-                                <i class="fas fa-users"></i>
+                                USER
                             </a>
                         </li>
                     @endif

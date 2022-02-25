@@ -137,13 +137,15 @@
                                 <tr>
                                     <form action="{{route('file-details', $item->id)}}" method="POST">
                                         @csrf
-                                        <td><button type="submit" title="Detail" class="btn btn-success btn-circle" name="file-details" value="details">
-                                            <i class="fas fa-file-excel"></i>
-                                        </button></td>
-                                    </form>
-                                    <td>{{$item->filename}}</td>
-                                    <td class="filedate">{{ date("F j, Y",strtotime($item->created_at))}}</td>
-                                </tr>
+                                        <td>
+                                            <button type="submit" title="Detail" class="btn btn-success btn-circle" name="file-details" value="details">
+                                                <i class="fas fa-file-excel"></i>
+                                            </button>
+                                        </td>
+                                        <td>{{$item->filename}}</td>
+                                        <td class="filedate">{{ date("F j, Y",strtotime($item->created_at))}}</td>
+                                    </form> 
+                                    </tr>
                                 @endforeach
                             </table>
                         </div>
