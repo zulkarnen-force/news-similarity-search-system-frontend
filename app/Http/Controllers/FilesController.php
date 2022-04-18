@@ -23,10 +23,10 @@ class FilesController extends Controller
         }else{
             $files = Files::with(['report'])->where('created_by','=',Auth::user()->id);
         }
-        
-        if(request('search')){ 
+
+        if(request('search')){
             $files->where('files.created_at','LIKE','%'.request('search').'%'); }
-    
+
         return view('contents.files.index',[
             'files' => $files->orderBy('id', 'DESC')->paginate(5)->onEachSide(1)->withQueryString()
         ]);
@@ -43,12 +43,12 @@ class FilesController extends Controller
         $request->validate([
             'files' => 'required|mimes:csv,xlx,xls,xlsx|max:1024'
         ]);
-        if($request->file()) 
+        if($request->file())
         {
             // filename & path
             $fileName = 'Bino_'.time().'.'.$request->file('files')->getClientOriginalExtension();
             $filePath =  $request->file('files')->storeAs("public/excel-data", $fileName);
-            
+
             // Storage::putFile('file/download', $request->file('files'));
             // mapping
             // $headers = (new HeadingRowImport)->toCollection(storage_path().('/app/'.$filePath));
@@ -60,10 +60,10 @@ class FilesController extends Controller
             //     // mapping
             //     $mapping = $keys->combine($values);
             //     $mapping = json_encode($mapping, JSON_PRETTY_PRINT);
-                
+
                 // insert data to database
                 $fileModel = Files::create([
-                    'filename' => $fileName,    
+                    'filename' => $fileName,
                     'created_by' => Auth::user()->id,
                     'path' => "file/download/$fileName",
                     'mapping' => "None" #diganti $mapping apabila sudah dibutuhkan
@@ -83,7 +83,7 @@ class FilesController extends Controller
             //     // mengembalikan karena format upload tidak sesuai dengan keys + values
             //     return redirect()->route('file-index')->with('error','Data Upload Tidak Sesuai format');
             // }
-        } 
+        }
     }
 
     public function ShowAndDestroy(Request $request,$id)
@@ -95,7 +95,7 @@ class FilesController extends Controller
             case 'details':
                 // check apakah report telah berada di redis
                 if(Redis::exists($filename)) {
-                        // langkah sleep karena jika sudah request "Similarity" akan membutuhkan 
+                        // langkah sleep karena jika sudah request "Similarity" akan membutuhkan
                         // sleep(5);
                         $response = Redis::command('lrange', [$filename, -1, -1]);
                         $response = json_decode($response[0]);
@@ -107,18 +107,23 @@ class FilesController extends Controller
                 }
                 break;
 
-            case 'delete':
-                $files = Files::findOrFail($id);
-                $files->delete();
-                return back()->with('success','Files Berhasil Dihapus');
-                break;
+            // case 'delete':
+            //     $files = Files::findOrFail($id);
+            //     $files->delete();
+            //     return back()->with('success','Files Berhasil Dihapus');
+            //     break;
         }
     }
 
-    public function edit($id)
+    public function destroy($id)
     {
-        //
+        $files = Files::findOrFail($id);
+
+        $files->delete();
+
+        return back()->with('success','file Berhasil Dihapus');
     }
+
 
     public function update(Request $request, $id)
     {
@@ -138,13 +143,13 @@ class FilesController extends Controller
     }
 
     public function json_edit(Request $request)
-    {  
+    {
         $filename = $request->input('filename');
         $data = $request->input('data');
         Redis::command('rpush',[$filename,$data]);
         return redirect()->route('file-index')->with('success','Data File Berhasil Diubah');
     }
-    
+
 
     public function download(Request $request, $filename)
     {

@@ -22,7 +22,7 @@
         {{-- alert-errors --}}
         @if ($errors->any() or session()->has('error'))
         <div class="alert alert-danger" role="alert" id="error">
-            @if (session()->has('error'))    
+            @if (session()->has('error'))
                 {{ session('error') }}
             @else
                 Maaf File Harus csv,xlx,xls,xlsx <i class="fas fa-file-csv"></i><i class="far fa-file-excel"></i><br> Maksimal Ukuran File 1 Mb
@@ -45,7 +45,7 @@
                                 <button class="btn btn-outline-primary" id="btn-search" type="submit" id="button-addon2">
                                     <i class="fas fa-filter"></i>
                               </button>
-                            </div>                                
+                            </div>
                         </form>
                     </div>
                     <table class="table table-bordered" id="dataTable" cellspacing="0">
@@ -72,20 +72,24 @@
                                 <a class="btn btn-primary btn-circle" title="Send To View" href="{{route('path',$file->id)}}" name="message" value="path">
                                     <i class="far fa-share-square"></i>
                                 </a>
-                                <button type="submit" class="btn btn-danger btn-circle" title="Delete" name="file-details" value="delete" onclick="return confirm('Are you Sure ?')">
-                                    <i class="fas fa-trash"></i>
-                                </button>  
                             </form>
+                            <form action="{{route('destroy', $file->id)}}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                            <button href="#" type="submit" class="btn btn-danger btn-circle" title="Delete" name="file-details" value="delete" onclick="return confirm('Are you Sure ?')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+
                           </td>
                         </tr>
                         @endforeach
                     </tbody>
                     </table>
-                  </div> 
+                  </div>
                   <p>Halaman {{$files->currentPage()}}</p>
                   <div class="d-flex justify-content-center">
                     {{ $files->links() }}
-                  </div>   
+                  </div>
             </div>
         </div>
         {{-- end table --}}
