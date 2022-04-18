@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/file/download/{filename}', [FilesController::class, 'download'])->name('file.download');
+
 // dashboard
 Route::get('/', [DashboardController::class, 'index'])->name('index');
 // profile
