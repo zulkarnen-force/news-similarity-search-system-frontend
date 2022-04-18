@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Files;
+use Illuminate\Http\Client\Response as ClientResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
 use Maatwebsite\Excel\HeadingRowImport;
 use PhpOption\None;
 use PhpParser\Node\Stmt\Break_;
+use Symfony\Component\VarDumper\VarDumper;
+use Illuminate\Support\Facades\Storage;
 
 class FilesController extends Controller
 {
@@ -43,8 +47,9 @@ class FilesController extends Controller
         {
             // filename & path
             $fileName = 'Bino_'.time().'.'.$request->file('files')->getClientOriginalExtension();
-            $filePath =  $request->file('files')->storeAs('public/excel-data', $fileName);
-
+            $filePath =  $request->file('files')->storeAs("public/excel-data", $fileName);
+            
+            // Storage::putFile('file/download', $request->file('files'));
             // mapping
             // $headers = (new HeadingRowImport)->toCollection(storage_path().('/app/'.$filePath));
             // $keys = $headers[0][0];
@@ -60,7 +65,7 @@ class FilesController extends Controller
                 $fileModel = Files::create([
                     'filename' => $fileName,    
                     'created_by' => Auth::user()->id,
-                    'path' => $filePath,
+                    'path' => "file/download/$fileName",
                     'mapping' => "None" #diganti $mapping apabila sudah dibutuhkan
                 ]);
 
@@ -84,15 +89,18 @@ class FilesController extends Controller
     public function ShowAndDestroy(Request $request,$id)
     {
         $files = Files::find($id);
+        $filename = $files->filename;
+
         switch ($request->input('file-details')) {
             case 'details':
                 // check apakah report telah berada di redis
-                if(Redis::exists($files->filename)) {
+                if(Redis::exists($filename)) {
                         // langkah sleep karena jika sudah request "Similarity" akan membutuhkan 
-                        sleep(5);
-                        $response = Redis::command('lrange', [$files->filename, -1, -1]);
+                        // sleep(5);
+                        $response = Redis::command('lrange', [$filename, -1, -1]);
                         $response = json_decode($response[0]);
                         $response = json_encode($response);
+                        // var_dump(($response));
                         return view('contents.files.details',compact('files','response'));
                 } else {
                         return back()->with('error','Data Belum Tersedia');
@@ -117,7 +125,7 @@ class FilesController extends Controller
         //
     }
 
-    public function path(Request $request,$id)
+    public function path(Request $request, $id)
     {
         $path = Files::find($id);
         // send to Rabbitmq
@@ -135,5 +143,12 @@ class FilesController extends Controller
         $data = $request->input('data');
         Redis::command('rpush',[$filename,$data]);
         return redirect()->route('file-index')->with('success','Data File Berhasil Diubah');
+    }
+    
+
+    public function download(Request $request, $filename)
+    {
+        ob_end_clean();
+        return response()->download("../storage/app/public/excel-data/$filename");
     }
 }
