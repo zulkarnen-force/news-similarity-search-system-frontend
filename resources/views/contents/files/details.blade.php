@@ -9,23 +9,61 @@
         var socket = io.connect('http://127.0.0.1:5000');
 
         socket.on('connect', function () {
-            // console.log('User has connected!');
+
         });
 
-        socket.on('message', function (msg) {
-            console.log(msg);
-        });
+        $('#sendbutton').on('hover', function () {
+            console.info(showcell.value)
+        })
 
-        $('#sendbutton').on('click', function () {
-            socket.send($('#cell').val());
-            $('#myMessage').val('');
-        });
+        $('#sendbutton').on('click', function (e) {
+               
+            e.preventDefault()
+                data = {
+                    text: showcell.value,
+                    column_name: columnName,
+                    filename,
+                    similarity: $("#similiarityValue").val()                   
+                }
+                
+                console.info('data sent', data)
+                socket.emit('request', data);
+                $('#myMessage').val('');
+
+            });
+
+
+        socket.on('response', function (message) {
+
+            
+            const tbody = document.getElementsByTagName('tbody')
+            const tableRow = tbody[0].getElementsByTagName('tr')
+            for (let i = 0; i < tableRow.length; i++) {
+                const element = tableRow[i].getAttribute('data-y');
+                console.info(parseInt(element), typeof parseInt(element))
+
+                console.error(message.rows.includes(parseInt(element)))
+
+                if (message.rows.includes(parseInt(element))) {
+                    tableRow[i].style.background = 'yellow'
+                } 
+            }
+    
+
+        })
+
+
+        socket.on('error', function (message) {
+            
+            console.error("Error", message)
+        
+        })
+        
 
     });
 </script>
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Upload File &raquo; Detail &raquo; {{ $files->filename}}</h1>
@@ -49,6 +87,7 @@
 
                             {{-- input search for similiar sentence "hanya display" yang tidak ada hubungan dengan web socket--}}
                             <input type="text" id="myMessage" placeholder="Look For Similar..." disabled>
+                            <input type="number" value="0.4" step="0.01" end="1" id="similiarityValue">
                             <button class="btn btn-outline-primary" id="sendbutton" name="file-details" value="details">
                                 <i class="far fa-paper-plane"></i>
                             </button>
@@ -56,7 +95,7 @@
                     </form>
                     </div>
                 {{-- input untuk mengambil value, guna memberikan value ke javascript --}}
-                <input type="text" id="json" value="{{$response}}" hidden>
+                <input type="text" id="json" value="{{ $response }}" hidden>
 
                 {{-- table spreadsheet dari jspreadsheet Ce --}}
                 <div id="spreadsheet"></div>
@@ -105,10 +144,11 @@
 </div>
 <script>
     var filename = document.getElementById("filename").value;
-    var json = document.getElementById("json").value;
+    var jsonElement = document.getElementById("json").value;
     var getcell = document.getElementById('cell')
     var showcell = document.getElementById('myMessage')
-    var json = JSON.parse(json);
+    var jsonData = JSON.parse(jsonElement);
+    var columnName = "";
 
     // lisensi JSpreadSheet
     jspreadsheet.setLicense('OWEwNjgyYTI4OTM0OGYyZDRkYTA2M2EyYzY1ZGI3MjE0ZGNlNjE3YTkxNjM1YjZhMGEwODhmYWYxMzM0MGIzZWU0NmFjMGU5MjRlYmI2MmM5N2JmODljYTc0NjliOGE1NjU4MzIwZmU3MDBlYmFlOTVlMGVlNzNiZTUxNzIxYmQsZXlKdVlXMWxJam9pYW05eVpHRnVJR2x6ZEdseGJHRnNJaXdpWkdGMFpTSTZNVFkwTlRFME1qUXdNQ3dpWkc5dFlXbHVJanBiSWpFeU55NHdMakF1TVNJc0lteHZZMkZzYUc5emRDSmRMQ0p3YkdGdUlqb3dMQ0p6WTI5d1pTSTZXeUoyTnlJc0luWTRJbDE5');
@@ -128,12 +168,17 @@
 
         showcell.value = cellvalue
         getcell.value = column.name + ' ; ' + showcell.value + ' ; ' + filename
+        columnName = column.name;
     };
 
+    let changeStyle = (worksheet, newValue={ A3:'font-weight: bold;', B3:'background-color: yellow;' }, old="") => {
+        worksheet[0].setStyle(newValue)
+    }
+
     // jspreadsheet
-    jspreadsheet(document.getElementById('spreadsheet'), {
+    var w = jspreadsheet(document.getElementById('spreadsheet'), {
         worksheets: [{
-            json: json,
+            data: jsonData,
             tableOverflow:true,
             tableHeight:'550px',
             search : true,
@@ -161,10 +206,35 @@
                 {type:'text', width:100, title:'location_name' },
                 {type:'text', width:100, title:'flag_headline' },
                 {type:'text', width:100, title:'Similarity' }
-            ]
+            ],
+            style:{
+                A1:'background-color: orange;',
+                B1:'background-color: orange;',
+            },
             }],
             onselection: selectionActive,
+            onchangestyle:function (workbook, newValue, oldValue) {
+                console.info(workbook, newValue, oldValue)
+            },
+            // onselection: function (worksheet, px, py, ux, uy, origin) {
+               
+                
+            //     const tbody = document.getElementsByTagName('tbody')
+            //     const tr = tbody[0].getElementsByTagName('tr')
+            //     for (let index = 0; index < tr.length; index++) {
+            //         const element = tr[index].getAttribute('data-y');
+            //         console.info(parseInt(element), typeof parseInt(element))
+
+            //         console.error([1, 2, 3, 4].includes(parseInt(element)))
+            //     }
+      
+            // }
     });
+
+
+    $("#sendbutton").click(function() {
+        console.log(w[0])
+    })
 
     $('#save').click(function(){
         xsl(document.getElementById('spreadsheet'), {
