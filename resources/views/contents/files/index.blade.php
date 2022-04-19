@@ -65,8 +65,7 @@
                         <td>{{ $file->created_at->diffForHumans()}}</td>
                           <td>
                             <form action="{{route('file-details', $file->id)}}" method="POST">
-                               @csrf
-                                @method('GET')
+                                @csrf
                                 <button type="submit" title="Detail" class="btn btn-success btn-circle" name="file-details" value="details">
                                     <i class="fas fa-file-excel"></i>
                                 </button>
