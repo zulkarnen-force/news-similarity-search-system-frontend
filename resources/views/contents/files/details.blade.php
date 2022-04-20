@@ -27,7 +27,7 @@
                     similarity: $("#similiarityValue").val()                   
                 }
                 
-                console.info('data sent', data)
+                console.info('Request Data: ', data)
                 socket.emit('request', data);
                 $('#myMessage').val('');
 
@@ -38,6 +38,11 @@
 
             if (localStorage.getItem('style')) {
                 w[0].resetStyle(JSON.parse(localStorage.getItem('style')))
+            }
+            
+            if (!response.result) {
+                alert('No Result')
+                return
             }
            
             for (const cell of response.cell) {
