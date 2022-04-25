@@ -61,12 +61,13 @@ class FilesController extends Controller
             //     $mapping = $keys->combine($values);
             //     $mapping = json_encode($mapping, JSON_PRETTY_PRINT);
 
+            $heading = (new HeadingRowImport)->toArray($request->file('files'));
                 // insert data to database
                 $fileModel = Files::create([
                     'filename' => $fileName,
                     'created_by' => Auth::user()->id,
                     'path' => "file/download/$fileName",
-                    'mapping' => "None" #diganti $mapping apabila sudah dibutuhkan
+                    'mapping' => $heading[0][0] #diganti $mapping apabila sudah dibutuhkan
                 ]);
 
                 // save to db
