@@ -61,13 +61,20 @@ class FilesController extends Controller
             //     $mapping = $keys->combine($values);
             //     $mapping = json_encode($mapping, JSON_PRETTY_PRINT);
 
+
             $heading = (new HeadingRowImport)->toArray($request->file('files'));
+            $columnName = $heading[0][0];
+            $testType = ['text', 'number'];
+            $cb =  fn(string $column, $type) : array =>  ["title" => $column, "type"=>$type ? $type : 'text'];
+            
+            $t = array_map($cb,  $columnName, $testType);
+            // return view('contents.files.column', compact('columnName'));
                 // insert data to database
                 $fileModel = Files::create([
                     'filename' => $fileName,
                     'created_by' => Auth::user()->id,
                     'path' => "file/download/$fileName",
-                    'mapping' => $heading[0][0] #diganti $mapping apabila sudah dibutuhkan
+                    'mapping' => $t #diganti $mapping apabila sudah dibutuhkan
                 ]);
 
                 // save to db
@@ -79,7 +86,7 @@ class FilesController extends Controller
                 $queue->pushRaw($fileModel, 'files');
 
                 // kembalikan ke halaman 'file-index'
-                return redirect()->route('file-index')->with('success','Data Berhasil disimpan');
+                return redirect()->route('file-index')->with(['success'=>'Data Berhasil disimpan', 'data' => $columnName]);
             // }else{
             //     // mengembalikan karena format upload tidak sesuai dengan keys + values
             //     return redirect()->route('file-index')->with('error','Data Upload Tidak Sesuai format');
@@ -128,7 +135,7 @@ class FilesController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        return response('hello world'.$id);
     }
 
     public function path(Request $request, $id)
