@@ -19,16 +19,16 @@
         $('#sendbutton').on('click', function (e) {
                
             e.preventDefault()
-                data = {
+                requestFormat = {
                     text: showcell.value,
-                    column_name: columnName,
+                    columnName,
                     cell: $("#get-column").val().split(':')[0],
                     filename,
                     similarity: $("#similiarityValue").val()                   
                 }
                 
-                console.info('Request Data: ', data)
-                socket.emit('request', data);
+                console.info('Request Data: ', requestFormat)
+                socket.emit('request', requestFormat);
                 $('#myMessage').val('');
 
             });
@@ -39,18 +39,19 @@
             if (localStorage.getItem('style')) {
                 w[0].resetStyle(JSON.parse(localStorage.getItem('style')))
             }
-            
-            if (!response.result) {
-                alert('No Result')
-                return
-            }
            
             for (const cell of response.cell) {
                 w[0].setStyle(cell, 'background-color', 'yellow')
             }
 
-            localStorage.setItem('style', JSON.stringify(response.cell))
 
+            if (!response.result) {
+                alert('No Result')
+                return
+            }
+            
+            localStorage.setItem('style', JSON.stringify(response.cell))
+        
 
         })
 
@@ -145,15 +146,26 @@
     {{-- end table --}}
 </div>
 <script>
+    const parseJSONExcel = (redis) => {
+        const redisParser = JSON.parse(redis)
+        const excelData = redisParser.data
+        const mapping = redisParser.mapping
+        console.info(JSON.parse(redis))
+        return {excelData, mapping}
+    }
+
     var filename = document.getElementById("filename").value;
-    var jsonElement = document.getElementById("json").value;
+    var jsonValue = document.getElementById("json").value;
     var getcell = document.getElementById('cell')
     var showcell = document.getElementById('myMessage')
-    var jsonData = JSON.parse(jsonElement);
+    var jsonData = JSON.parse(jsonValue);
+    const {excelData, mapping} = parseJSONExcel(jsonValue)
+    console.error(jsonValue)
+    
     var columnName = "";
 
     // lisensi JSpreadSheet
-    jspreadsheet.setLicense('NmNhYmY2ZGEwNDNkMDQxZDkwOTVkYzE3ZDhjMDhkNTEyOGNhNjRkNWQ1Zjg1ZTkxNTJhNTRkY2M5MjMwYmEyZmEzZGFiNDMzZGQ3NDhiYjg1Y2UyZDQ5OTNiZjU3M2IzZGJmYzFlODJkMDUzNzI5NDE3NzQwODRhNTAzOTM1NzEsZXlKdVlXMWxJam9pZW5Wc2EyRnlibVZ1SWl3aVpHRjBaU0k2TVRZMU1qa3hORGd3TUN3aVpHOXRZV2x1SWpwYklpSXNJbXh2WTJGc2FHOXpkQ0pkTENKd2JHRnVJam93TENKelkyOXdaU0k2V3lKMk55SXNJblk0SWwxOQ==');
+    jspreadsheet.setLicense('OTFhOGFkOWYyMmQ2MmM3NmMxMWMzODdmMjM5MDRhOTI2ZGE5MzA3ODA1YzY5OTAyNDY0NTNiZmI1OTUxZDNkNDU3NTBjMzc2NmE1YmY0MTEzM2QyZDY1ZmZiZjA5ODZlNDg1NTNlNmI5ODEzYThhZmRmNGZlNzNjZWY4Nzc2MjAsZXlKdVlXMWxJam9pZW5Wc2EyRnlibVZ1SWl3aVpHRjBaU0k2TVRZMU16UXpNekl3TUN3aVpHOXRZV2x1SWpwYklqRXlOeTR3TGpBdU1TSXNJbXh2WTJGc2FHOXpkQ0pkTENKd2JHRnVJam93TENKelkyOXdaU0k2V3lKMk55SXNJblk0SWwxOQ==');
 
     var selectionActive = function(instance, x1, y1, x2, y2, origin) 
     {
@@ -177,36 +189,38 @@
     // jspreadsheet
     var w = jspreadsheet(document.getElementById('spreadsheet'), {
         worksheets: [{
-            data: jsonData,
+            data: excelData,
             tableOverflow:true,
             tableHeight:'550px',
             search : true,
             csvFileName: "Bino",
-            columns: [
-                {type:'text', width:100, title:'no'},
-                {type:'text', width:100, title:'report_id'},
-                {type:'text', width:100, title:'published_date'},
-                {type:'text', width:100, title:'newstrend'},
-                {type:'text', width:100, title:'title'},
-                {type:'text', width:100, title:'summary'},
-                {type:'text', width:100, title:'content'},
-                {type:'text', width:100, title:'service_type'},
-                {type:'text', width:100, title:'sentiment'},
-                {type:'text', width:100, title:'url_news_page'},
-                {type:'text', width:100, title:'category'},
-                {type:'text', width:100, title:'media_name'},
-                {type:'text', width:100, title:'media_type'},
-                {type:'text', width:100, title:'reporter_name'},
-                {type:'text', width:100, title:'pr_value'},
-                {type:'text', width:100, title:'company_name'},
-                {type:'text', width:100, title:'ad_value'},
-                {type:'text', width:100, title:'flag_color'},
-                {type:'text', width:100, title:'size_print'},
-                {type:'text', width:100, title:'article_type' },
-                {type:'text', width:100, title:'location_name' },
-                {type:'text', width:100, title:'flag_headline' },
-                {type:'text', width:100, title:'Similarity' }
-            ],
+            columns: mapping
+            // [
+            //     {type:'text', width:100, title:'no'},
+            //     {type:'text', width:100, title:'report_id'},
+            //     {type:'text', width:100, title:'published_date'},
+            //     {type:'text', width:100, title:'newstrend'},
+            //     {type:'text', width:100, title:'title'},
+            //     {type:'text', width:100, title:'summary'},
+            //     {type:'text', width:100, title:'content'},
+            //     {type:'text', width:100, title:'service_type'},
+            //     {type:'text', width:100, title:'sentiment'},
+            //     {type:'text', width:100, title:'url_news_page'},
+            //     {type:'text', width:100, title:'category'},
+            //     {type:'text', width:100, title:'media_name'},
+            //     {type:'text', width:100, title:'media_type'},
+            //     {type:'text', width:100, title:'reporter_name'},
+            //     {type:'text', width:100, title:'pr_value'},
+            //     {type:'text', width:100, title:'company_name'},
+            //     {type:'text', width:100, title:'ad_value'},
+            //     {type:'text', width:100, title:'flag_color'},
+            //     {type:'text', width:100, title:'size_print'},
+            //     {type:'text', width:100, title:'article_type' },
+            //     {type:'text', width:100, title:'location_name' },
+            //     {type:'text', width:100, title:'flag_headline' },
+            //     {type:'text', width:100, title:'Similarity' }
+            // ]
+            ,
             }],
             onselection: selectionActive,
 
