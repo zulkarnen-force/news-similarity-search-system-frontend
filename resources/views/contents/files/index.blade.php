@@ -2,6 +2,12 @@
 @section('title','Upload Files')
 
 @section('content')
+<input type="text" name="mapping" id="mapping" value=<?php echo json_encode(session('mapping')); ?>>
+    <?php 
+        $data=serialize(session('mapping')); 
+        $encoded=htmlentities($data);
+            
+        ?>
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
@@ -17,6 +23,89 @@
         <div class="alert alert-success" role="alert" id="success">
             {{ session('success') }}
         </div>
+        @endif
+
+        @if (session()->has('mapping'))
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Column Type</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            <form action="{{ route('update-column', session('id')) }}" method="post">
+            <div class="options col" id="options">
+                {{ csrf_field() }}
+                @method('PUT')
+                @foreach (session('mapping') as $map )
+                <div class="row">
+                    <label for="optionType">{{ $map['title'] }}</label>
+                    <select id="optionType" name="optionType">
+                        <option value="calendar">text</option>
+                        <option value="number">number</option>
+                        <option value="text">calendar</option>
+                        <option value="text">numeric</option>
+                    </select>
+                </div>
+                @endforeach
+            </div>
+
+            
+            <input id="json" type="text" name="columnNames" hidden>
+
+               
+        <button type="submit" class="btn btn-success" id="btn-save">Save</button>
+
+    </form>
+
+    
+
+      
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="save-changes" class="btn btn-primary">Save changes</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <script>
+        
+        const update = (arrOld, arrNew, key) => {
+            arrOld.map((v, i) => {
+                v[key] = arrNew[i]
+            });
+            return arrOld}
+        
+        var mappingHTML = document.getElementById("mapping").value
+        const titleAndType = JSON.parse(mappingHTML)
+        console.info(titleAndType)
+        // mapping
+        
+        document.getElementById('btn-save').addEventListener('click', function(e) {
+            let arr = []
+            $('#options option:selected').each(function() {
+                console.error($(this).val())
+                arr.push($(this).val())
+        })
+        $("#json").val(JSON.stringify(update(titleAndType, arr, 'type')));
+
+    })
+    </script>
+           <script>
+                   window.onload = function () {
+                       OpenBootstrapPopup();
+                    };
+                    function OpenBootstrapPopup() {
+                        $("#exampleModalLong").modal('show');
+                    }
+            </script>
+
         @endif
 
         {{-- alert-errors --}}
