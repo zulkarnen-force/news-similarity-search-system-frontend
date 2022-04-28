@@ -67,14 +67,14 @@ class FilesController extends Controller
             $testType = ['text', 'number'];
             $cb =  fn(string $column, $type) : array =>  ["title" => $column, "type"=>$type ? $type : 'text'];
             
-            $t = array_map($cb,  $columnName, $testType);
+            $mapping = array_map($cb,  $columnName, $testType);
             // return view('contents.files.column', compact('columnName'));
                 // insert data to database
                 $fileModel = Files::create([
                     'filename' => $fileName,
                     'created_by' => Auth::user()->id,
                     'path' => "file/download/$fileName",
-                    'mapping' => $t #diganti $mapping apabila sudah dibutuhkan
+                    'mapping' => $mapping #diganti $mapping apabila sudah dibutuhkan
                 ]);
 
                 // save to db
@@ -84,9 +84,10 @@ class FilesController extends Controller
                 $queueManager = app('queue');
                 $queue = $queueManager->connection('rabbitmq');
                 $queue->pushRaw($fileModel, 'files');
+                $id = Files::where('filename', $fileName)->first()->id;
 
                 // kembalikan ke halaman 'file-index'
-                return redirect()->route('file-index')->with(['success'=>'Data Berhasil disimpan', 'data' => $columnName]);
+                return redirect()->route('file-index')->with(['success'=>'Data Berhasil disimpan', 'mapping' => $mapping, 'id' => $id]);
             // }else{
             //     // mengembalikan karena format upload tidak sesuai dengan keys + values
             //     return redirect()->route('file-index')->with('error','Data Upload Tidak Sesuai format');
@@ -135,7 +136,18 @@ class FilesController extends Controller
 
     public function update(Request $request, $id)
     {
-        return response('hello world'.$id);
+       
+        $file = Files::find($id);
+        $file->mapping = json_decode($request->get('columnNames'));
+ 
+        $file->save();  
+        $queueManager = app('queue');
+        $queue = $queueManager->connection('rabbitmq');
+        $queue->pushRaw($file, 'files');
+        // return back()->with('success','Data Telah dikirim ke Message Broker');
+        return redirect()->route('file-index')->with('success','Data Telah dikirim ke Message Broker');
+        // return redirect()->route('file-index')->with(['success'=>'Data Berhasil disimpan']);
+
     }
 
     public function path(Request $request, $id)
