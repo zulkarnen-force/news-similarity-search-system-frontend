@@ -45,6 +45,7 @@ Route::middleware(['auth:sanctum', 'verified','admin'])->group(function(){
 
 // upload file excel
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
+    Route::put('/file/{id}', [FilesController::class, 'update'])->name('update-column');
     Route::get('/file',[FilesController::class, 'index'])->name('file-index');
     Route::post('/file',[FilesController::class, 'store'])->name('file-upload');
     Route::post('/file/edit',[FilesController::class, 'json_edit'])->name('json_edit');
