@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/file/download/{filename}', [FilesController::class, 'download'])->name('file.download');
+
 // dashboard
 Route::get('/', [DashboardController::class, 'index'])->name('index');
 // profile
@@ -43,12 +45,13 @@ Route::middleware(['auth:sanctum', 'verified','admin'])->group(function(){
 
 // upload file excel
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
+    Route::put('/file/{id}', [FilesController::class, 'update'])->name('update-column');
     Route::get('/file',[FilesController::class, 'index'])->name('file-index');
     Route::post('/file',[FilesController::class, 'store'])->name('file-upload');
     Route::post('/file/edit',[FilesController::class, 'json_edit'])->name('json_edit');
     Route::get('/path/{id}',[FilesController::class,'path'])->name('path');
     Route::post('/file-details/{id}',[FilesController::class, 'ShowAndDestroy'])->name('file-details');
-    Route::delete('/file-details/{id}',[FilesController::class,'ShowAndDestroy']);
+    Route::delete('/file-details/{id}',[FilesController::class,'destroy'])->name('destroy');
     Route::post('/similarity/{id}',[FilesController::class,'similarity'])->name('similarity');
 });
 

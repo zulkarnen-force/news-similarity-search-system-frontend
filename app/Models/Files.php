@@ -10,6 +10,10 @@ class Files extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        "mapping" => 'json'
+    ];
+    
     protected $fillable = [
         'filename',
         'path',

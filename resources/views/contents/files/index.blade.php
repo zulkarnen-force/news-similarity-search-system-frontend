@@ -2,6 +2,8 @@
 @section('title','Upload Files')
 
 @section('content')
+<input type="text" name="mapping" id="mapping" value=<?php echo json_encode(session('mapping')); ?> hidden>
+
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
@@ -19,10 +21,98 @@
         </div>
         @endif
 
+        @if (session()->has('mapping'))
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Column Type</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+            <form action="{{ route('update-column', session('id')) }}" method="post">
+                {{ csrf_field() }}
+                @method('PUT')
+                @foreach (session('mapping') as $map )
+                
+                <div class="row" id="options">
+
+                    <div class="col-md">
+                        <label for="optionType">{{ $map['title'] }}</label>
+                    </div>
+
+                    <div class="col">
+                        <select id="optionType" name="optionType">
+                            <option value="text">text</option>
+                            <option value="number">number</option>
+                            <option value="calendar">calendar</option>
+                            <option value="numeric">numeric</option>
+                        </select>
+                    </div>
+                    
+                </div> <!--  row -->
+                @endforeach 
+
+                
+                <input id="json" type="text" name="columnNames" hidden>
+
+                <div class="modal-footer">   
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" id="btn-save" class="btn btn-primary">Save changes</button>   
+                </div>
+            </form>
+
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <script>
+        
+        const changeType = (titleAndTypeFormat, newType) => {
+
+            titleAndTypeFormat.map((v, i) => {
+                v['type'] = newType[i]
+            });
+            return titleAndTypeFormat
+
+        }
+        
+        let mapping = document.getElementById("mapping").value
+        const titleAndType = JSON.parse(mapping)
+        
+        document.getElementById('btn-save').addEventListener('click', function(e) {
+            let arr = []
+            $('#options option:selected').each(function() {
+                console.error($(this).val())
+                arr.push($(this).val())
+            })
+        
+            $("#json").val(JSON.stringify(changeType(titleAndType, arr, 'type')));
+
+        })
+        
+    </script>
+           <script>
+                   window.onload = function () {
+                       OpenBootstrapPopup();
+                    };
+                    function OpenBootstrapPopup() {
+                        $("#exampleModalLong").modal('show');
+                    }
+            </script>
+
+        @endif
+
         {{-- alert-errors --}}
         @if ($errors->any() or session()->has('error'))
         <div class="alert alert-danger" role="alert" id="error">
-            @if (session()->has('error'))    
+            @if (session()->has('error'))
                 {{ session('error') }}
             @else
                 Maaf File Harus csv,xlx,xls,xlsx <i class="fas fa-file-csv"></i><i class="far fa-file-excel"></i><br> Maksimal Ukuran File 1 Mb
@@ -45,7 +135,7 @@
                                 <button class="btn btn-outline-primary" id="btn-search" type="submit" id="button-addon2">
                                     <i class="fas fa-filter"></i>
                               </button>
-                            </div>                                
+                            </div>
                         </form>
                     </div>
                     <table class="table table-bordered" id="dataTable" cellspacing="0">
@@ -72,20 +162,24 @@
                                 <a class="btn btn-primary btn-circle" title="Send To View" href="{{route('path',$file->id)}}" name="message" value="path">
                                     <i class="far fa-share-square"></i>
                                 </a>
-                                <button type="submit" class="btn btn-danger btn-circle" title="Delete" name="file-details" value="delete" onclick="return confirm('Are you Sure ?')">
-                                    <i class="fas fa-trash"></i>
-                                </button>  
+                            </form>
+                            <form action="{{route('file-details', $file->id)}}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                            <button href="#" type="submit" class="btn btn-danger btn-circle" title="Delete" name="file-details" value="delete" onclick="return confirm('Are you Sure ?')">
+                                <i class="fas fa-trash"></i>
+                            </button>
                             </form>
                           </td>
                         </tr>
                         @endforeach
                     </tbody>
                     </table>
-                  </div> 
+                  </div>
                   <p>Halaman {{$files->currentPage()}}</p>
                   <div class="d-flex justify-content-center">
                     {{ $files->links() }}
-                  </div>   
+                  </div>
             </div>
         </div>
         {{-- end table --}}
