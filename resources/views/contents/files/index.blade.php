@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="col">
-                        <select id="optionType" name="optionType">
+                        <select id="optionType" class="options" name="optionType">
                             <option value="text">text</option>
                             <option value="number">number</option>
                             <option value="calendar">calendar</option>
@@ -88,11 +88,11 @@
         
         document.getElementById('btn-save').addEventListener('click', function(e) {
             let arr = []
-            $('#options option:selected').each(function() {
+            $('.options option:selected').each(function() {
                 console.error($(this).val())
                 arr.push($(this).val())
             })
-        
+   
             $("#json").val(JSON.stringify(changeType(titleAndType, arr, 'type')));
 
         })

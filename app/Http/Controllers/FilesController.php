@@ -136,7 +136,6 @@ class FilesController extends Controller
 
     public function update(Request $request, $id)
     {
-       
         $file = Files::find($id);
         $file->mapping = json_decode($request->get('columnNames'));
  
