@@ -3,16 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Files;
-use Illuminate\Http\Client\Response as ClientResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
 use Maatwebsite\Excel\HeadingRowImport;
-use PhpOption\None;
-use PhpParser\Node\Stmt\Break_;
-use Symfony\Component\VarDumper\VarDumper;
-use Illuminate\Support\Facades\Storage;
 
 class FilesController extends Controller
 {
@@ -48,20 +43,6 @@ class FilesController extends Controller
             // filename & path
             $fileName = 'Bino_'.time().'.'.$request->file('files')->getClientOriginalExtension();
             $filePath =  $request->file('files')->storeAs("public/excel-data", $fileName);
-
-            // Storage::putFile('file/download', $request->file('files'));
-            // mapping
-            // $headers = (new HeadingRowImport)->toCollection(storage_path().('/app/'.$filePath));
-            // $keys = $headers[0][0];
-            // $values = collect(["string","date","string","text","text","text","string","string","string","string","string","string","string","number","string","number","string","string","string","string","string"]);
-
-            // // check apakah format upload sesuai
-            // if(count($keys) == count($values)){
-            //     // mapping
-            //     $mapping = $keys->combine($values);
-            //     $mapping = json_encode($mapping, JSON_PRETTY_PRINT);
-
-
             $heading = (new HeadingRowImport)->toArray($request->file('files'));
             $columnName = $heading[0][0];
             $testType = ['text', 'number'];
@@ -99,18 +80,15 @@ class FilesController extends Controller
     {
         $files = Files::find($id);
         $filename = $files->filename;
-
+        $mapping = json_encode($files['mapping']);
         switch ($request->input('file-details')) {
             case 'details':
                 // check apakah report telah berada di redis
                 if(Redis::exists($filename)) {
-                        // langkah sleep karena jika sudah request "Similarity" akan membutuhkan
-                        // sleep(5);
                         $response = Redis::command('lrange', [$filename, -1, -1]);
                         $response = json_decode($response[0]);
                         $response = json_encode($response);
-                        // var_dump(($response));
-                        return view('contents.files.details',compact('files','response'));
+                        return view('contents.files.details',compact('files','response', 'mapping'));
                 } else {
                         return back()->with('error','Data Belum Tersedia');
                 }
@@ -137,9 +115,9 @@ class FilesController extends Controller
     public function update(Request $request, $id)
     {
         $file = Files::find($id);
-        $file->mapping = json_decode($request->get('columnNames'));
+        $file->update(['mapping' => json_decode($request->get('columnNames'))]);
  
-        $file->save();  
+        // $file->save();  
         $queueManager = app('queue');
         $queue = $queueManager->connection('rabbitmq');
         $queue->pushRaw($file, 'files');

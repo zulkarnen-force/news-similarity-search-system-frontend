@@ -35,7 +35,8 @@
 
 
         socket.on('response', function (response) {
-
+            
+            console.info(response)
             if (localStorage.getItem('style')) {
                 w[0].resetStyle(JSON.parse(localStorage.getItem('style')))
             }
@@ -52,7 +53,6 @@
             
             localStorage.setItem('style', JSON.stringify(response.cell))
         
-
         })
 
 
@@ -99,6 +99,7 @@
                     </div>
                 {{-- input untuk mengambil value, guna memberikan value ke javascript --}}
                 <input type="text" id="json" value="{{ $response }}" hidden>
+                <input type="text" id="mapping" value="{{ $mapping }}" hidden>
 
                 {{-- table spreadsheet dari jspreadsheet Ce --}}
                 <div id="spreadsheet"></div>
@@ -146,22 +147,12 @@
     {{-- end table --}}
 </div>
 <script>
-    const parseJSONExcel = (redis) => {
-        const redisParser = JSON.parse(redis)
-        const excelData = redisParser.data
-        const mapping = redisParser.mapping
-        console.info(JSON.parse(redis))
-        return {excelData, mapping}
-    }
-
     var filename = document.getElementById("filename").value;
     var jsonValue = document.getElementById("json").value;
+    var mapping = $("#mapping").val();
     var getcell = document.getElementById('cell')
     var showcell = document.getElementById('myMessage')
     var jsonData = JSON.parse(jsonValue);
-    const {excelData, mapping} = parseJSONExcel(jsonValue)
-    console.error(jsonValue)
-    
     var columnName = "";
 
     // lisensi JSpreadSheet
@@ -189,43 +180,18 @@
     // jspreadsheet
     var w = jspreadsheet(document.getElementById('spreadsheet'), {
         worksheets: [{
-            data: excelData,
+            data: JSON.parse(jsonValue),
             tableOverflow:true,
             tableHeight:'550px',
             search : true,
             csvFileName: "Bino",
-            columns: mapping
-            // [
-            //     {type:'text', width:100, title:'no'},
-            //     {type:'text', width:100, title:'report_id'},
-            //     {type:'text', width:100, title:'published_date'},
-            //     {type:'text', width:100, title:'newstrend'},
-            //     {type:'text', width:100, title:'title'},
-            //     {type:'text', width:100, title:'summary'},
-            //     {type:'text', width:100, title:'content'},
-            //     {type:'text', width:100, title:'service_type'},
-            //     {type:'text', width:100, title:'sentiment'},
-            //     {type:'text', width:100, title:'url_news_page'},
-            //     {type:'text', width:100, title:'category'},
-            //     {type:'text', width:100, title:'media_name'},
-            //     {type:'text', width:100, title:'media_type'},
-            //     {type:'text', width:100, title:'reporter_name'},
-            //     {type:'text', width:100, title:'pr_value'},
-            //     {type:'text', width:100, title:'company_name'},
-            //     {type:'text', width:100, title:'ad_value'},
-            //     {type:'text', width:100, title:'flag_color'},
-            //     {type:'text', width:100, title:'size_print'},
-            //     {type:'text', width:100, title:'article_type' },
-            //     {type:'text', width:100, title:'location_name' },
-            //     {type:'text', width:100, title:'flag_headline' },
-            //     {type:'text', width:100, title:'Similarity' }
-            // ]
-            ,
+            columns: JSON.parse(mapping)
             }],
             onselection: selectionActive,
-
     });
 
+
+    
 
     $("#sendbutton").click(function() {
         
