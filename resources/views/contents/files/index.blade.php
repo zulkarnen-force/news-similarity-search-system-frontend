@@ -51,7 +51,6 @@
                             <option value="text">text</option>
                             <option value="number">number</option>
                             <option value="calendar">calendar</option>
-                            <option value="numeric">numeric</option>
                         </select>
                     </div>
                     

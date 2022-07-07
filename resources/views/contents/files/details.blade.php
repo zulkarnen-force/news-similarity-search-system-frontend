@@ -7,15 +7,7 @@
     $(document).ready(function () {
 
         var socket = io.connect('http://127.0.0.1:5000');
-
-        socket.on('connect', function () {
-
-        });
-
-        $('#sendbutton').on('hover', function () {
-            console.info(showcell.value)
-        })
-
+       
         $('#sendbutton').on('click', function (e) {
                
             e.preventDefault()
@@ -27,24 +19,27 @@
                     similarity: $("#similiarityValue").val()                   
                 }
                 
-                console.info('Request Data: ', requestFormat)
                 socket.emit('request', requestFormat);
                 $('#myMessage').val('');
 
             });
 
 
-        socket.on('response', function (response) {
-            
-            console.info(response)
+        function resetStyle(){
             if (localStorage.getItem('style')) {
                 w[0].resetStyle(JSON.parse(localStorage.getItem('style')))
             }
+        }
+
+
+        socket.on('response', function (response) {
+            
+            const cells = response.cell;
+            resetStyle();
            
-            for (const cell of response.cell) {
+            for (const cell of cells) {
                 w[0].setStyle(cell, 'background-color', 'yellow')
             }
-
 
             if (!response.result) {
                 alert('No Result')
@@ -55,14 +50,12 @@
         
         })
 
-
         socket.on('error', function (error) {
             
             console.error(error)
         
         })
         
-    
     });
 </script>
 <!-- Begin Page Content -->
@@ -174,6 +167,8 @@
         showcell.value = cellvalue
         getcell.value = column.name + ' ; ' + showcell.value + ' ; ' + filename
         columnName = column.name;
+
+        console.log(JSON.parse(mapping))
         
     };
 
@@ -189,13 +184,6 @@
             }],
             onselection: selectionActive,
     });
-
-
-    
-
-    $("#sendbutton").click(function() {
-        
-    })
 
     $('#save').click(function(){
         xsl(document.getElementById('spreadsheet'), {
