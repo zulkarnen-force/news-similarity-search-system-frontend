@@ -162,7 +162,7 @@
                                     <i class="far fa-share-square"></i>
                                 </a>
                             </form>
-                            <form action="{{route('file-details', $file->id)}}" method="POST">
+                            <form action="{{route('file-destroy', $file->id)}}" method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
                             <button href="#" type="submit" class="btn btn-danger btn-circle" title="Delete" name="file-details" value="delete" onclick="return confirm('Are you Sure ?')">

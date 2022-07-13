@@ -38,6 +38,7 @@ class FilesController extends Controller
         $request->validate([
             'files' => 'required|mimes:csv,xlx,xls,xlsx|max:1024'
         ]);
+
         if($request->file())
         {
             // filename & path
@@ -69,11 +70,11 @@ class FilesController extends Controller
 
                 // kembalikan ke halaman 'file-index'
                 return redirect()->route('file-index')->with(['success'=>'Data Berhasil disimpan', 'mapping' => $mapping, 'id' => $id]);
-            // }else{
-            //     // mengembalikan karena format upload tidak sesuai dengan keys + values
-            //     return redirect()->route('file-index')->with('error','Data Upload Tidak Sesuai format');
-            // }
-        }
+            } else {
+                // mengembalikan karena format upload tidak sesuai dengan keys + values
+                return redirect()->route('file-index')->with('error','Data Upload Tidak Sesuai format');
+            }
+        
     }
 
     public function ShowAndDestroy(Request $request,$id)
@@ -81,29 +82,21 @@ class FilesController extends Controller
         $files = Files::find($id);
         $filename = $files->filename;
         $mapping = json_encode($files['mapping']);
-        switch ($request->input('file-details')) {
-            case 'details':
-                // check apakah report telah berada di redis
-                if(Redis::exists($filename)) {
-                        $response = Redis::command('lrange', [$filename, -1, -1]);
-                        $response = json_decode($response[0]);
-                        $response = json_encode($response);
-                        return view('contents.files.details',compact('files','response', 'mapping'));
-                } else {
-                        return back()->with('error','Data Belum Tersedia');
-                }
-                break;
 
-            // case 'delete':
-            //     $files = Files::findOrFail($id);
-            //     $files->delete();
-            //     return back()->with('success','Files Berhasil Dihapus');
-            //     break;
+        // check apakah report telah berada di redis
+        if (Redis::exists($filename)) {
+                $response = Redis::command('lrange', [$filename, -1, -1]);
+                $response = json_decode($response[0]);
+                $response = json_encode($response);
+                return view('contents.files.details',compact('files','response', 'mapping'));
+        } else {
+                return back()->with('error','Data Belum Tersedia');
         }
+
     }
 
     public function destroy($id)
-    {
+    {        
         $files = Files::findOrFail($id);
 
         $files->delete();
@@ -116,26 +109,20 @@ class FilesController extends Controller
     {
         $file = Files::find($id);
         $file->update(['mapping' => json_decode($request->get('columnNames'))]);
- 
-        // $file->save();  
         $queueManager = app('queue');
         $queue = $queueManager->connection('rabbitmq');
         $queue->pushRaw($file, 'files');
-        // return back()->with('success','Data Telah dikirim ke Message Broker');
         return redirect()->route('file-index')->with('success','Data Telah dikirim ke Message Broker');
-        // return redirect()->route('file-index')->with(['success'=>'Data Berhasil disimpan']);
-
     }
 
     public function path(Request $request, $id)
     {
         $path = Files::find($id);
+        
         // send to Rabbitmq
-
         $queueManager = app('queue');
         $queue = $queueManager->connection('rabbitmq');
         $queue->pushRaw($path, 'files');
-        // return back()->with('success','Data Telah dikirim ke Message Broker');
         return redirect()->route('file-index')->with('success','Data Telah dikirim ke Message Broker');
     }
 

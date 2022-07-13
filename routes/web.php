@@ -51,7 +51,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::post('/file/edit',[FilesController::class, 'json_edit'])->name('json_edit');
     Route::get('/path/{id}',[FilesController::class,'path'])->name('path');
     Route::post('/file-details/{id}',[FilesController::class, 'ShowAndDestroy'])->name('file-details');
-    Route::delete('/file-details/{id}',[FilesController::class,'destroy'])->name('destroy');
+    Route::delete('/file-details/{id}',[FilesController::class,'destroy'])->name('file-destroy');
     Route::post('/similarity/{id}',[FilesController::class,'similarity'])->name('similarity');
 });
 
